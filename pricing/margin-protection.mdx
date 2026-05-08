@@ -1,0 +1,60 @@
+---
+title: "Margin protection"
+sidebarTitle: "Margin protection"
+description: "Floor prices, ceiling caps, and margin guardrails."
+icon: "shield"
+---
+
+Margin protection prevents dynamic pricing rules from setting prices that are unprofitable or unreasonably high. Every pricing rule in Luminos AI operates within guardrails you define.
+
+## Floor prices
+
+A floor price is the minimum price a product can be sold at. Set floors to ensure every sale covers your costs plus a minimum margin.
+
+### Cost-plus floor
+
+The most common approach. Set a minimum margin percentage above your cost price:
+
+- **Formula:** Floor = Cost × (1 + minimum margin%)
+- **Example:** A product that costs £20 with a 25% minimum margin has a floor of £25
+
+Enter cost prices via your [product catalog](/getting-started/import-product-catalog) CSV import or connect them from your ERP through [warehouse integrations](/inventory/warehouse-integrations).
+
+### Fixed floor
+
+Set an absolute minimum price regardless of cost. Useful for products where brand perception requires a minimum price point.
+
+### MAP floor
+
+Set the floor to the manufacturer's minimum advertised price. See [MAP compliance](/pricing/map-compliance) for details.
+
+## Ceiling prices
+
+A ceiling price is the maximum price Luminos AI will set. Ceilings prevent scarcity-driven rules from pricing products unreasonably high.
+
+- **Percentage ceiling** — e.g. maximum 130% of the base price
+- **Fixed ceiling** — an absolute maximum price
+- **Competitor ceiling** — never price more than X% above the market average
+
+## Maximum daily change
+
+Limit how much a product's price can change in a single day. Large price swings can erode customer trust and trigger marketplace policy violations.
+
+Configure this under **Pricing → Settings → Maximum daily change**:
+
+- **Percentage cap** — e.g. maximum 10% change per day
+- **Absolute cap** — e.g. maximum £5 change per day
+
+The cap applies to the net change across all rules. If two rules each want to raise the price by 8%, the total is capped at 10% (if that is your limit), and the remaining 6% carries over to the next day.
+
+## Guardrail hierarchy
+
+Guardrails are evaluated in order: floor → ceiling → daily change cap. If a pricing rule suggests a price below the floor, the floor wins. If the resulting price exceeds the ceiling, the ceiling wins. Finally, the daily change cap limits how quickly the price moves toward the target.
+
+<Tip>
+Set guardrails before enabling pricing rules. Rules without guardrails can produce prices that surprise customers and damage trust.
+</Tip>
+
+## Monitoring
+
+Products that hit guardrails are flagged in the [Pricing analytics](/pricing/pricing-analytics) dashboard under **Guardrail activations**. A high number of activations on the same product suggests the pricing rule and guardrails are in conflict — consider adjusting one or the other.

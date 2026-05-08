@@ -1,0 +1,54 @@
+---
+title: "Autocomplete and suggestions"
+sidebarTitle: "Autocomplete"
+description: "Tune instant suggestions, trending queries, and fallback behaviour."
+icon: "text-cursor-input"
+---
+
+Autocomplete shows instant suggestions as the shopper types in the search box. Luminos AI generates suggestions from three sources: query completions, product matches, and trending searches.
+
+## Suggestion sources
+
+### Query completions
+
+Based on the shopper's partial input, Luminos AI suggests complete search queries that other shoppers have used. Typing "run" might suggest "running shoes", "running shorts", and "running watch".
+
+### Product matches
+
+Alongside query suggestions, the autocomplete panel can show direct product matches with thumbnails and prices. This lets shoppers jump straight to a product page without seeing the full search results.
+
+### Trending queries
+
+When the search box is focused but empty, Luminos AI can display trending queries — the most popular searches over the last 24 hours. This provides discovery inspiration for shoppers who are not sure what to search for.
+
+## Configuration
+
+Go to **Search → Autocomplete → Settings** and configure:
+
+- **Query suggestions** — number of query completions to show (0–10, default 5)
+- **Product suggestions** — number of product matches to show (0–6, default 3)
+- **Trending queries** — number of trending queries to show when the input is empty (0–8, default 5)
+- **Minimum characters** — how many characters before suggestions appear (default 2)
+- **Debounce delay** — milliseconds to wait after the last keystroke before fetching suggestions (default 150ms)
+
+## Personalisation
+
+When enabled, autocomplete suggestions are personalised for returning visitors. A shopper who previously browsed running shoes will see running-related suggestions ranked higher than someone who browsed dresses.
+
+Enable personalised autocomplete under **Search → Autocomplete → Personalisation**.
+
+## Fallback behaviour
+
+If a query returns zero autocomplete suggestions (uncommon queries or very short input), you can configure a fallback:
+
+- **Show trending** — display trending queries instead of an empty dropdown
+- **Show categories** — display matching category names
+- **Hide** — show nothing until a matching suggestion exists
+
+## Zero-result prevention
+
+Autocomplete inherently reduces zero-result searches by guiding shoppers toward queries that have results. Monitor the impact under [Search analytics](/search/search-analytics) — compare zero-result rates before and after enabling autocomplete.
+
+<Tip>
+Set the debounce delay to at least 150ms to avoid excessive API calls during fast typing. Lower values feel more responsive but increase server load without meaningful improvement in suggestion quality.
+</Tip>

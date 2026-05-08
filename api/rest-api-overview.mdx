@@ -1,0 +1,104 @@
+---
+title: "REST API overview"
+sidebarTitle: "REST API"
+description: "Endpoints, request formats, pagination, and responses."
+icon: "file-json"
+---
+
+The Luminos AI REST API follows standard HTTP conventions. All endpoints accept and return JSON. This page covers the common patterns used across all endpoints.
+
+## Request format
+
+```bash
+curl -X GET "https://api.luminos.ai/v1/{resource}" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+- **Base URL:** `https://api.luminos.ai/v1/`
+- **Authentication:** Bearer token in the `Authorization` header
+- **Content type:** `application/json` for request and response bodies
+
+## Key endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/recommendations` | Fetch recommendations for a visitor |
+| `GET` | `/search` | Execute a search query |
+| `POST` | `/events` | Submit behavioural events |
+| `GET` | `/products` | List or search products in your catalog |
+| `GET` | `/products/{id}` | Get a single product |
+| `GET` | `/segments` | List audience segments |
+| `GET` | `/segments/{id}/members` | List members of a segment |
+| `GET` | `/analytics/export` | Export analytics data |
+
+## Pagination
+
+List endpoints return paginated results. Use the `page` and `per_page` query parameters:
+
+```bash
+GET /v1/products?page=2&per_page=50
+```
+
+The response includes pagination metadata:
+
+```json
+{
+  "data": [...],
+  "meta": {
+    "page": 2,
+    "per_page": 50,
+    "total": 1234,
+    "total_pages": 25
+  }
+}
+```
+
+The maximum `per_page` value is 100.
+
+## Filtering
+
+Many endpoints accept filter parameters to narrow results:
+
+```bash
+GET /v1/products?category=shoes&brand=nike&min_price=50&max_price=200
+```
+
+## Response format
+
+Successful responses return a `200` status code with a JSON body:
+
+```json
+{
+  "data": {
+    "id": "rec_abc123",
+    "products": [...]
+  },
+  "meta": {
+    "request_id": "req_xyz789",
+    "processing_time_ms": 42
+  }
+}
+```
+
+Error responses return an appropriate status code (400, 401, 403, 404, 429, 500) with an error body:
+
+```json
+{
+  "error": {
+    "code": "invalid_parameter",
+    "message": "The 'per_page' parameter must be between 1 and 100.",
+    "param": "per_page"
+  }
+}
+```
+
+See [Error handling](/api/error-handling) for a full list of error codes.
+
+## Rate limits
+
+The API enforces per-key rate limits. See [Rate limits](/api/rate-limits) for quotas and strategies to stay within them.
+
+<Tip>
+Include the `X-Request-ID` header in your requests for easier debugging. If you do not provide one, Luminos AI generates one automatically and returns it in the `meta.request_id` field.
+</Tip>

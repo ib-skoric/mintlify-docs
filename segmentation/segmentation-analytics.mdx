@@ -1,0 +1,63 @@
+---
+title: "Segmentation analytics"
+sidebarTitle: "Analytics"
+description: "Segment size, overlap, migration rates, and campaign performance."
+icon: "bar-chart-3"
+---
+
+Segmentation analytics helps you understand how your audience is distributed, how customers move between segments, and how segment-targeted campaigns perform.
+
+## Key metrics
+
+### Segment size
+
+The number of customers currently in each segment. Track size over time to spot growth or decline. Rapid growth in an "At-risk" segment, for example, is an early warning sign.
+
+### Overlap
+
+How many customers belong to multiple segments simultaneously. Some overlap is expected (a customer can be both "Loyal" and "High spender"), but excessive overlap between segments meant to be distinct suggests your segment definitions need refining.
+
+### Migration rate
+
+The rate at which customers move between segments. Key transitions to monitor:
+
+- **Prospect → First-time buyer** — your acquisition conversion rate
+- **Active → At-risk** — early churn indicator
+- **At-risk → Lapsed** — failed retention
+
+### Segment revenue
+
+Revenue attributed to each segment in a given period. Compare revenue per customer across segments to understand which audiences drive the most value.
+
+## Dashboard views
+
+Navigate to **Analytics → Segmentation**:
+
+- **Distribution** — pie chart and table showing current segment sizes
+- **Trends** — segment sizes over time (line chart)
+- **Migration** — Sankey diagram showing customer flows between segments
+- **Overlap matrix** — heatmap showing overlap between all segment pairs
+- **Revenue** — revenue and AOV per segment
+
+## Campaign attribution
+
+When you use segments to target [recommendations](/recommendations/personalisation-rules), [pricing](/pricing/dynamic-pricing-rules), or [email campaigns](/segmentation/segment-sync-destinations), the analytics dashboard tracks the results:
+
+- **Engagement rate** — what percentage of the segment interacted with the campaign
+- **Conversion rate** — what percentage completed the desired action
+- **Revenue lift** — incremental revenue compared to a control group or historical baseline
+- **ROI** — campaign cost vs. attributed revenue
+
+## Segment health score
+
+Luminos AI assigns a health score to each segment based on:
+
+- **Stability** — segments that churn most of their members within a week are unstable
+- **Distinctiveness** — segments with high overlap with other segments score lower
+- **Actionability** — segments that are actually used in rules, triggers, or syncs score higher than dormant segments
+
+Review health scores under **Segmentation → Segments → Health**.
+
+<Tip>
+Archive segments with a health score below 30 that are not linked to any active rule, trigger, or destination sync. Dormant segments consume evaluation resources without delivering value.
+</Tip>

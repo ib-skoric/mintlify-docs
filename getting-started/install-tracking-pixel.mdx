@@ -1,0 +1,63 @@
+---
+title: "Install the tracking pixel"
+sidebarTitle: "Tracking pixel"
+description: "Add the Luminos AI JavaScript snippet to capture visitor behaviour."
+icon: "scan-line"
+---
+
+The tracking pixel collects behavioural events — page views, product impressions, add-to-cart actions, and purchases — that power personalisation, search ranking, and analytics across the platform. Installation takes less than five minutes.
+
+## Get your snippet
+
+Navigate to **Settings → Tracking → Pixel setup**. Copy the JavaScript snippet, which looks like this:
+
+```html
+<script>
+  (function(l,u,m,i,n,o,s){l['LuminosAI']=n;l[n]=l[n]||function(){
+  (l[n].q=l[n].q||[]).push(arguments)};o=u.createElement(m);
+  s=u.getElementsByTagName(m)[0];o.async=1;o.src=i;
+  s.parentNode.insertBefore(o,s)})(window,document,'script',
+  'https://cdn.luminos.ai/pixel.js','lum');
+
+  lum('init', 'YOUR_WORKSPACE_ID');
+  lum('track', 'pageview');
+</script>
+```
+
+Replace `YOUR_WORKSPACE_ID` with the ID shown on the setup page.
+
+## Installation methods
+
+### Direct placement
+
+Paste the snippet into your storefront's `<head>` tag, before the closing `</head>`. This ensures the pixel loads on every page.
+
+### Google Tag Manager
+
+1. Create a new **Custom HTML** tag in GTM
+2. Paste the snippet into the HTML field
+3. Set the trigger to **All Pages**
+4. Publish the container
+
+### Shopify
+
+If you connected via the Shopify app, the pixel is installed automatically. Verify it is active under **Settings → Tracking → Active pixels**.
+
+## Verify installation
+
+Open your storefront in a browser and check the Luminos AI dashboard under **Analytics → Real-time**. You should see page view events appearing within seconds. You can also open your browser's developer tools and look for network requests to `cdn.luminos.ai`.
+
+<Tip>
+Use a private or incognito window to test — ad blockers in your regular browser may interfere with tracking during verification.
+</Tip>
+
+## Event reference
+
+The pixel automatically captures these events:
+
+- `pageview` — every page load
+- `product_view` — product detail page visits
+- `add_to_cart` — items added to the shopping cart
+- `purchase` — completed orders (requires the purchase confirmation page to load)
+
+For custom events, see the [JavaScript SDK](/api/sdks/javascript-sdk) documentation.

@@ -1,0 +1,56 @@
+---
+title: "Visual search"
+sidebarTitle: "Visual search"
+description: "Upload photos to find visually similar products with AI."
+icon: "camera"
+---
+
+Visual search lets shoppers upload a photo — from their camera, screenshots, or saved images — and find visually similar products in your catalog. Luminos AI uses a deep learning model to extract visual features like colour, shape, pattern, and style, then matches them against your product images.
+
+## How it works
+
+1. The shopper clicks the camera icon in the search bar and uploads an image
+2. Luminos AI's vision model extracts a feature embedding from the image
+3. The embedding is compared against pre-computed embeddings for every product image in your catalog
+4. The most visually similar products are returned as search results, ranked by similarity score
+
+The entire process takes under 500 milliseconds for catalogs up to 500,000 images.
+
+## Enabling visual search
+
+Go to **Search → Visual Search → Enable**. Luminos AI begins computing image embeddings for your product catalog. This background process takes 15–60 minutes depending on catalog size and completes without affecting your storefront performance.
+
+<Note>
+Visual search requires product images in your catalog. Products without images are excluded from visual search results.
+</Note>
+
+## Use cases
+
+- **Fashion discovery** — shoppers photograph an outfit they like and find similar items in your store
+- **Home decor matching** — upload a room photo to find furniture and accessories that match the style
+- **Part identification** — photograph a component to find the matching replacement in your catalog
+- **Social media inspiration** — screenshot a product from Instagram and search your store for alternatives
+
+## Configuration
+
+Under **Search → Visual Search → Settings**, configure:
+
+- **Result count** — number of visually similar products to return (default 12)
+- **Similarity threshold** — minimum similarity score to include a result (0.0 to 1.0, default 0.5)
+- **Category filtering** — optionally restrict visual search results to the same category as the uploaded image's detected category
+- **Combine with text** — allow shoppers to upload an image and type a text query simultaneously (e.g. upload a red dress photo and type "under £50")
+
+## Image requirements
+
+For best results, uploaded images should:
+
+- Be at least 200×200 pixels
+- Contain a clearly visible product against a non-cluttered background
+- Be in JPEG, PNG, or WebP format
+- Be under 10 MB in file size
+
+The widget validates these requirements and shows a helpful error message if the image does not meet them.
+
+## Monitoring
+
+Track visual search usage in [Search analytics](/search/search-analytics) under the **Visual search** tab. Key metrics include upload count, result CTR, and conversion rate compared to text search.

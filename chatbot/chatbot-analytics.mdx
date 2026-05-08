@@ -1,0 +1,61 @@
+---
+title: "Chatbot analytics"
+sidebarTitle: "Analytics"
+description: "Resolution rate, handoff rate, response time, and satisfaction."
+icon: "bar-chart-3"
+---
+
+Chatbot analytics shows how effectively the AI assistant resolves shopper questions and where there are opportunities to improve. Use these metrics to optimise training content, conversation flows, and escalation rules.
+
+## Key metrics
+
+### Resolution rate
+
+The percentage of conversations resolved by the chatbot without human escalation. A healthy resolution rate for ecommerce chatbots is 60–80%. Track this as the primary measure of chatbot effectiveness.
+
+### Escalation rate
+
+The inverse of resolution rate — what percentage of conversations require handoff to a human agent. Break this down by [escalation reason](/chatbot/escalation-to-human) (low confidence, shopper request, sentiment trigger) to identify improvement areas.
+
+### Average response time
+
+How long shoppers wait for a response from the chatbot. AI responses are typically under 2 seconds. If this metric rises, check for backend performance issues.
+
+### Conversations per day
+
+Total conversation volume and trend. Rising volume may indicate growing chatbot adoption or increasing customer issues.
+
+### CSAT score
+
+Average satisfaction rating from [CSAT surveys](/chatbot/csat-collection). Track alongside resolution rate — high resolution with low CSAT means the chatbot is "resolving" conversations without actually satisfying shoppers.
+
+## Dashboard views
+
+Navigate to **Analytics → Chatbot**:
+
+- **Overview** — aggregate metrics and daily trends
+- **Topics** — most common conversation topics, resolution rate per topic, and CSAT per topic
+- **Flows** — performance of each [conversation flow](/chatbot/conversation-flows) (completion rate, conversion, drop-off)
+- **Escalations** — escalation volume, reasons, and post-escalation resolution time
+- **Languages** — metrics broken down by [detected language](/chatbot/multilingual-chatbot)
+- **Product questions** — which products generate the most chatbot questions (indicates gaps in product descriptions or FAQs)
+
+## Topic analysis
+
+Luminos AI automatically clusters conversations by topic using NLP. The topic view shows:
+
+- Topic name (auto-generated, editable)
+- Conversation volume
+- Resolution rate
+- Average CSAT
+- Trend (increasing or decreasing)
+
+Low-resolution topics are opportunities to add knowledge base content or create a dedicated [conversation flow](/chatbot/conversation-flows).
+
+## Conversation review
+
+Drill into individual conversations under **Chatbot → Conversations**. Each transcript shows the full dialogue, the chatbot's internal confidence scores, knowledge sources used, and whether escalation occurred. Use the transcript review to identify training improvements.
+
+<Tip>
+Schedule a weekly 15-minute chatbot review. Read the 10 lowest-CSAT conversations and the 5 most-escalated topics. Make targeted knowledge base updates based on what you find.
+</Tip>

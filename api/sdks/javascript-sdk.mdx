@@ -1,0 +1,111 @@
+---
+title: "JavaScript SDK"
+sidebarTitle: "JavaScript"
+description: "Browser and Node.js integration with the Luminos AI JS SDK."
+icon: "file-code"
+---
+
+The Luminos AI JavaScript SDK works in both browser and Node.js environments. Use it to fetch recommendations, execute searches, submit events, and manage your catalog programmatically.
+
+## Installation
+
+```bash
+npm install @luminos-ai/sdk
+```
+
+Or with yarn:
+
+```bash
+yarn add @luminos-ai/sdk
+```
+
+## Initialisation
+
+```javascript
+import { LuminosAI } from '@luminos-ai/sdk';
+
+const client = new LuminosAI({
+  apiKey: process.env.LUMINOS_API_KEY,
+  workspace: 'ws_abc123',
+});
+```
+
+<Warning>
+Never expose your API key in client-side browser code. Use a server-side proxy or the public tracking pixel for browser-based integrations.
+</Warning>
+
+## Fetching recommendations
+
+```javascript
+const recommendations = await client.recommendations.get({
+  visitorId: 'visitor_123',
+  placement: 'pdp-carousel',
+  productId: 'prod_456',
+  limit: 8,
+});
+
+console.log(recommendations.products);
+// [{ id: 'prod_789', title: 'Running Shoes', price: 89.99, ... }, ...]
+```
+
+## Executing a search
+
+```javascript
+const results = await client.search.query({
+  query: 'blue running shoes',
+  filters: { brand: 'Nike', maxPrice: 150 },
+  page: 1,
+  perPage: 24,
+});
+
+console.log(results.products);
+console.log(results.facets);
+```
+
+## Submitting events
+
+```javascript
+await client.events.track({
+  type: 'purchase',
+  visitorId: 'visitor_123',
+  orderId: 'order_789',
+  products: [
+    { id: 'prod_456', quantity: 1, price: 89.99 },
+  ],
+  revenue: 89.99,
+});
+```
+
+Batch multiple events in a single request:
+
+```javascript
+await client.events.trackBatch([
+  { type: 'pageview', visitorId: 'v1', url: '/products/123' },
+  { type: 'product_view', visitorId: 'v1', productId: 'prod_123' },
+  { type: 'add_to_cart', visitorId: 'v1', productId: 'prod_123' },
+]);
+```
+
+## Error handling
+
+```javascript
+try {
+  const recs = await client.recommendations.get({ visitorId: 'v1' });
+} catch (error) {
+  if (error instanceof LuminosAI.RateLimitError) {
+    console.log(`Rate limited. Retry after ${error.retryAfter} seconds.`);
+  } else if (error instanceof LuminosAI.AuthenticationError) {
+    console.error('Invalid API key.');
+  }
+}
+```
+
+## TypeScript support
+
+The SDK is written in TypeScript and exports types for all request and response objects. Your IDE will provide autocompletion and type checking out of the box.
+
+## Next steps
+
+- [REST API overview](/api/rest-api-overview) for the full endpoint reference
+- [Rate limits](/api/rate-limits) to understand usage quotas
+- [Error handling](/api/error-handling) for all error codes

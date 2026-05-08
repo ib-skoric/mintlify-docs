@@ -1,0 +1,72 @@
+---
+title: "Warehouse and supplier integrations"
+sidebarTitle: "Integrations"
+description: "Connect to your WMS, 3PL, or ERP for real-time inventory visibility."
+icon: "warehouse"
+---
+
+Luminos AI integrates with warehouse management systems (WMS), third-party logistics providers (3PL), and ERP platforms to maintain an accurate, real-time view of inventory across all your fulfilment locations.
+
+## Supported integrations
+
+### WMS platforms
+
+- **ShipBob** — real-time inventory sync via API
+- **ShipHero** — webhook-based inventory updates
+- **Deposco** — bi-directional sync for inventory and purchase orders
+
+### 3PL providers
+
+- **Flexport** — shipment tracking and inventory levels
+- **Deliverr** — distributed inventory across multiple fulfilment centres
+- **Custom 3PL** — connect any provider using the Luminos AI webhook receiver
+
+### ERP systems
+
+- **NetSuite** — inventory, purchase orders, and supplier data
+- **SAP Business One** — real-time stock levels and order status
+- **Microsoft Dynamics** — inventory and procurement sync
+
+## Setting up an integration
+
+<Steps>
+
+<Step title="Select your system">
+Go to **Inventory → Integrations → Add** and choose your WMS, 3PL, or ERP from the list. If your system is not listed, use the generic webhook or API connector.
+</Step>
+
+<Step title="Authenticate">
+Enter your credentials or API key for the external system. Each integration has its own authentication method — OAuth, API key, or webhook secret.
+</Step>
+
+<Step title="Map locations">
+Map your external warehouse locations to Luminos AI locations. This ensures that inventory levels for each fulfilment centre are tracked separately. See [Multi-location inventory](/inventory/multi-location-inventory) for details.
+</Step>
+
+<Step title="Configure sync direction">
+Choose what data flows in each direction:
+
+- **Inbound** — stock levels, shipment tracking, and receiving data from the warehouse to Luminos AI
+- **Outbound** — purchase orders and reorder requests from Luminos AI to the warehouse or supplier
+</Step>
+
+</Steps>
+
+## Real-time vs. batch sync
+
+Most integrations support both modes:
+
+- **Real-time** — inventory changes are pushed via webhooks as they happen. Best for high-velocity stores where stock levels change frequently.
+- **Batch** — inventory is synced at fixed intervals (every 15, 30, or 60 minutes). Simpler to set up and sufficient for stores with moderate order volume.
+
+<Tip>
+Use real-time sync for your top 20% of products by volume and batch sync for the rest. This balances accuracy with API usage.
+</Tip>
+
+## Generic webhook connector
+
+For systems not in the pre-built list, use the generic webhook connector. Luminos AI provides an endpoint URL that accepts inventory update payloads in a standard JSON format. See the [webhooks documentation](/api/webhooks) for the payload schema.
+
+## Monitoring
+
+Check integration health under **Inventory → Integrations → Status**. Each integration shows the last successful sync, error count, and latency metrics.

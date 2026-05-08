@@ -1,0 +1,62 @@
+---
+title: "CSAT and feedback collection"
+sidebarTitle: "CSAT"
+description: "Collect satisfaction ratings and feedback after interactions."
+icon: "star"
+---
+
+Customer satisfaction (CSAT) surveys measure how well the chatbot resolves shopper needs. Luminos AI can prompt shoppers for a rating and optional comment after each conversation, giving you a continuous feedback loop.
+
+## Enabling CSAT collection
+
+Go to **Chatbot → CSAT → Enable**. Configure when the survey appears:
+
+- **After resolution** — the chatbot asks for a rating after it determines the conversation is resolved (no messages for 2 minutes)
+- **After escalation** — collect a rating after the conversation transfers to a human agent and is resolved
+- **After specific flows** — trigger a survey at the end of [conversation flows](/chatbot/conversation-flows) like order status or returns
+
+## Survey format
+
+The default survey has two parts:
+
+### Rating
+
+A 1–5 star rating or thumbs up/down. Choose the format under **Chatbot → CSAT → Survey format**:
+
+- **Stars** — 1 to 5 stars, providing more granularity
+- **Thumbs** — binary thumbs up or down, yielding higher response rates due to simplicity
+
+### Comment
+
+An optional free-text field where the shopper can explain their rating. Comments provide qualitative context that star ratings alone do not capture.
+
+## Survey placement
+
+The survey appears as the last message in the chat window. It does not open a new window or redirect the shopper. This inline approach achieves response rates of 15–25%, significantly higher than post-session email surveys.
+
+## Analysing results
+
+View CSAT data under **Chatbot → CSAT → Dashboard**:
+
+- **Overall CSAT score** — average rating across all surveyed conversations
+- **CSAT trend** — score over time (daily, weekly, monthly)
+- **CSAT by topic** — which conversation topics get the best and worst ratings
+- **CSAT by flow** — performance of each conversation flow
+- **Low-rated conversations** — drill into conversations with 1–2 star ratings to understand what went wrong
+
+## Feedback loop
+
+Use low-rated conversations to improve the chatbot:
+
+1. Filter for conversations with 1–2 star ratings
+2. Read the transcript to identify what the chatbot got wrong
+3. Add or update knowledge base content, adjust conversation flows, or refine escalation rules
+4. Track whether CSAT improves in subsequent weeks
+
+<Tip>
+Aim for a CSAT score above 4.0 (out of 5.0). Scores below 3.5 indicate systemic issues with answer quality or escalation handling that need priority attention.
+</Tip>
+
+## Privacy
+
+CSAT responses are stored in Luminos AI and included in [data retention](/account/data-retention) policies. Shopper comments may contain personal information — ensure your retention settings comply with [GDPR requirements](/account/gdpr-compliance).

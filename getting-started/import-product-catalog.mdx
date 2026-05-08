@@ -1,0 +1,51 @@
+---
+title: "Import your product catalog"
+sidebarTitle: "Product catalog"
+description: "Sync your product catalog including variants, images, and metadata."
+icon: "database"
+---
+
+A complete product catalog is the foundation for accurate recommendations, search results, and pricing decisions. Luminos AI imports your catalog automatically when you connect your store, but you can also upload supplementary data or manage imports manually.
+
+## Automatic sync
+
+When you [connect your store](/getting-started/connect-your-store), Luminos AI pulls your full catalog including:
+
+- Product titles, descriptions, and categories
+- Variants (size, colour, material)
+- Prices and inventory levels
+- Images and thumbnails
+- Custom attributes and tags
+
+The initial sync runs immediately after connection. Ongoing changes are picked up via webhooks (Shopify, BigCommerce) or polling (WooCommerce, Magento).
+
+## Manual CSV import
+
+For supplementary data that does not live in your ecommerce platform — such as supplier cost prices, internal tags, or enrichment attributes — you can upload a CSV file.
+
+1. Go to **Data → Product catalog → Import**
+2. Download the CSV template
+3. Fill in the required columns: `product_id`, `title`, and at least one attribute column
+4. Upload the completed file
+
+Luminos AI matches rows to existing products using `product_id`. New IDs create new catalog entries; existing IDs update the matched product.
+
+<Warning>
+CSV imports overwrite existing values for the columns included in the file. Omit columns you do not want to change.
+</Warning>
+
+## Catalog health
+
+After import, check **Data → Product catalog → Health** for issues:
+
+- **Missing images** — products without images perform poorly in visual search and carousels
+- **Duplicate titles** — identical titles confuse search ranking and recommendations
+- **Empty categories** — uncategorised products are excluded from category-based personalisation rules
+
+Resolve flagged issues to get the best performance from AI features. The health score updates every hour.
+
+## Next steps
+
+- [Set up the recommendation engine](/recommendations/setup-recommendation-engine) to start using your catalog data
+- [Configure Smart Search](/search/configure-smart-search) to make your catalog searchable
+- [Forecasting models](/inventory/forecasting-models) to predict demand for your products

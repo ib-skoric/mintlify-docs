@@ -1,0 +1,122 @@
+---
+title: "Ruby SDK"
+sidebarTitle: "Ruby"
+description: "Rails and backend integration with the Ruby SDK."
+icon: "gem"
+---
+
+The Luminos AI Ruby SDK integrates with Rails applications and Ruby backends. It supports Ruby 3.0 and above.
+
+## Installation
+
+Add to your Gemfile:
+
+```ruby
+gem 'luminos-ai'
+```
+
+Then run:
+
+```bash
+bundle install
+```
+
+## Initialisation
+
+```ruby
+require 'luminos_ai'
+
+client = LuminosAI::Client.new(
+  api_key: ENV['LUMINOS_API_KEY'],
+  workspace: 'ws_abc123'
+)
+```
+
+For Rails, create an initialiser at `config/initializers/luminos_ai.rb`:
+
+```ruby
+LuminosAI.configure do |config|
+  config.api_key = Rails.application.credentials.luminos_api_key
+  config.workspace = 'ws_abc123'
+end
+```
+
+## Fetching recommendations
+
+```ruby
+recommendations = client.recommendations.get(
+  visitor_id: 'visitor_123',
+  placement: 'cart-cross-sell',
+  limit: 6
+)
+
+recommendations.products.each do |product|
+  puts "#{product.title} - £#{product.price}"
+end
+```
+
+## Executing a search
+
+```ruby
+results = client.search.query(
+  query: 'leather wallet',
+  filters: { max_price: 80 },
+  page: 1,
+  per_page: 24
+)
+
+puts "Found #{results.total} products"
+results.products.each { |p| puts "  #{p.title}" }
+```
+
+## Submitting events
+
+```ruby
+client.events.track(
+  type: 'purchase',
+  visitor_id: 'visitor_123',
+  order_id: 'order_789',
+  products: [
+    { id: 'prod_456', quantity: 1, price: 45.00 }
+  ],
+  revenue: 45.00
+)
+```
+
+Batch events:
+
+```ruby
+client.events.track_batch([
+  { type: 'pageview', visitor_id: 'v1', url: '/products/123' },
+  { type: 'add_to_cart', visitor_id: 'v1', product_id: 'prod_123' }
+])
+```
+
+## Error handling
+
+```ruby
+begin
+  recs = client.recommendations.get(visitor_id: 'v1')
+rescue LuminosAI::RateLimitError => e
+  puts "Rate limited. Retry after #{e.retry_after} seconds."
+rescue LuminosAI::AuthenticationError
+  puts 'Invalid API key.'
+end
+```
+
+## Rails integration
+
+The SDK integrates with the Rails request lifecycle. Add the Luminos AI middleware to track page views automatically:
+
+```ruby
+# config/application.rb
+config.middleware.use LuminosAI::Middleware::PageviewTracker
+```
+
+The middleware sends a `pageview` event for every request, using the session ID as the visitor ID. For authenticated users, it includes the customer ID.
+
+## Next steps
+
+- [REST API overview](/api/rest-api-overview) for the full endpoint reference
+- [Webhooks](/api/webhooks) for real-time event subscriptions
+- [Error handling](/api/error-handling) for all error codes

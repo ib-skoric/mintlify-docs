@@ -1,0 +1,53 @@
+---
+title: "Exclude and suppress products"
+sidebarTitle: "Exclusions"
+description: "Remove out-of-stock or discontinued items from results."
+icon: "ban"
+---
+
+Exclusion and suppression rules prevent specific products from appearing in recommendation results. Use them for inventory management, compliance, brand guidelines, or to avoid promoting items that would create a poor customer experience.
+
+## Exclusion vs. suppression
+
+- **Exclusion** completely removes matching products from all recommendation results. The product never appears, regardless of how relevant the model scores it.
+- **Suppression** reduces the ranking score so the product appears lower in the list or falls off. It can still appear if no better alternatives exist.
+
+Use exclusion for hard requirements (recalled products, legal restrictions) and suppression for soft preferences (low-margin items, slow-moving inventory).
+
+## Common exclusion patterns
+
+### Out-of-stock products
+
+By default, Luminos AI automatically excludes products with zero inventory. If you want to allow "notify me" or pre-order items to appear, disable the automatic filter under **Recommendations → Settings → Inventory filtering** and create a manual rule that excludes only truly unavailable items.
+
+### Discontinued products
+
+Create an exclusion rule matching the tag `discontinued` or any equivalent status field in your catalog. This prevents stale product pages from being recommended.
+
+### Age-restricted or regulated products
+
+Exclude products in specific categories (alcohol, tobacco, adult content) from placements on pages where age verification has not occurred.
+
+### Recently purchased
+
+Suppress products that the current visitor purchased within the last 30 days to avoid repetitive recommendations. This is especially important for durable goods — no one needs a second washing machine next week.
+
+## Creating an exclusion rule
+
+1. Go to **Recommendations → Rules → Create**
+2. Select **Exclude** as the rule type
+3. Define the product filter — e.g. `inventory_quantity = 0` or `tags contains "recalled"`
+4. Optionally scope to specific placements or time periods
+5. Save and publish
+
+## Bulk exclusions
+
+Upload a CSV of product IDs under **Recommendations → Rules → Bulk exclude** to quickly block a large set of products. This is useful after a product recall or vendor change.
+
+<Warning>
+Exclusion rules are evaluated before personalisation. Excluding too many products can reduce recommendation quality by shrinking the candidate pool.
+</Warning>
+
+## Monitoring
+
+Check the count of excluded and suppressed products under **Recommendations → Rules → Active rules**. If the excluded count exceeds 20% of your catalog, review whether some rules can be converted to suppressions instead.

@@ -1,0 +1,57 @@
+---
+title: "Product carousels and placements"
+sidebarTitle: "Carousels"
+description: "Configure carousel widgets on product pages, cart, and checkout."
+icon: "gallery-horizontal-end"
+---
+
+Placements define where and how recommendations appear on your storefront. The most common format is a horizontal product carousel, but Luminos AI also supports grids, lists, and custom templates.
+
+## Placement types
+
+### Carousel
+
+A horizontally scrollable row of product cards. Best for product detail pages, homepages, and category pages where screen width is available. Supports 4–20 products with responsive breakpoints.
+
+### Grid
+
+A multi-row grid layout. Effective for dedicated recommendation pages or email-style layouts. Configure the column count (2–6) and total product count.
+
+### List
+
+A vertical list with larger product cards showing descriptions. Works well in sidebars and narrow containers.
+
+### Custom
+
+Use the [JavaScript SDK](/api/sdks/javascript-sdk) or [REST API](/api/rest-api-overview) to fetch recommendation data and render it in your own template. This gives full control over markup and styling.
+
+## Creating a placement
+
+1. Go to **Recommendations → Placements → Create**
+2. Enter a name and select the page type (homepage, product detail, cart, checkout, or custom URL)
+3. Choose the widget style and number of products
+4. Select the recommendation model to power this placement
+5. Configure display options — product image size, show/hide price, show/hide ratings
+6. Save as draft, preview, then publish
+
+## Page-type recommendations
+
+| Page | Recommended model | Product count | Rationale |
+|------|-------------------|---------------|-----------|
+| Homepage | Trending or Personalised | 8–12 | Broad discovery for returning and new visitors |
+| Product detail | Similar Items | 4–8 | "You might also like" based on current product |
+| Cart | Cross-sell | 4–6 | Complementary items that pair with cart contents |
+| Checkout | Last-chance upsell | 2–4 | Premium alternatives or accessories before purchase |
+| Post-purchase | Replenishment | 4–8 | Items likely to need restocking based on order history |
+
+## Styling
+
+Placements inherit your storefront's CSS by default. Override styles by adding custom CSS classes in the placement settings or by targeting the `.luminos-widget` container in your stylesheet.
+
+<Tip>
+Keep carousels above the fold on product detail pages. Recommendations placed below long descriptions get significantly fewer impressions.
+</Tip>
+
+## Performance
+
+Each placement loads asynchronously and does not block your page render. Average response time is under 50 milliseconds. Monitor placement performance in [Recommendation analytics](/recommendations/recommendation-analytics).

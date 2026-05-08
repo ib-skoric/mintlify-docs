@@ -1,0 +1,58 @@
+---
+title: "Predictive scoring"
+sidebarTitle: "Predictive scoring"
+description: "Score customers on likelihood to purchase, churn, or respond."
+icon: "brain"
+---
+
+Predictive scoring uses machine learning to assign a probability score to each customer for specific future outcomes. Luminos AI provides three pre-built predictive scores and supports custom scoring models.
+
+## Pre-built scores
+
+### Purchase propensity
+
+The likelihood that a customer will make a purchase in the next 7 days. Scores range from 0 to 100. Customers with a score above 70 are considered high-intent and respond well to timely nudges like personalised recommendations or cart reminders.
+
+### Churn risk
+
+The likelihood that an active customer will not purchase again within their expected purchase cycle. High churn risk scores (above 60) indicate customers who need re-engagement. This score considers purchase recency, frequency trends, and engagement decay.
+
+### Campaign response
+
+The likelihood that a customer will engage with a marketing campaign (open, click, or convert). Use this score to focus campaign spend on customers most likely to respond, improving ROI and reducing unsubscribes.
+
+## How scores are calculated
+
+Each predictive model trains on your historical customer data:
+
+- **Features** — purchase history, browsing behaviour, email engagement, recommendation interactions, time-based patterns
+- **Training data** — the model learns from customers who did and did not exhibit the target behaviour in the past
+- **Validation** — accuracy is measured using a held-out test set and reported as AUC (area under the ROC curve)
+
+Models retrain weekly to incorporate the latest data.
+
+## Using predictive scores
+
+Predictive scores can be used as segment filters. Go to **Segmentation → Segments → Create** and add a predictive score condition:
+
+- **Purchase propensity > 70** — create a "High intent" segment for personalised homepage recommendations
+- **Churn risk > 60** — create an "At-risk" segment for re-engagement triggers
+- **Campaign response > 50** — create a "Responsive" segment for your next email campaign
+
+## Custom scoring models
+
+If you need a prediction that the pre-built scores do not cover (e.g. likelihood to refer a friend, likelihood to upgrade to a higher plan), create a custom model:
+
+1. Go to **Segmentation → Predictive → Custom → Create**
+2. Define the target event (the behaviour you want to predict)
+3. Select the training window (how far back to look for examples)
+4. Luminos AI trains the model and reports accuracy metrics
+5. If accuracy is acceptable (AUC > 0.65), activate the model
+
+<Tip>
+Predictive scores are most useful when combined with other segment filters. "High churn risk" alone is too broad — "High churn risk AND loyal lifecycle stage" identifies the customers worth saving.
+</Tip>
+
+## Accuracy monitoring
+
+Model accuracy can degrade over time as customer behaviour evolves. Monitor accuracy under **Segmentation → Predictive → Model health**. Luminos AI alerts you when a model's AUC drops below 0.60 and suggests retraining.

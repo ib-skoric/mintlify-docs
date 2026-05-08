@@ -1,0 +1,55 @@
+---
+title: "Personalisation rules"
+sidebarTitle: "Personalisation"
+description: "Boost, suppress, or pin products for specific audiences or contexts."
+icon: "sliders-horizontal"
+---
+
+Personalisation rules let you layer business logic on top of Luminos AI's algorithmic recommendations. Use them to promote seasonal items, enforce brand guidelines, or tailor suggestions for specific customer segments.
+
+## Rule types
+
+Luminos AI supports four rule types, evaluated in priority order:
+
+### Pin
+
+Pin a specific product to a fixed position in the recommendation list. Pinned products always appear regardless of the model's ranking. Use pins sparingly — overuse reduces the value of personalisation.
+
+### Boost
+
+Increase the ranking score of products matching a filter. Boosted products float higher in the list but can still be displaced by strongly relevant items. Boost rules accept a multiplier between 1.1× and 10×.
+
+### Suppress
+
+Reduce the ranking score of products matching a filter. Suppressed products appear lower in the list or drop off entirely if their adjusted score falls below the display threshold.
+
+### Exclude
+
+Remove products matching a filter from all recommendation results. Exclusions are absolute — the products never appear. Use this for recalled items, compliance-restricted products, or anything you do not want to promote.
+
+See [Exclude and suppress products](/recommendations/exclude-products) for detailed exclusion patterns.
+
+## Creating a rule
+
+1. Go to **Recommendations → Rules → Create**
+2. Choose the rule type (pin, boost, suppress, or exclude)
+3. Define the product filter — match by category, brand, tag, price range, inventory status, or product ID
+4. Optionally scope the rule to a specific audience segment, placement, or date range
+5. Set the priority if multiple rules might overlap — lower numbers evaluate first
+6. Save and publish
+
+## Audience targeting
+
+Rules can be scoped to [audience segments](/segmentation/create-audience-segments) so that different shopper groups see different product emphasis. For example:
+
+- Boost premium brands for the "High LTV" segment
+- Suppress out-of-stock items only for visitors in regions with long shipping times
+- Pin a new product launch for the "Early Adopters" segment
+
+## Scheduling
+
+Add start and end dates to make rules time-bound. This is useful for promotions, seasonal campaigns, and product launches where you want automatic cleanup without manual intervention.
+
+<Tip>
+Audit your active rules monthly. Stale rules that no longer match any products still consume evaluation time and can cause unexpected ranking behaviour.
+</Tip>

@@ -1,0 +1,79 @@
+---
+title: "Create audience segments"
+sidebarTitle: "Create segments"
+description: "Build segments using purchase history, behaviour, and demographics."
+icon: "user-plus"
+---
+
+Audience segments group customers who share common characteristics. Use them to personalise recommendations, target pricing rules, or sync audiences to marketing platforms.
+
+## Segment builder
+
+<Steps>
+
+<Step title="Start a new segment">
+Go to **Segmentation → Segments → Create**. Give the segment a descriptive name (e.g. "High-value repeat buyers" or "Cart abandoners last 7 days").
+</Step>
+
+<Step title="Add filter conditions">
+Build your segment using filters. Combine multiple conditions with AND/OR logic:
+
+**Purchase behaviour:**
+- Total orders (e.g. > 3 orders)
+- Total spend (e.g. > £500 lifetime)
+- Last purchase date (e.g. within the last 30 days)
+- Average order value (e.g. > £75)
+- Product categories purchased
+
+**Browsing behaviour:**
+- Pages viewed in the last N days
+- Products viewed but not purchased
+- Search queries used
+- Time on site
+
+**Demographics:**
+- Location (country, region, city)
+- Account age
+- Email domain (useful for B2B segmentation)
+
+**Engagement:**
+- Email open rate
+- Chatbot interaction
+- Recommendation clicks
+</Step>
+
+<Step title="Preview the segment">
+Click **Preview** to see how many customers match the current criteria and a sample of matching profiles. Adjust filters until the segment size and composition look right.
+</Step>
+
+<Step title="Save and activate">
+Save the segment. It becomes available immediately for use in recommendations, pricing rules, and destination syncing. Membership updates in real time as new events arrive.
+</Step>
+
+</Steps>
+
+## Segment types
+
+### Dynamic segments
+
+Membership is calculated continuously from live data. Customers enter and exit the segment automatically as their behaviour changes. Most segments should be dynamic.
+
+### Static segments
+
+A fixed list of customers captured at a point in time. Use static segments for one-off campaigns where you do not want the audience to change after creation. Create a static segment by clicking **Freeze** on any dynamic segment.
+
+## Combining segments
+
+Create compound segments using set operations:
+
+- **Intersection** — customers who belong to both Segment A AND Segment B
+- **Union** — customers who belong to Segment A OR Segment B
+- **Exclusion** — customers in Segment A who are NOT in Segment B
+
+<Tip>
+Start with broad segments and refine with additional conditions rather than building complex segments from scratch. Previewing at each step helps you understand how each filter narrows the audience.
+</Tip>
+
+## Limits
+
+Each workspace can have up to 500 active segments. Individual segments can reference up to 20 filter conditions. If you need more complex logic, use compound segments.

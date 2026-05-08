@@ -1,0 +1,75 @@
+---
+title: "Order status automation"
+sidebarTitle: "Order status"
+description: "Shoppers check tracking, delivery, and shipping via chat."
+icon: "truck"
+---
+
+Order status automation lets shoppers check their order tracking, delivery estimates, and shipping updates directly through the chatbot — the most common support question in ecommerce, handled instantly without human involvement.
+
+## How it works
+
+When a shopper asks about their order, the chatbot:
+
+1. Identifies the shopper (via logged-in session, email lookup, or order number)
+2. Retrieves the latest order data from your ecommerce platform
+3. Returns a formatted status update with tracking details
+
+## Setup
+
+<Steps>
+
+<Step title="Enable order access">
+Go to **Chatbot → Automations → Order status → Enable**. The chatbot needs read access to your order data. If you [connected your store](/getting-started/connect-your-store) with order sync enabled, this is already available.
+</Step>
+
+<Step title="Configure identification">
+Choose how the chatbot identifies which orders to look up:
+
+- **Logged-in customer** — automatically retrieve orders for the authenticated customer (requires customer ID in the tracking pixel)
+- **Email lookup** — ask the shopper for their email address and match against order records
+- **Order number** — ask the shopper for their order number directly
+</Step>
+
+<Step title="Connect shipping carriers">
+To show real-time tracking data, connect your shipping carriers under **Chatbot → Automations → Order status → Carriers**:
+
+- **Built-in carriers** — Royal Mail, USPS, UPS, FedEx, DHL, DPD, Hermes
+- **Custom carrier** — provide a tracking API endpoint for carriers not in the built-in list
+</Step>
+
+</Steps>
+
+## What the chatbot shows
+
+The order status response includes:
+
+- Order number and date placed
+- Order status (processing, shipped, out for delivery, delivered)
+- Tracking number with a link to the carrier's tracking page
+- Estimated delivery date
+- Items in the order with quantities
+
+If the order has multiple shipments, each shipment is shown separately.
+
+## Common queries handled
+
+The chatbot recognises many variations of order status questions:
+
+- "Where is my order?"
+- "When will my package arrive?"
+- "Can I track my delivery?"
+- "What is the status of order #12345?"
+- "I haven't received my order yet"
+
+## Proactive notifications
+
+Enable proactive status updates under **Chatbot → Automations → Order status → Notifications**. When a shopper has an active chat session and their order status changes, the chatbot can send an unprompted update.
+
+<Tip>
+Order status queries typically make up 30–40% of all customer support volume. Automating this single use case has the highest impact on support team workload.
+</Tip>
+
+## Escalation
+
+If an order is delayed beyond the estimated delivery date, or if the shopper reports a problem (damaged, wrong item, not received), the chatbot can escalate to a human agent via your [escalation rules](/chatbot/escalation-to-human).

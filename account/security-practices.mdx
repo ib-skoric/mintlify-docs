@@ -1,0 +1,69 @@
+---
+title: "Security practices"
+sidebarTitle: "Security"
+description: "Encryption, penetration testing, and SOC 2 compliance."
+icon: "lock"
+---
+
+Luminos AI is designed with security at every layer — from data encryption and access controls to regular penetration testing and compliance certifications. This article summarises our security practices.
+
+## Data encryption
+
+### In transit
+
+All data transmitted between your systems and Luminos AI is encrypted using TLS 1.2 or higher. This includes API calls, webhook deliveries, tracking pixel data, and dashboard access. Older TLS versions are not supported.
+
+### At rest
+
+All data stored in Luminos AI is encrypted at rest using AES-256 encryption. This covers databases, object storage, backups, and log files. Encryption keys are managed through a dedicated key management service with automatic key rotation.
+
+## Infrastructure
+
+Luminos AI runs on isolated cloud infrastructure with:
+
+- **Network segmentation** — production, staging, and development environments are fully isolated
+- **Firewall rules** — only necessary ports and protocols are open
+- **DDoS protection** — layer 3/4 and layer 7 protection through our CDN provider
+- **Automated patching** — operating system and dependency patches are applied within 72 hours of release
+
+## Access controls
+
+### Internal access
+
+Luminos AI employees access production systems through a zero-trust architecture:
+
+- Multi-factor authentication (MFA) required for all access
+- Just-in-time access grants with automatic expiration
+- All access is logged in an immutable audit trail
+- Background checks for all employees with production access
+
+### Customer access
+
+Your data is isolated in a dedicated tenant. No other customer can access your data. Luminos AI employees can only access your data with your explicit permission (e.g. during a support session).
+
+## Compliance certifications
+
+- **SOC 2 Type II** — annual audit covering security, availability, and confidentiality. Report available under NDA upon request.
+- **GDPR** — fully compliant data processing. See [GDPR and privacy compliance](/account/gdpr-compliance).
+- **ISO 27001** — information security management system certification (Enterprise plan).
+
+## Penetration testing
+
+Luminos AI conducts annual penetration tests through an independent third-party security firm. A summary of findings and remediation status is available upon request for Enterprise customers.
+
+## Vulnerability disclosure
+
+If you discover a security vulnerability in Luminos AI, report it to security@luminos.ai. We operate a responsible disclosure programme and acknowledge reports within 48 hours.
+
+## Incident response
+
+In the event of a security incident, Luminos AI follows a documented incident response plan:
+
+1. Detection and containment within 1 hour
+2. Customer notification within 72 hours (as required by GDPR)
+3. Root cause analysis within 5 business days
+4. Post-incident report shared with affected customers
+
+<Info>
+Request a copy of our SOC 2 report or security questionnaire responses by contacting [support](/account/contact-support). Enterprise customers receive these as part of the onboarding process.
+</Info>

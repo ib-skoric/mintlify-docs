@@ -1,0 +1,49 @@
+---
+title: "Low stock alerts"
+sidebarTitle: "Alerts"
+description: "Threshold-based and predictive alerts for items approaching stockout."
+icon: "bell-ring"
+---
+
+Low stock alerts notify you when a product's inventory is likely to run out before your next replenishment arrives. Luminos AI offers two alert types: threshold-based alerts that trigger at a fixed stock level, and predictive alerts that use demand forecasts to estimate when stockout will occur.
+
+## Threshold-based alerts
+
+Set a minimum stock level per product or category. When inventory drops below the threshold, Luminos AI sends an alert.
+
+1. Go to **Inventory → Alerts → Thresholds**
+2. Set thresholds at the product, category, or global level
+3. Global thresholds apply to all products unless overridden by a more specific rule
+
+**Example:** Set a global threshold of 10 units and a category-specific threshold of 50 units for your bestselling category.
+
+## Predictive alerts
+
+Predictive alerts are more proactive. They combine current stock levels with demand forecasts and supplier lead times to estimate a stockout date. An alert fires when the estimated stockout date falls within your configured warning window.
+
+1. Go to **Inventory → Alerts → Predictive**
+2. Set the warning window — how many days before predicted stockout you want to be alerted (default 14 days)
+3. Enter supplier lead times per product or supplier. If lead time is not set, Luminos AI uses a default of 7 days.
+
+**Example:** A product has 200 units in stock, predicted demand of 20 units per day, and a supplier lead time of 5 days. The predicted stockout is in 10 days. With a 14-day warning window, the alert fires immediately because you need to reorder now to receive stock in time.
+
+## Alert channels
+
+Configure where alerts are delivered under **Inventory → Alerts → Channels**:
+
+- **Email** — send alerts to one or more team members
+- **Slack** — post alerts to a Slack channel via webhook
+- **Dashboard** — alerts appear in the Luminos AI notification centre
+- **Webhook** — send alert payloads to your own systems via the [webhooks API](/api/webhooks)
+
+## Alert frequency
+
+To avoid alert fatigue, configure the minimum interval between repeated alerts for the same product. The default is 24 hours — if a product remains below threshold, you receive a reminder once per day rather than continuously.
+
+<Tip>
+Predictive alerts are more valuable than threshold alerts for products with variable demand. A fixed threshold of 50 units might be too high for slow-moving products and too low for fast-moving ones.
+</Tip>
+
+## Reviewing alerts
+
+View all active and recent alerts under **Inventory → Alerts → History**. Each alert shows the product, current stock level, predicted demand, and recommended reorder quantity. You can dismiss alerts, mark them as actioned, or create a [reorder](/inventory/reorder-automation) directly from the alert.

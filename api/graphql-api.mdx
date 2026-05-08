@@ -1,0 +1,108 @@
+---
+title: "GraphQL API"
+sidebarTitle: "GraphQL"
+description: "Flexible queries and mutations via the GraphQL endpoint."
+icon: "braces"
+---
+
+The Luminos AI GraphQL API lets you fetch exactly the data you need in a single request. It is ideal for frontend applications and complex queries that would require multiple REST API calls.
+
+## Endpoint
+
+```
+POST https://api.luminos.ai/graphql
+```
+
+Authenticate with the same Bearer token used for the REST API.
+
+## Example query
+
+Fetch recommendations and the current visitor's segment membership in a single request:
+
+```graphql
+query {
+  recommendations(visitorId: "visitor_123", placement: "homepage", limit: 6) {
+    products {
+      id
+      title
+      price
+      imageUrl
+      category
+    }
+  }
+  visitor(id: "visitor_123") {
+    segments {
+      name
+      lifecycleStage
+    }
+    predictiveScores {
+      purchasePropensity
+      churnRisk
+    }
+  }
+}
+```
+
+## Making a request
+
+```bash
+curl -X POST "https://api.luminos.ai/graphql" \
+  -H "Authorization: Bearer lum_sk_abc123" \
+  -H "Content-Type: application/json" \
+  -d '{"query": "{ recommendations(visitorId: \"v1\", placement: \"homepage\", limit: 4) { products { id title price } } }"}'
+```
+
+## Available queries
+
+| Query | Description |
+|-------|-------------|
+| `recommendations` | Fetch product recommendations for a visitor |
+| `search` | Execute a search query with filters and facets |
+| `product` | Get a single product by ID |
+| `products` | List products with filtering and pagination |
+| `visitor` | Get visitor profile, segments, and predictive scores |
+| `segment` | Get segment details and member count |
+| `analytics` | Query aggregated metrics |
+
+## Available mutations
+
+| Mutation | Description |
+|----------|-------------|
+| `trackEvent` | Submit a behavioural event |
+| `trackEvents` | Submit a batch of events |
+| `updateProduct` | Update product attributes |
+| `createSegment` | Create a new audience segment |
+
+## Pagination
+
+List fields use cursor-based pagination:
+
+```graphql
+query {
+  products(first: 20, after: "cursor_abc") {
+    edges {
+      node {
+        id
+        title
+      }
+      cursor
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}
+```
+
+## Rate limits
+
+GraphQL requests count toward the same [rate limits](/api/rate-limits) as REST API requests. Each GraphQL request counts as one API call regardless of the number of fields queried. However, deeply nested queries that resolve many database lookups may be throttled by query complexity limits.
+
+<Tip>
+Use GraphQL when you need to fetch data from multiple resources in a single request. Use the REST API when you need simple, cacheable endpoints for high-volume operations like recommendation serving.
+</Tip>
+
+## Introspection
+
+The GraphQL endpoint supports introspection. Use tools like GraphiQL or Apollo Studio to explore the schema interactively. Introspection can be disabled for production API keys under **Settings → API → GraphQL → Introspection**.

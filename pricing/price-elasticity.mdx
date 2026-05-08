@@ -1,0 +1,57 @@
+---
+title: "Price elasticity modelling"
+sidebarTitle: "Elasticity"
+description: "Estimate how price changes affect demand for each product."
+icon: "trending-up"
+---
+
+Price elasticity measures how sensitive demand is to price changes. A product with high elasticity sees a large demand change for a small price change. A product with low elasticity maintains demand even when the price moves significantly.
+
+## How Luminos AI calculates elasticity
+
+The platform analyses historical price changes and the resulting demand shifts to estimate an elasticity coefficient for each product. The model controls for confounding factors like seasonality, marketing spend, and competitor activity to isolate the effect of price alone.
+
+### Elasticity coefficient
+
+- **Coefficient = -1.0** — a 10% price increase causes a 10% demand decrease (unit elastic)
+- **Coefficient < -1.0** — demand is highly sensitive to price (elastic) — e.g. commodity products with many alternatives
+- **Coefficient > -1.0** — demand is less sensitive to price (inelastic) — e.g. luxury goods, niche products, or items with strong brand loyalty
+
+## Viewing elasticity data
+
+Go to **Pricing → Elasticity → Product view**. Each product shows:
+
+- **Elasticity coefficient** — the estimated sensitivity
+- **Confidence level** — how reliable the estimate is based on data volume and variance
+- **Optimal price range** — the price range that maximises revenue (or margin, depending on your objective)
+- **Demand curve** — a visual plot showing predicted demand at different price points
+
+## Using elasticity in pricing rules
+
+Elasticity data can inform your [pricing rules](/pricing/dynamic-pricing-rules) in two ways:
+
+### Revenue maximisation
+
+Set a rule to price products at the revenue-maximising point on the demand curve. This is the price where (price × predicted demand) is highest.
+
+### Margin maximisation
+
+Set a rule to price products at the margin-maximising point, which accounts for cost. This is the price where ((price - cost) × predicted demand) is highest.
+
+## Data requirements
+
+Elasticity estimates require:
+
+- At least 3 price changes for the product in the last 180 days
+- At least 50 sales during the observed period
+- Sufficient demand variation to distinguish price effects from noise
+
+Products that do not meet these thresholds receive a category-level elasticity estimate instead of a product-specific one.
+
+<Tip>
+Run small, controlled price tests on products with low-confidence elasticity estimates. A 5% price change for 2 weeks generates enough data for a reliable estimate without significantly affecting revenue.
+</Tip>
+
+## Limitations
+
+Elasticity estimates assume that past price-demand relationships continue into the future. Major changes — a new competitor entering the market, a viral social media mention, or a supply shortage — can shift elasticity. Re-run the elasticity model after significant market changes.

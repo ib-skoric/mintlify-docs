@@ -1,0 +1,66 @@
+---
+title: "Usage and plan limits"
+sidebarTitle: "Usage limits"
+description: "API calls, event volume, and feature usage against plan quotas."
+icon: "gauge"
+---
+
+Each Luminos AI plan includes quotas for API calls, behavioural events, products, and feature access. Monitor your usage to stay within limits and avoid service interruptions.
+
+## Usage dashboard
+
+Go to **Settings → Usage** to see your current consumption against plan limits:
+
+- **API calls** — total REST and GraphQL API calls this billing period
+- **Events** — behavioural events (page views, clicks, purchases) received this billing period
+- **Products** — active products in your catalog
+- **Team members** — current member count
+- **Workspaces** — number of active workspaces
+
+Each metric shows a progress bar, current count, and plan limit.
+
+## Plan limits
+
+| Resource | Starter | Growth | Enterprise |
+|----------|---------|--------|------------|
+| API calls/month | 50,000 | 500,000 | Custom |
+| Events/month | 500,000 | 5,000,000 | Custom |
+| Products | 10,000 | 100,000 | Unlimited |
+| Team members | 5 | 25 | Unlimited |
+| Workspaces | 1 | 3 | Unlimited |
+| Recommendation models | 2 | All | All |
+| Search features | Basic | Full | Full + custom |
+| Chatbot conversations/month | 1,000 | 25,000 | Custom |
+
+See [Billing and plans](/account/billing-plans) for pricing and feature comparison.
+
+## Approaching limits
+
+Luminos AI sends warning notifications when you reach 80% and 95% of any limit:
+
+- **80%** — informational alert with suggestions to optimise usage or upgrade
+- **95%** — urgent alert recommending immediate action
+- **100%** — depending on the resource, Luminos AI either soft-limits (degrades performance) or hard-limits (blocks new requests)
+
+### Soft limits
+
+API calls and events have soft limits. When exceeded, requests are throttled but not blocked. Performance degrades gradually rather than cutting off abruptly.
+
+### Hard limits
+
+Product count and team member limits are hard. You cannot add more products or members beyond the limit without upgrading.
+
+## Reducing usage
+
+- **Cache API responses** — recommendation and search results can be cached for 5–15 minutes
+- **Batch events** — send events in batches of up to 100 to reduce API call count
+- **Clean up products** — archive discontinued products to reduce catalog size
+- **Optimise tracking** — avoid tracking events on pages where you do not use AI features
+
+<Tip>
+Set up [scheduled reports](/analytics/scheduled-reports) to receive a weekly usage summary. This helps you spot unexpected usage spikes before they become a problem.
+</Tip>
+
+## Upgrading
+
+If you consistently approach limits, consider upgrading your plan. Go to **Settings → Billing → Change plan** or contact [support](/account/contact-support) for Enterprise pricing.

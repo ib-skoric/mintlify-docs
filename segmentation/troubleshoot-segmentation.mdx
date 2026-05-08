@@ -1,0 +1,60 @@
+---
+title: "Troubleshoot segmentation"
+sidebarTitle: "Troubleshooting"
+description: "Sync failures, missing customers, and delayed triggers."
+icon: "wrench"
+---
+
+This guide covers common segmentation issues and how to resolve them.
+
+<AccordionGroup>
+
+<Accordion title="A customer is not appearing in an expected segment">
+**Check the segment definition.** Go to **Segmentation → Segments** and open the segment. Use the **Preview** tool to search for the specific customer. If they are not in the preview, one of the filter conditions is excluding them.
+
+**Verify event tracking.** Behavioural segments depend on events from the [tracking pixel](/getting-started/install-tracking-pixel). If the customer's events are not reaching Luminos AI, they will not match behavioural conditions. Check event delivery under **Analytics → Real-time → Events**.
+
+**Check for identity resolution.** If the customer browses anonymously and then logs in, their pre-login and post-login activity need to be linked. Verify that your tracking implementation passes a consistent customer ID after login.
+
+**Review batch vs. real-time conditions.** Conditions based on batch-computed data (like [RFM scores](/segmentation/rfm-analysis)) update daily. The customer may not yet reflect the latest batch computation.
+</Accordion>
+
+<Accordion title="Segment sync to a destination is failing">
+**Check authentication.** Go to **Segmentation → Destinations → [Destination] → Status**. If the error mentions authentication, re-authenticate the connection — OAuth tokens expire and API keys may have been rotated.
+
+**Verify field mappings.** If required fields in the destination are not mapped, the sync will fail for records missing those fields. Review mappings under the destination settings.
+
+**Check rate limits.** Some destinations (especially ad networks) impose strict rate limits. If the error mentions rate limiting, reduce the sync frequency or contact the destination platform to request higher limits.
+
+**Review the error log.** The sync status panel shows individual record errors. Common issues include invalid email formats, phone numbers in unexpected formats, or duplicate records.
+</Accordion>
+
+<Accordion title="Behavioural triggers are not firing">
+**Verify the trigger is active.** Go to **Segmentation → Triggers** and check the status. Paused or disabled triggers do not fire.
+
+**Check the cooldown period.** If the trigger recently fired for this customer, the cooldown prevents it from firing again. Review the cooldown setting and the trigger activity log.
+
+**Confirm the segment is evaluated in real time.** Triggers linked to batch-only segments fire on the batch schedule (daily), not in real time. For time-sensitive triggers, use segments with [real-time conditions](/segmentation/real-time-segmentation).
+
+**Check the action endpoint.** If the trigger sends a webhook, verify that the destination URL is reachable and returning a 200 status code. Failed webhook deliveries are logged with error details.
+</Accordion>
+
+<Accordion title="Segment sizes seem incorrect">
+**Compare with your source data.** Export the segment member list and cross-reference with your CRM or ecommerce platform. Discrepancies usually stem from identity resolution issues or different definitions of "customer".
+
+**Check the date range.** Behavioural conditions with relative time windows (e.g. "purchased in the last 30 days") recalculate continuously. A customer who purchased exactly 30 days ago may drop out of the segment during the day.
+
+**Review deduplication.** If customers have multiple accounts, each account is treated as a separate customer. This can inflate segment sizes.
+</Accordion>
+
+<Accordion title="Predictive scores look inaccurate">
+**Check model health.** Go to **Segmentation → Predictive → Model health** and review the AUC metric. If AUC is below 0.60, the model needs retraining or more data.
+
+**Verify data quality.** Missing or incorrect event data degrades model accuracy. Check for gaps in your purchase and browsing event streams.
+
+**Wait for retraining.** Models retrain weekly. If you recently made changes to your tracking or data pipeline, allow one full retraining cycle before evaluating accuracy.
+</Accordion>
+
+</AccordionGroup>
+
+If your issue is not covered here, contact [Luminos AI support](/account/contact-support) with your workspace ID and segment name.

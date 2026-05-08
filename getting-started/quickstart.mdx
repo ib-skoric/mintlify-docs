@@ -1,32 +1,46 @@
 ---
-title: "Quickstart: get set up in under 15 minutes"
+title: "Quickstart: your first 30 minutes"
 sidebarTitle: "Quickstart"
-description: "A fast path from signup to first project: invites, roles, and your first integration."
+description: "Go from signup to live AI recommendations in under 30 minutes."
+icon: "timer"
 ---
 
-This checklist gets a small team from zero to a credible pilot: verified accounts, a safe place to collaborate, and one integration proving data can flow in and out. Adjust order if your security team requires SSO before invites.
+This guide takes you from creating an account to seeing AI-powered product recommendations on a test page. Follow each step in order — you can always revisit individual sections later for deeper configuration.
 
-## Before you begin
+<Note>
+You need admin access to your ecommerce platform to install the tracking pixel and connect your store.
+</Note>
 
-- A verified email you can access
-- Admin access if you are enabling SSO later
-- Rough idea of who belongs in the pilot (five to fifteen people is typical)
+<Steps>
 
-If you are migrating from another tool, keep a CSV of users and roles handy—you will move faster than recreating access from memory.
+<Step title="Create your account">
+Sign up at **app.luminos.ai** with your work email. Confirm the verification link, then choose a workspace name your team will recognise in notifications and reports.
+</Step>
 
-## Steps
+<Step title="Connect your store">
+Navigate to **Settings → Integrations** and select your ecommerce platform. Luminos AI supports Shopify, WooCommerce, BigCommerce, and Magento out of the box. Authorise the connection and wait for the initial data sync — this usually takes two to five minutes for catalogs under 50,000 SKUs.
 
-1. **Create your organization** — Pick a name your team will recognize in notifications. Avoid internal codenames if customers might see the name on shared artifacts.
-2. **Invite teammates** — Start with a small pilot group before rolling out widely. Ask them to accept within a week so you are not debugging expired invites during launch.
-3. **Connect one integration** — Choose Slack or your CRM to see data flow end to end. Validate credentials in a sandbox or test channel first.
-4. **Create a first project** — Use it as a sandbox for workflows and permissions. Seed a few realistic tasks so demos feel grounded.
+See [Connect your ecommerce store](/getting-started/connect-your-store) for platform-specific instructions.
+</Step>
 
-### Time checks
+<Step title="Install the tracking pixel">
+Go to **Settings → Tracking** and copy the JavaScript snippet. Paste it into your storefront's `<head>` tag or use your tag manager. The pixel starts recording page views, product impressions, and add-to-cart events immediately.
 
-If any step waits on IT (DNS, SSO metadata, firewall rules), parallelize what you can—draft project structure while tickets move.
+See [Install the tracking pixel](/getting-started/install-tracking-pixel) for tag manager instructions.
+</Step>
+
+<Step title="Enable recommendations">
+Open **Recommendations → Setup** and select the **Quick Start** model. This pre-trained model uses collaborative filtering and works well even with limited historical data. Choose a placement — homepage carousel is the fastest to validate — and publish.
+</Step>
+
+<Step title="Preview and verify">
+Visit your storefront in a private browser window. You should see the recommendation carousel within a few seconds. Open the Luminos AI dashboard and confirm that impression and click events appear in **Analytics → Real-time**.
+</Step>
+
+</Steps>
 
 ## Next steps
 
-Review [sign-in and security](/getting-started/sign-in-security) and explore the [workspace](/getting-started/workspace) guides when you are ready to tighten access.
-
-Consider a short retro after week one: what confused newcomers, which doc they opened first, and whether search surfaced the right page.
+- [Import your product catalog](/getting-started/import-product-catalog) to enrich recommendations with metadata
+- [A/B test recommendation models](/recommendations/ab-testing-models) to compare algorithms
+- [Platform overview](/getting-started/platform-overview) to explore the full dashboard

@@ -1,0 +1,64 @@
+---
+title: "Reorder automation"
+sidebarTitle: "Reorder"
+description: "Automate purchase orders when predicted stock falls below reorder points."
+icon: "refresh-cw"
+---
+
+Reorder automation generates purchase orders automatically when Luminos AI predicts that inventory will drop below your reorder point before the next delivery arrives. This eliminates manual monitoring and reduces the risk of stockouts.
+
+## How it works
+
+The reorder system runs daily and evaluates each product against three parameters:
+
+1. **Reorder point** — the stock level at which a new order should be triggered. Luminos AI calculates this from demand forecasts and supplier lead times, or you can set it manually.
+2. **Order quantity** — how many units to order. Options include fixed quantity, economic order quantity (EOQ), or forecast-based quantity that covers a configurable number of days of predicted demand.
+3. **Supplier lead time** — how long it takes from placing an order to receiving stock. Set per product or per supplier.
+
+When current stock minus committed orders falls below the reorder point, the system creates a purchase order draft.
+
+## Configuration
+
+<Steps>
+
+<Step title="Set reorder points">
+Go to **Inventory → Reorder → Settings**. Choose the calculation method:
+
+- **Automatic** — Luminos AI calculates reorder points from demand forecasts and lead times, including a safety stock buffer based on demand variability
+- **Manual** — set a fixed reorder point per product or category
+</Step>
+
+<Step title="Configure order quantities">
+Choose the quantity method:
+
+- **Fixed** — always order the same quantity (e.g. 100 units)
+- **EOQ** — economic order quantity that balances ordering costs and holding costs
+- **Days of cover** — order enough to cover a specified number of days of predicted demand (e.g. 30 days)
+</Step>
+
+<Step title="Map suppliers">
+Assign a supplier to each product or category under **Inventory → Suppliers**. Enter the supplier name, email, lead time, and minimum order quantity.
+</Step>
+
+<Step title="Choose the approval workflow">
+- **Auto-approve** — purchase orders are sent to suppliers automatically without human review
+- **Review queue** — purchase orders are held for manual approval before sending
+</Step>
+
+</Steps>
+
+## Purchase order delivery
+
+Purchase orders can be delivered to suppliers via:
+
+- **Email** — formatted PDF sent to the supplier's email address
+- **EDI** — electronic data interchange for enterprise suppliers
+- **Webhook** — raw order data sent to your ERP or procurement system via the [webhooks API](/api/webhooks)
+
+## Monitoring
+
+Track reorder activity under **Inventory → Reorder → History**. Each order shows the trigger reason (forecast-based or threshold-based), the quantity ordered, and the expected delivery date. Compare actual delivery dates to estimates in [Inventory analytics](/inventory/inventory-analytics) to improve lead time accuracy over time.
+
+<Warning>
+Start with **Review queue** mode until you are confident in the system's order quantities. Auto-approve is powerful but can generate unexpected costs if lead times or forecasts are misconfigured.
+</Warning>

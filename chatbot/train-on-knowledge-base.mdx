@@ -1,0 +1,60 @@
+---
+title: "Train on your knowledge base"
+sidebarTitle: "Training"
+description: "Feed FAQs, product descriptions, and policies to improve accuracy."
+icon: "graduation-cap"
+---
+
+The chatbot's answer quality depends on the knowledge it has access to. By default, Luminos AI indexes your product catalog for product-related questions. To handle FAQs, policies, and company-specific information, you need to provide additional training content.
+
+## Knowledge sources
+
+### Product catalog
+
+Automatically indexed when you [connect your store](/getting-started/connect-your-store). The chatbot uses product titles, descriptions, categories, specifications, and prices to answer product questions.
+
+### FAQ articles
+
+Upload structured FAQ content as a collection of question-answer pairs. Go to **Chatbot → Knowledge → FAQs → Import**. You can:
+
+- Upload a CSV with `question` and `answer` columns
+- Enter Q&A pairs manually
+- Import from your existing help desk or knowledge base via URL
+
+### Policy documents
+
+Upload PDF or text documents containing your return policy, shipping information, warranty terms, and other policies. The chatbot extracts relevant passages to answer policy questions.
+
+Go to **Chatbot → Knowledge → Documents → Upload**.
+
+### Website pages
+
+Point the chatbot at specific pages on your website to index their content. Go to **Chatbot → Knowledge → Web pages → Add URLs**. Luminos AI crawls and indexes the pages, keeping the content fresh with periodic re-crawls.
+
+## Training the model
+
+After adding knowledge sources, the chatbot indexes the content automatically. Indexing takes 5–15 minutes depending on content volume. You can track progress under **Chatbot → Knowledge → Status**.
+
+The chatbot does not memorise content verbatim. It builds a semantic index that lets it find the most relevant passage for each question, then generates a natural-language response based on that passage.
+
+## Testing answers
+
+Use the **Chatbot → Test** panel to ask questions and see how the chatbot responds. Each response shows:
+
+- The answer text
+- The knowledge source it used (product, FAQ, document, or web page)
+- The confidence score
+
+If an answer is wrong or incomplete, you can:
+
+- Add or update the relevant FAQ entry
+- Upload additional content covering the topic
+- Create a [conversation flow](/chatbot/conversation-flows) for complex topics that need guided interaction
+
+<Tip>
+Start with your top 20 support questions. Upload answers for these first, test them, and then expand to less common topics. This gives you the highest coverage with the least effort.
+</Tip>
+
+## Keeping content fresh
+
+Set up automatic re-indexing under **Chatbot → Knowledge → Settings → Re-index schedule**. Weekly re-indexing is sufficient for most stores. If your product catalog or policies change frequently, increase to daily.

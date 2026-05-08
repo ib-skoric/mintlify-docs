@@ -1,0 +1,79 @@
+---
+title: "Sync segments to destinations"
+sidebarTitle: "Sync destinations"
+description: "Push segments to email, ad networks, or CRM in real time."
+icon: "send"
+---
+
+Segment syncing pushes your Luminos AI audience segments to external platforms so you can use them for email campaigns, ad targeting, CRM workflows, and more. Syncs run continuously so your external platforms always have up-to-date audience data.
+
+## Supported destinations
+
+### Email platforms
+
+- **Klaviyo** — sync segments as Klaviyo lists or segments
+- **Mailchimp** — sync as audiences or tags
+- **Braze** — sync as segments with custom attributes
+- **SendGrid** — sync as contact lists
+
+### Ad networks
+
+- **Meta Ads** — sync as Custom Audiences for Facebook and Instagram targeting
+- **Google Ads** — sync as Customer Match audiences
+- **TikTok Ads** — sync as Custom Audiences
+
+### CRM
+
+- **Salesforce** — sync as campaigns or reports
+- **HubSpot** — sync as active lists
+- **Custom CRM** — push via webhook
+
+### Data warehouses
+
+- **Snowflake** — sync segment membership as a table
+- **BigQuery** — export segment data on a schedule
+
+## Setting up a sync
+
+<Steps>
+
+<Step title="Connect the destination">
+Go to **Segmentation → Destinations → Add** and select your platform. Authenticate using OAuth or API key depending on the platform.
+</Step>
+
+<Step title="Map the segment">
+Choose which Luminos AI segment to sync and where it should appear in the destination platform. For email platforms, select the list or tag. For ad networks, select the audience.
+</Step>
+
+<Step title="Configure sync frequency">
+- **Real-time** — changes push within minutes (available for Klaviyo, Braze, and webhook destinations)
+- **Hourly** — a full sync runs every hour
+- **Daily** — a full sync runs once per day
+</Step>
+
+<Step title="Map customer fields">
+Choose which customer fields to include in the sync: email, name, phone, custom attributes, and predictive scores. Only the fields the destination platform needs should be included.
+</Step>
+
+</Steps>
+
+## Data privacy
+
+Segment syncs transmit customer data to external platforms. Ensure your [GDPR compliance](/account/gdpr-compliance) and [data retention](/account/data-retention) settings are configured correctly before enabling syncs. Customers who have opted out of data sharing are automatically excluded from all outbound syncs.
+
+<Warning>
+Ad network syncs transmit customer email addresses (hashed) to third-party ad platforms. Ensure your privacy policy covers this use case and that you have appropriate consent.
+</Warning>
+
+## Monitoring
+
+Track sync health under **Segmentation → Destinations → Status**. Each sync shows:
+
+- Last sync timestamp
+- Records synced (added, removed, updated)
+- Error count and error details
+- Sync latency
+
+## Troubleshooting sync failures
+
+If a sync fails, check the error details in the status panel. Common issues include expired OAuth tokens, destination-side rate limits, and mismatched field mappings. See [Troubleshoot segmentation](/segmentation/troubleshoot-segmentation) for detailed resolution steps.

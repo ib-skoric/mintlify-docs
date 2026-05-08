@@ -1,6 +1,6 @@
 ---
 title: Home
-description: Find answers about your workspace, integrations, product guides, and policies—all in one place.
+description: Find answers about AI-powered ecommerce — product recommendations, smart search, pricing, chatbots, and more.
 mode: custom
 ---
 
@@ -11,8 +11,7 @@ mode: custom
         How can we help?
       </h1>
       <p className="text-center text-balance text-base text-gray-600 dark:text-gray-400 mt-2">
-        Search the Help Center for setup guides, product how-tos, automation tips, and policies—all in one
-        place.
+        Search the Luminos AI Help Center for setup guides, AI feature documentation, developer tools, and account management.
       </p>
     </div>
 
@@ -59,7 +58,7 @@ mode: custom
       <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-gray-500 dark:text-gray-400">
         <span>Popular searches</span>
         <div className="flex flex-wrap justify-center gap-1">
-          {['integrations', 'workspace', 'billing'].map((term) => (
+          {['recommendations', 'search', 'pricing', 'chatbot', 'API'].map((term) => (
             <button
               key={term}
               type="button"
@@ -82,16 +81,16 @@ mode: custom
         horizontal
         icon="rocket"
         iconType="light"
-        title="Getting started & account"
+        title="Getting started"
         href="/getting-started"
       >
-        Account setup, workspace, billing, and integrations
+        Connect your store, install tracking, and go live with AI in 30 minutes
       </Card>
-      <Card horizontal icon="book-open" iconType="light" title="Product guides" href="/product">
-        Interface, projects, editor, automation, and workflows
+      <Card horizontal icon="sparkles" iconType="light" title="AI Recommendations" href="/recommendations">
+        Set up personalised product suggestions that drive revenue
       </Card>
-      <Card horizontal icon="life-buoy" iconType="light" title="Support & policies" href="/support">
-        Help, status, troubleshooting, data, and policies
+      <Card horizontal icon="code" iconType="light" title="API & Developers" href="/api">
+        REST, GraphQL, webhooks, and SDKs for custom integrations
       </Card>
     </Columns>
   </div>
@@ -102,58 +101,58 @@ mode: custom
     <h3 className="text-base font-medium text-gray-900 dark:text-gray-50">All guides</h3>
     <Columns cols={3}>
     <Card
-      title="Workspace"
+      title="Smart Search"
+      icon="search"
+      iconType="light"
+      href="/search"
+      cta="11 articles"
+    >
+      Typo-tolerant, AI-ranked search with merchandising controls
+    </Card>
+    <Card
+      title="Inventory Forecasting"
+      icon="package"
+      iconType="light"
+      href="/inventory"
+      cta="10 articles"
+    >
+      Demand prediction, stock alerts, and reorder automation
+    </Card>
+    <Card
+      title="Dynamic Pricing"
+      icon="tag"
+      iconType="light"
+      href="/pricing"
+      cta="10 articles"
+    >
+      Automated price adjustments with margin protection
+    </Card>
+    <Card
+      title="Customer Segmentation"
       icon="users"
       iconType="light"
-      href="/getting-started/workspace"
-      cta="3 articles"
+      href="/segmentation"
+      cta="10 articles"
     >
-      Invites, roles, and organization settings
+      Behavioural audiences, RFM analysis, and predictive scoring
     </Card>
     <Card
-      title="Billing & plans"
-      icon="credit-card"
+      title="Storefront Chatbot"
+      icon="message-circle"
       iconType="light"
-      href="/getting-started/billing"
-      cta="3 articles"
+      href="/chatbot"
+      cta="11 articles"
     >
-      Compare plans, upgrades, and invoices
+      AI chatbot for order tracking, product Q&A, and returns
     </Card>
     <Card
-      title="Developer integrations"
-      icon="code-xml"
+      title="Analytics & Reporting"
+      icon="bar-chart-3"
       iconType="light"
-      href="/getting-started/integrations/developer"
-      cta="3 articles"
+      href="/analytics"
+      cta="10 articles"
     >
-      OAuth apps, webhooks, and API keys
-    </Card>
-    <Card
-      title="Projects"
-      icon="folder-kanban"
-      iconType="light"
-      href="/product/projects"
-      cta="2 articles"
-    >
-      Create projects and archive or restore them
-    </Card>
-    <Card
-      title="Troubleshooting"
-      icon="wrench"
-      iconType="light"
-      href="/support/troubleshooting"
-      cta="2 articles"
-    >
-      Login issues and performance troubleshooting
-    </Card>
-    <Card
-      title="Legal & compliance"
-      icon="scale"
-      iconType="light"
-      href="/support/legal"
-      cta="7 articles"
-    >
-      Terms of service, privacy & GDPR, and regional specifics
+      Dashboards, attribution, funnels, and scheduled reports
     </Card>
     </Columns>
   </div>
@@ -169,40 +168,40 @@ mode: custom
 
   <Columns cols={2} className="suggested-articles">
     <Card
-      title="Quickstart: get set up in under 15 minutes"
+      title="Quickstart: your first 30 minutes"
       icon="timer"
       iconType="light"
       href="/getting-started/quickstart"
       cta="Read article"
     >
-      A fast path from signup to first project: invites, roles, and your first integration.
+      Go from signup to live AI recommendations with this step-by-step walkthrough.
     </Card>
     <Card
-      title="Conditions and branches"
-      icon="git-branch"
+      title="A/B test recommendation models"
+      icon="flask-conical"
       iconType="light"
-      href="/product/automation/workflows/conditions-branches"
+      href="/recommendations/ab-testing-models"
       cta="Read article"
     >
-      Model conditional paths and merge strategies in workflows.
+      Run controlled experiments to compare algorithms and measure revenue lift.
     </Card>
     <Card
-      title="Privacy policy"
-      icon="scroll-text"
+      title="GDPR and privacy compliance"
+      icon="shield-check"
       iconType="light"
-      href="/support/legal/privacy/privacy-policy"
+      href="/account/gdpr-compliance"
       cta="Read article"
     >
-      Demo privacy policy for this help center.
+      Handle data subject requests, consent management, and regulatory compliance.
     </Card>
     <Card
-      title="Connect your CRM"
-      icon="building-2"
+      title="Webhooks"
+      icon="webhook"
       iconType="light"
-      href="/getting-started/integrations/connect-crm"
+      href="/api/webhooks"
       cta="Read article"
     >
-      Link Salesforce or HubSpot through partner connectors or a custom sync strategy.
+      Subscribe to real-time events, verify signatures, and handle retries.
     </Card>
   </Columns>
 </div>

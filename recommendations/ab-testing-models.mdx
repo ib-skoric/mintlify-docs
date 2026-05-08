@@ -1,0 +1,62 @@
+---
+title: "A/B test recommendation models"
+sidebarTitle: "A/B testing"
+description: "Run experiments to compare algorithms and measure revenue lift."
+icon: "flask-conical"
+---
+
+A/B testing lets you compare two or more recommendation strategies against each other — or against a control group with no recommendations — so you can make data-driven decisions about which model to deploy.
+
+## Create an experiment
+
+<Steps>
+
+<Step title="Define the experiment">
+Go to **Recommendations → Experiments → Create**. Give the experiment a descriptive name (e.g. "Collaborative vs. Trending on PDP") and select the placement where you want to run it.
+</Step>
+
+<Step title="Configure variants">
+Add two or more variants. Each variant maps to a recommendation model or configuration:
+
+- **Variant A** — e.g. collaborative filtering with default settings
+- **Variant B** — e.g. trending model with a 7-day lookback window
+- **Control** (optional) — no recommendations shown, useful for measuring baseline lift
+
+Set the traffic split. A 50/50 split reaches significance fastest, but you can allocate less traffic to riskier variants.
+</Step>
+
+<Step title="Set success metrics">
+Choose your primary metric:
+
+- **Click-through rate (CTR)** — percentage of impressions that result in a click
+- **Add-to-cart rate** — percentage of recommendation clicks that lead to an add-to-cart
+- **Revenue per visitor** — average revenue from visitors exposed to the variant
+- **Conversion rate** — percentage of visitors who complete a purchase
+
+You can track secondary metrics alongside the primary one.
+</Step>
+
+<Step title="Launch">
+Set a minimum runtime (Luminos AI recommends at least 14 days for statistical significance) and click **Start Experiment**. The system assigns visitors to variants using a deterministic hash of their visitor ID so that each person sees the same variant across sessions.
+</Step>
+
+</Steps>
+
+## Reading results
+
+The experiment dashboard shows each variant's performance with confidence intervals. Luminos AI uses a sequential testing framework so you can check results at any time without inflating false-positive rates. A variant is declared a winner when it reaches 95% confidence.
+
+<Warning>
+Avoid stopping experiments early based on preliminary results. Short runs are prone to novelty effects and daily traffic fluctuations.
+</Warning>
+
+## Best practices
+
+- Test one variable at a time — model type, number of products, or placement position, but not all three at once
+- Run experiments on high-traffic pages to reach significance faster
+- Archive completed experiments and document learnings in the experiment notes
+
+## Next steps
+
+- [Personalisation rules](/recommendations/personalisation-rules) to layer business logic on top of winning models
+- [Recommendation analytics](/recommendations/recommendation-analytics) to monitor ongoing performance after the experiment ends

@@ -1,0 +1,60 @@
+---
+title: "Revenue attribution"
+sidebarTitle: "Attribution"
+description: "Attribute revenue to recommendations, search, and chatbot."
+icon: "dollar-sign"
+---
+
+Revenue attribution connects purchases to the AI features that influenced them. This lets you measure the return on investment for each Luminos AI module and make informed decisions about where to invest further.
+
+## Attribution model
+
+Luminos AI uses a **last-touch attribution** model by default. Revenue from a purchase is attributed to the last AI interaction before the order:
+
+- If the shopper's last interaction was clicking a recommendation, the revenue goes to Recommendations
+- If they found the product through search, it goes to Smart Search
+- If the chatbot suggested the product, it goes to Chatbot
+
+### Attribution window
+
+An interaction must happen within 7 days of the purchase to count. Adjust the window under **Analytics → Settings → Attribution window** (options: 1 day, 7 days, 14 days, 30 days).
+
+### Multi-touch attribution
+
+Enable multi-touch attribution under **Analytics → Settings → Attribution model**. This distributes revenue across all AI interactions in the shopper's journey:
+
+- **Linear** — equal credit to each touchpoint
+- **Time decay** — more credit to touchpoints closer to the purchase
+- **Position-based** — 40% to the first touch, 40% to the last touch, 20% split among middle touches
+
+## Attribution dashboard
+
+Navigate to **Analytics → Attribution**. The dashboard shows:
+
+- **Revenue by module** — how much revenue each AI feature drives
+- **Revenue trend** — attributed revenue over time per module
+- **Overlap** — purchases influenced by multiple AI features (e.g. a shopper who searched, then clicked a recommendation)
+- **Unattributed revenue** — purchases with no AI interaction in the attribution window
+
+## Module-specific attribution
+
+Each module's own analytics page shows attribution within that module:
+
+- [Recommendation analytics](/recommendations/recommendation-analytics) — revenue by model and placement
+- [Search analytics](/search/search-analytics) — revenue by query and facet
+- [Chatbot analytics](/chatbot/chatbot-analytics) — revenue from chatbot-assisted conversations
+- [Pricing analytics](/pricing/pricing-analytics) — revenue impact of price changes
+
+## Common questions
+
+**What counts as an "interaction"?**
+
+Clicking a recommended product, clicking a search result, or receiving a product suggestion in the chatbot. Impressions (seeing recommendations without clicking) do not count.
+
+**What about organic purchases?**
+
+Purchases where the shopper navigated directly to the product without using AI features appear as "unattributed". This is expected — AI features are one channel among many.
+
+<Info>
+Attribution counts each product-order combination once, even if the shopper interacted with multiple AI features. Multi-touch attribution splits the credit; it does not duplicate it.
+</Info>

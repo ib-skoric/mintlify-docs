@@ -1,0 +1,55 @@
+---
+title: "Real-time segmentation"
+sidebarTitle: "Real-time"
+description: "Update segment membership instantly from behavioural events."
+icon: "clock"
+---
+
+Real-time segmentation evaluates events as they happen — page views, add-to-cart actions, purchases, and custom events — and updates segment membership within seconds. This powers time-sensitive use cases like cart abandonment triggers, flash sale targeting, and in-session personalisation.
+
+## How it works
+
+Every event captured by the [tracking pixel](/getting-started/install-tracking-pixel) or sent via the [REST API](/api/rest-api-overview) flows through the real-time evaluation pipeline:
+
+1. The event arrives at Luminos AI's event stream
+2. The segmentation engine evaluates the event against all active segment definitions
+3. If the event causes a customer to match (or stop matching) a segment, membership is updated immediately
+4. Any [behavioural triggers](/segmentation/behavioural-triggers) linked to the segment fire
+
+The entire process takes under 2 seconds from event arrival to segment update.
+
+## Enabling real-time evaluation
+
+Real-time evaluation is enabled by default for all dynamic segments. Segments that rely only on batch-computed data (e.g. [RFM scores](/segmentation/rfm-analysis) which update daily) cannot be evaluated in real time — they update on the batch schedule.
+
+Segments that mix real-time and batch conditions evaluate the real-time conditions immediately and incorporate the batch conditions from the most recent computation.
+
+## Use cases
+
+### Cart abandonment
+
+Create a segment with the condition "added to cart in the last 2 hours AND has not purchased". Customers enter this segment 2 hours after adding an item, triggering an abandonment email or chatbot message.
+
+### Browse abandonment
+
+"Viewed 3+ products in the last 30 minutes AND has not added to cart". Use this to trigger a [recommendation widget](/recommendations/product-carousels) with the products they were browsing.
+
+### Flash sale engagement
+
+"Currently browsing AND is in the 'Loyal' lifecycle stage". Target loyal customers with an exclusive flash sale banner during their active session.
+
+### Post-purchase follow-up
+
+"Purchased in the last 10 minutes". Trigger a real-time webhook to your email platform for an immediate order confirmation with cross-sell recommendations.
+
+## Performance
+
+Real-time segmentation evaluates up to 10,000 events per second per workspace. For stores with extremely high traffic (over 100,000 concurrent visitors), contact [support](/account/contact-support) to discuss capacity planning.
+
+<Tip>
+Keep real-time segment definitions simple for best latency. Segments with more than 5 conditions or complex OR logic take slightly longer to evaluate. For complex segments, consider splitting into simpler components and using compound segments.
+</Tip>
+
+## Monitoring
+
+Track real-time evaluation performance under **Segmentation → Settings → Real-time status**. The dashboard shows evaluation latency (p50 and p99), events processed per second, and any evaluation errors.

@@ -1,0 +1,78 @@
+---
+title: "Single sign-on setup"
+sidebarTitle: "SSO"
+description: "Configure SAML or OIDC SSO with your identity provider."
+icon: "log-in"
+---
+
+Single sign-on (SSO) lets your team log in to Luminos AI using your organisation's identity provider (IdP). This eliminates separate passwords and gives your IT team centralised control over access.
+
+Luminos AI supports SAML 2.0 and OpenID Connect (OIDC).
+
+<Note>
+SSO is available on Growth and Enterprise plans. See [Billing and plans](/account/billing-plans) for plan details.
+</Note>
+
+## SAML setup
+
+<Steps>
+
+<Step title="Get Luminos AI's service provider details">
+Go to **Settings → Security → SSO → SAML**. Copy:
+
+- **Entity ID:** `https://auth.luminos.ai/saml/{workspace_id}`
+- **ACS URL:** `https://auth.luminos.ai/saml/{workspace_id}/callback`
+- **Metadata URL:** `https://auth.luminos.ai/saml/{workspace_id}/metadata`
+</Step>
+
+<Step title="Configure your identity provider">
+In your IdP (Okta, Azure AD, OneLogin, etc.), create a new SAML application using the service provider details from step 1. Configure the following attribute mappings:
+
+| IdP attribute | Luminos AI attribute |
+|---------------|---------------------|
+| email | `email` (required) |
+| firstName | `first_name` |
+| lastName | `last_name` |
+</Step>
+
+<Step title="Enter IdP details in Luminos AI">
+Back in **Settings → Security → SSO → SAML**, enter:
+
+- **IdP SSO URL** — the login URL from your IdP
+- **IdP Entity ID** — the issuer URL from your IdP
+- **X.509 Certificate** — the signing certificate from your IdP (paste the PEM-encoded certificate)
+</Step>
+
+<Step title="Test and enable">
+Click **Test connection** to verify the SAML flow. Log in with a test account. Once confirmed, toggle SSO to **Enabled**.
+</Step>
+
+</Steps>
+
+## OIDC setup
+
+1. Go to **Settings → Security → SSO → OIDC**
+2. Enter your IdP's **Issuer URL**, **Client ID**, and **Client Secret**
+3. The redirect URI is `https://auth.luminos.ai/oidc/{workspace_id}/callback`
+4. Test and enable
+
+## Enforcing SSO
+
+After enabling SSO, you can optionally enforce it:
+
+- **Optional** — team members can log in with SSO or email/password
+- **Required** — all team members must use SSO. Email/password login is disabled.
+
+Enable enforcement under **Settings → Security → SSO → Enforcement**.
+
+<Warning>
+Before enforcing SSO, ensure all team members have accounts in your identity provider. Anyone without an IdP account will be locked out.
+</Warning>
+
+## Just-in-time provisioning
+
+When enabled, new users who authenticate via SSO are automatically created in Luminos AI with the default role (Viewer). Go to **Settings → Security → SSO → Provisioning** to enable and configure the default role.
+
+## Troubleshooting
+
+If SSO login fails, check the error message on the login page. Common issues include expired certificates, mismatched ACS URLs, and clock skew between your IdP and Luminos AI (SAML assertions have a 5-minute validity window).

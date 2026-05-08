@@ -1,0 +1,54 @@
+---
+title: "Search merchandising"
+sidebarTitle: "Merchandising"
+description: "Pin, boost, or bury products in search results for campaigns."
+icon: "megaphone"
+---
+
+Search merchandising gives you manual control over which products appear — and where they appear — in search results for specific queries. Use it to promote seasonal items, feature new arrivals, or suppress underperforming products.
+
+## Merchandising actions
+
+### Pin
+
+Fix a product to a specific position in search results for a given query. The pinned product always appears at that position regardless of relevance score. Pin up to 5 products per query.
+
+### Boost
+
+Increase a product's ranking score for a given query. Boosted products float toward the top of results but can still be displaced by more relevant items. Set the boost multiplier between 1.1× and 10×.
+
+### Bury
+
+Decrease a product's ranking score so it appears lower in results. Use bury to push slow-moving inventory or low-margin items further down without completely hiding them.
+
+### Hide
+
+Remove a product entirely from results for a specific query. Unlike burying, hidden products never appear. Use this when a product is irrelevant to a query but keeps surfacing due to keyword matching.
+
+## Creating a merchandising rule
+
+1. Go to **Search → Merchandising → Create**
+2. Enter the target query or query pattern (supports wildcards: `dress*` matches "dresses", "dressy")
+3. Select the action (pin, boost, bury, or hide)
+4. Choose the product(s) by searching your catalog
+5. For pins, set the position number; for boosts and buries, set the multiplier
+6. Optionally add a start and end date for time-limited campaigns
+7. Save and publish
+
+## Campaign merchandising
+
+For seasonal campaigns, create merchandising rules with date ranges. Luminos AI activates and deactivates them automatically, so you do not need to remember to clean up after a promotion ends.
+
+**Example:** Pin "Valentine's Day gift set" to position 1 for the query "gifts" from February 1–14, then automatically remove the pin.
+
+## Bulk rules
+
+Upload a CSV under **Search → Merchandising → Import** to create many rules at once. The CSV format includes columns for `query`, `action`, `product_id`, `position`, `start_date`, and `end_date`.
+
+<Tip>
+Use merchandising sparingly. Over-merchandised search results lose the organic relevance that shoppers trust. Aim for fewer than 10 active merchandising rules per 1,000 products in your catalog.
+</Tip>
+
+## Monitoring
+
+Track how merchandised products perform compared to organically ranked products in [Search analytics](/search/search-analytics). The analytics dashboard flags merchandised results so you can measure whether manual interventions improve or hurt conversion.

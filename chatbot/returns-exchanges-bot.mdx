@@ -1,0 +1,70 @@
+---
+title: "Returns and exchanges"
+sidebarTitle: "Returns & exchanges"
+description: "Automate return initiation, exchange suggestions, and refunds."
+icon: "package-x"
+---
+
+The returns and exchanges automation guides shoppers through the return process, suggests exchanges when appropriate, and creates return labels — all within the chat conversation.
+
+## How it works
+
+When a shopper wants to return or exchange a product, the chatbot:
+
+1. Identifies the order (using the same methods as [order status](/chatbot/order-status-automation))
+2. Asks which item(s) the shopper wants to return
+3. Collects the return reason
+4. Checks eligibility against your return policy
+5. Offers an exchange alternative if available
+6. Generates a return label (if enabled)
+7. Confirms the return and provides next steps
+
+## Setup
+
+<Steps>
+
+<Step title="Define your return policy">
+Go to **Chatbot → Automations → Returns → Policy** and configure:
+
+- **Return window** — how many days after delivery a return is accepted (e.g. 30 days)
+- **Eligible categories** — which product categories can be returned (exclude perishables, personalised items, etc.)
+- **Condition requirements** — whether items must be unused, in original packaging, etc.
+- **Refund method** — original payment method, store credit, or shopper's choice
+</Step>
+
+<Step title="Configure exchange suggestions">
+When a shopper initiates a return, the chatbot can suggest an exchange instead. Enable this under **Chatbot → Automations → Returns → Exchange suggestions**.
+
+Exchange suggestions are powered by the [recommendation engine](/recommendations) and consider the return reason. If a shopper returns a shirt because it was too small, the chatbot suggests the next size up. If they did not like the colour, it suggests alternatives in different colours.
+</Step>
+
+<Step title="Connect return label generation">
+To generate prepaid return labels within the chat, connect your shipping carrier under **Chatbot → Automations → Returns → Labels**. Supported carriers include Royal Mail, USPS, UPS, FedEx, and DHL.
+</Step>
+
+</Steps>
+
+## Return reasons
+
+The chatbot collects structured return reasons:
+
+- Wrong size or fit
+- Not as described
+- Damaged or defective
+- Changed mind
+- Better price found elsewhere
+- Arrived too late
+
+Return reason data is available in [Chatbot analytics](/chatbot/chatbot-analytics) and can feed into product quality improvement efforts.
+
+## Refund processing
+
+After a return is initiated through the chatbot, the refund follows your standard processing workflow. The chatbot can provide estimated refund timelines based on your configured processing time.
+
+<Tip>
+Proactively suggesting exchanges instead of refunds can recover 15–25% of return revenue. Enable exchange suggestions and promote alternatives that match the shopper's preferences.
+</Tip>
+
+## Escalation
+
+Complex return cases — warranty disputes, missing items, or situations not covered by your policy — automatically escalate to a human agent via your [escalation configuration](/chatbot/escalation-to-human). The agent receives the full conversation context including the return reason and order details.

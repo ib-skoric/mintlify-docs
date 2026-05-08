@@ -1,0 +1,55 @@
+---
+title: "Scheduled reports"
+sidebarTitle: "Scheduled reports"
+description: "Automate recurring report delivery via email or Slack."
+icon: "calendar"
+---
+
+Scheduled reports deliver analytics data to your team automatically on a recurring basis. Set them up once and stop worrying about manually pulling numbers for weekly reviews or monthly stakeholder updates.
+
+## Creating a scheduled report
+
+1. Go to **Analytics → Reports** and open a saved report (or [create a new one](/analytics/custom-reports))
+2. Click **Schedule** in the report toolbar
+3. Configure the schedule:
+   - **Frequency** — daily, weekly, monthly, or custom cron expression
+   - **Day** — for weekly schedules, select the day (e.g. Monday for weekly reviews)
+   - **Time** — when the report runs (in your workspace timezone)
+   - **Date range** — the relative period the report covers (e.g. "Last 7 days" recalculates each run)
+4. Choose the delivery channel:
+   - **Email** — enter one or more email addresses. The report arrives as a PDF attachment with a CSV data file.
+   - **Slack** — select a channel or DM. The report posts a summary with key metrics and a link to the full report in Luminos AI.
+5. Save the schedule
+
+## Managing schedules
+
+View all active schedules under **Analytics → Scheduled → Active**. Each entry shows:
+
+- Report name
+- Schedule (frequency, day, time)
+- Delivery channel and recipients
+- Last run status (success, failed, skipped)
+- Next run time
+
+Edit, pause, or delete schedules from this view.
+
+## Common scheduled reports
+
+| Report | Frequency | Audience | Purpose |
+|--------|-----------|----------|---------|
+| Weekly AI performance | Monday 9:00 | Marketing team | CTR, conversion, revenue by module |
+| Daily search health | Daily 8:00 | Merchandising | Zero-result queries, top queries |
+| Monthly pricing review | 1st of month | Finance | Margin trends, competitive position |
+| Weekly chatbot review | Monday 9:00 | Support lead | Resolution rate, escalation topics |
+| Inventory alerts digest | Daily 7:00 | Operations | Products at risk of stockout |
+
+## Troubleshooting
+
+If a scheduled report fails to deliver:
+
+- **Email** — check that recipient email addresses are valid. Reports over 25 MB are not sent; reduce the date range or filter to decrease size.
+- **Slack** — verify the Slack webhook URL under **Settings → Integrations → Slack**. The webhook may have been revoked if the Slack app was reinstalled.
+
+<Tip>
+Schedule reports to arrive before your regular meetings. A weekly AI performance report delivered at 8:00 AM Monday gives you time to review before the 10:00 AM team standup.
+</Tip>

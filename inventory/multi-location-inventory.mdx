@@ -1,0 +1,54 @@
+---
+title: "Multi-location inventory"
+sidebarTitle: "Multi-location"
+description: "Manage forecasts across warehouses, stores, and fulfilment centres."
+icon: "map-pin"
+---
+
+If you fulfil orders from multiple locations — warehouses, retail stores, or 3PL partners — Luminos AI generates separate forecasts for each location based on its unique demand patterns and geographic customer base.
+
+## Setting up locations
+
+1. Go to **Inventory → Locations → Add**
+2. Enter the location name, address, and type (warehouse, retail store, 3PL, or drop-ship)
+3. Map the location to your [warehouse integration](/inventory/warehouse-integrations) so stock levels sync automatically
+4. Set the fulfilment priority — which location ships first when inventory is available in multiple places
+
+## Location-level forecasts
+
+Each location receives its own demand forecast based on:
+
+- **Historical demand** — sales fulfilled from that specific location
+- **Geographic demand** — customer proximity and shipping zone preferences
+- **Channel mix** — online vs. in-store demand varies by location
+
+View location-level forecasts under **Inventory → Forecasts** and filter by location.
+
+## Inventory allocation
+
+When a product is available in multiple locations, Luminos AI recommends how to allocate incoming stock across locations. The allocation model considers:
+
+- **Predicted demand** at each location for the next replenishment cycle
+- **Current stock** — locations with lower stock relative to predicted demand get more units
+- **Shipping costs** — the model favours placing inventory closer to predicted demand centres
+- **Storage capacity** — respects maximum capacity constraints per location
+
+View allocation recommendations under **Inventory → Allocation → Suggestions**.
+
+## Transfer recommendations
+
+When stock is imbalanced — one location has excess while another is running low — Luminos AI suggests inter-location transfers. Transfers factor in shipping time, cost, and whether the excess location has enough buffer to cover its own demand during the transfer window.
+
+Review transfer suggestions under **Inventory → Transfers → Suggested**.
+
+<Tip>
+Set accurate shipping times between your locations so transfer recommendations account for transit delays. Overly optimistic transit times can lead to stockouts at the receiving location.
+</Tip>
+
+## Consolidated view
+
+The **Inventory → Overview** dashboard shows aggregated stock across all locations, with the ability to drill down into any specific location. Colour-coded indicators flag locations where stock is low relative to forecast demand.
+
+## Location-specific alerts
+
+[Low stock alerts](/inventory/low-stock-alerts) can be configured per location. A product might have healthy overall stock but be dangerously low at a specific fulfilment centre. Location-specific alerts catch these imbalances.

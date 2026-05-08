@@ -1,0 +1,58 @@
+---
+title: "Synonyms and redirects"
+sidebarTitle: "Synonyms & redirects"
+description: "Map alternate terms and redirect queries to the right pages."
+icon: "arrow-right-left"
+---
+
+Synonyms expand the search engine's vocabulary so that shoppers find products regardless of which term they use. Redirects send specific queries directly to a landing page instead of showing search results.
+
+## Synonyms
+
+### One-way synonyms
+
+A one-way synonym maps an alternate term to a canonical term. When a shopper searches for the synonym, results include products matching the canonical term.
+
+**Example:** "sneakers" → "trainers" means searching "sneakers" also returns products tagged "trainers", but searching "trainers" does not return "sneakers" results.
+
+### Two-way synonyms
+
+A two-way synonym treats both terms as interchangeable. Searching either term returns results for both.
+
+**Example:** "sofa" ↔ "couch" means both queries return the same results.
+
+### Managing synonyms
+
+1. Go to **Search → Synonyms → Create**
+2. Choose one-way or two-way
+3. Enter the terms
+4. Save — synonyms take effect within 60 seconds
+
+<Tip>
+Review your [search analytics](/search/search-analytics) for zero-result queries. These often reveal missing synonyms — shoppers are using terms your catalog does not contain.
+</Tip>
+
+## AI-suggested synonyms
+
+Luminos AI analyses search patterns and suggests synonyms automatically. Suggestions appear under **Search → Synonyms → Suggested**. Review and approve them to add to your active synonym list.
+
+## Redirects
+
+Redirects send shoppers to a specific URL when they search for a particular query. Use them for:
+
+- **Brand pages** — redirect "nike" to your Nike collection page
+- **Promotional landing pages** — redirect "sale" to your current promotion
+- **Support queries** — redirect "return policy" to your returns page instead of showing product results
+
+### Creating a redirect
+
+1. Go to **Search → Redirects → Create**
+2. Enter the trigger query (exact match or contains match)
+3. Enter the destination URL
+4. Set priority if multiple redirects could match
+
+Redirects are evaluated before search results. If a redirect matches, the shopper is taken directly to the destination without seeing search results.
+
+## Bulk management
+
+Import synonyms and redirects in bulk using CSV upload under **Search → Synonyms → Import** and **Search → Redirects → Import**. The CSV format requires two columns: `term` and `synonym` for synonyms, or `query` and `url` for redirects.

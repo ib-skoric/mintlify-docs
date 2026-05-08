@@ -1,0 +1,55 @@
+---
+title: "Data retention policies"
+sidebarTitle: "Data retention"
+description: "How long Luminos AI retains events, recommendations, and analytics."
+icon: "hard-drive"
+---
+
+Luminos AI retains different types of data for different periods. You can customise retention periods to meet your compliance requirements and storage preferences.
+
+## Default retention periods
+
+| Data type | Default retention | Configurable range |
+|-----------|-------------------|-------------------|
+| Behavioural events (page views, clicks) | 12 months | 1–36 months |
+| Purchase events | 36 months | 12–84 months |
+| Product catalog (current) | Indefinite | N/A |
+| Product catalog (historical versions) | 6 months | 1–24 months |
+| Recommendation logs | 6 months | 1–12 months |
+| Search query logs | 6 months | 1–12 months |
+| Chatbot transcripts | 12 months | 1–36 months |
+| Analytics aggregates | 36 months | 12–84 months |
+| Audit logs | 12 months | 12–84 months |
+| Customer profiles | Until deletion requested | N/A |
+
+## Configuring retention
+
+1. Go to **Settings → Data → Retention**
+2. Adjust the retention period for each data type
+3. Save — changes take effect within 24 hours
+
+When the retention period expires, data is permanently deleted and cannot be recovered.
+
+<Warning>
+Shortening retention periods triggers irreversible data deletion. Ensure you have exported any data you need before reducing retention windows.
+</Warning>
+
+## Impact on AI features
+
+Shorter retention periods affect AI model quality:
+
+- **Recommendations** — collaborative filtering needs at least 6 months of behavioural data for accurate personalisation. Reducing event retention below 6 months degrades recommendation quality.
+- **Forecasting** — demand prediction models need at least 12 months of sales data for seasonal pattern detection. Reducing purchase event retention below 12 months eliminates seasonal learning.
+- **Segmentation** — RFM scores and lifecycle stages use the full range of available purchase history. Shorter retention compresses the data window.
+
+## Data deletion requests
+
+For GDPR compliance, you can delete all data for a specific customer. See [GDPR and privacy compliance](/account/gdpr-compliance) for details on processing data subject deletion requests.
+
+## Data export before deletion
+
+Before data reaches the end of its retention period, you can [export it](/analytics/export-data) to your own data warehouse for long-term storage. Set up a [warehouse sync](/analytics/export-data) to automatically push data to Snowflake, BigQuery, or Redshift before it expires.
+
+<Tip>
+Set up warehouse sync before reducing retention periods. This preserves historical data in your own infrastructure while keeping Luminos AI storage lean.
+</Tip>

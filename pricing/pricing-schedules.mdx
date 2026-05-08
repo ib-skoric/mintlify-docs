@@ -1,0 +1,61 @@
+---
+title: "Pricing schedules"
+sidebarTitle: "Schedules"
+description: "Time-based price changes for launches, clearances, and events."
+icon: "calendar-clock"
+---
+
+Pricing schedules let you plan price changes in advance with automatic activation and deactivation. Use them for product launches, seasonal transitions, clearance cycles, and event-based pricing.
+
+## How schedules work
+
+A pricing schedule defines a series of price points with start dates. Luminos AI applies each price at the scheduled time and reverts to the next scheduled price when the period ends.
+
+**Example: Product launch schedule**
+
+| Date | Price | Phase |
+|------|-------|-------|
+| March 1 | £89.99 | Launch premium |
+| March 15 | £79.99 | Standard price |
+| June 1 | £69.99 | Mid-season reduction |
+| September 1 | £49.99 | End-of-season clearance |
+
+## Creating a schedule
+
+1. Go to **Pricing → Schedules → Create**
+2. Select the products (individual, category, or filtered set)
+3. Add schedule entries with a date and target price (or percentage of base price)
+4. Set the timezone for schedule activation
+5. Save — schedules can be created months in advance
+
+## Schedule types
+
+### Markdown schedule
+
+A series of price decreases over time, commonly used for fashion and seasonal goods. Each markdown brings the price closer to clearance level.
+
+### Launch schedule
+
+A high initial price that drops to a standard level after the launch period, then follows a normal pricing lifecycle.
+
+### Recurring schedule
+
+Prices that cycle on a weekly or monthly pattern. Example: 10% off every first Monday of the month, or premium pricing during weekends for event-related products.
+
+## Interaction with other pricing features
+
+Schedules set the **base price** for the scheduled period. Dynamic pricing rules, [competitor tracking](/pricing/competitor-tracking), and [promotional pricing](/pricing/promotional-pricing) can still adjust the actual selling price within the guardrails of the scheduled base price.
+
+If a [promotional price](/pricing/promotional-pricing) is lower than the scheduled price, the promotion takes precedence during its active period.
+
+<Tip>
+Use schedules for planned lifecycle pricing and promotions for one-off discounts. Mixing the two keeps your pricing strategy clean and auditable.
+</Tip>
+
+## Calendar view
+
+The **Pricing → Schedules → Calendar** view shows all scheduled price changes on a timeline. Use it to check for overlapping schedules that might create unintended prices and to coordinate pricing with your marketing calendar.
+
+## Audit trail
+
+Every scheduled price change is logged in the pricing audit trail under **Pricing → History**. The log shows the scheduled time, the previous price, the new price, and which schedule triggered the change.

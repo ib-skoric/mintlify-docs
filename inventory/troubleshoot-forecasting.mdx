@@ -1,0 +1,56 @@
+---
+title: "Troubleshoot forecasting"
+sidebarTitle: "Troubleshooting"
+description: "Debug inaccurate predictions, missing data, and sync failures."
+icon: "wrench"
+---
+
+This guide covers common inventory forecasting issues and how to resolve them.
+
+<AccordionGroup>
+
+<Accordion title="Forecasts are consistently too high or too low">
+**Check for bias.** Go to **Inventory → Analytics → Forecast accuracy** and look at the bias metric. Consistent over-prediction (positive bias) or under-prediction (negative bias) suggests a systematic issue.
+
+**Review recent promotions.** If you ran a large sale or campaign without creating a [seasonal event](/inventory/seasonal-adjustments), the model may have incorporated the spike into its baseline, inflating future predictions.
+
+**Check data completeness.** Missing sales data causes under-prediction. Missing returns data causes over-prediction. Verify that your [store connection](/getting-started/connect-your-store) is syncing all order types.
+
+**Adjust safety stock.** If the model's direction is correct but magnitude is slightly off, adjust the safety stock buffer under **Inventory → Settings → Safety stock** as a short-term fix while the model self-corrects.
+</Accordion>
+
+<Accordion title="New products have no forecast">
+**Check data requirements.** Products need at least 30 days of sales history for basic forecasting. For newer products, Luminos AI uses category-level forecasts as a proxy.
+
+**Verify the product is in the catalog.** Go to **Data → Product catalog** and search for the product. If it is missing, check your [catalog import](/getting-started/import-product-catalog) for errors.
+
+**Check category assignment.** Uncategorised products cannot benefit from category-level proxy forecasts. Assign a category to enable forecasting for new items.
+</Accordion>
+
+<Accordion title="Inventory sync is delayed or stale">
+**Check integration status.** Go to **Inventory → Integrations → Status** and look for errors or stale timestamps. If the last sync was more than 2 hours ago, the integration may be disconnected.
+
+**Verify API credentials.** Expired or revoked API keys in your WMS, 3PL, or ERP will cause sync failures. Re-authenticate under **Inventory → Integrations → [Integration name] → Settings**.
+
+**Check webhook delivery.** If you use webhook-based sync, verify that your system is sending payloads to the correct Luminos AI endpoint and that payloads match the expected schema.
+</Accordion>
+
+<Accordion title="Reorder suggestions seem wrong">
+**Verify lead times.** If supplier lead times are set too low, the system suggests reordering too late. If too high, it suggests reordering too early. Update lead times under **Inventory → Suppliers**.
+
+**Check the order quantity method.** If using "days of cover", verify the number of days matches your actual replenishment cycle. Ordering 90 days of cover when your supplier delivers in 7 days creates unnecessary overstock.
+
+**Review minimum order quantities.** If your supplier has a minimum order quantity that exceeds your actual demand, the reorder system will respect the minimum, which may look like over-ordering.
+</Accordion>
+
+<Accordion title="Seasonal adjustments are not taking effect">
+**Check event dates.** Verify that the [custom event](/inventory/seasonal-adjustments) date range covers the correct period. Events that have already ended will not affect future forecasts.
+
+**Verify affected categories.** If the event is scoped to specific categories, confirm that the products you expect to be affected are in those categories.
+
+**Allow processing time.** After creating or updating a seasonal event, the forecasting model needs up to 24 hours to incorporate the adjustment into predictions.
+</Accordion>
+
+</AccordionGroup>
+
+If your issue is not covered here, contact [Luminos AI support](/account/contact-support) with your workspace ID and a description of the forecasting behaviour you are seeing.

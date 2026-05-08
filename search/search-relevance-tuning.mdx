@@ -1,0 +1,60 @@
+---
+title: "Search relevance tuning"
+sidebarTitle: "Relevance tuning"
+description: "Adjust field weights, freshness decay, and popularity signals."
+icon: "sliders-horizontal"
+---
+
+Relevance tuning lets you control how Luminos AI ranks search results by adjusting the relative importance of different signals. The default configuration works well for most stores, but tuning can improve results for specific catalog types and shopper behaviours.
+
+## Ranking signals
+
+Smart Search combines five signals into a composite score for each product:
+
+| Signal | Default weight | Description |
+|--------|---------------|-------------|
+| Text relevance | 1.0 | How well the product's title, description, and attributes match the query |
+| Popularity | 0.3 | Views, clicks, and purchases over the last 30 days |
+| Conversion rate | 0.2 | Historical conversion rate for this product in search results |
+| Freshness | 0.1 | Recency boost for recently added products |
+| Personalisation | 0.2 | Affinity score based on the current shopper's history |
+
+Adjust weights under **Search → Settings → Ranking → Signal weights**. Each weight is a relative multiplier — increasing one signal's weight makes it more influential compared to others.
+
+## Field weights
+
+Within text relevance, different product fields carry different importance. By default:
+
+- **Title** — weight 3.0 (highest priority)
+- **Brand** — weight 2.0
+- **Category** — weight 1.5
+- **Description** — weight 1.0
+- **Tags** — weight 1.0
+
+If your products have distinctive brand names, increase the brand weight. If shoppers search by material or colour terms that appear in tags, increase the tag weight.
+
+## Freshness decay
+
+The freshness signal gives new products a ranking boost that decays over time. Configure the decay curve under **Search → Settings → Ranking → Freshness**:
+
+- **Decay period** — how long the boost lasts (default 30 days)
+- **Initial boost** — the starting multiplier for new products (default 1.5×)
+- **Decay shape** — linear or exponential (exponential gives a strong initial boost that fades quickly)
+
+## Personalisation depth
+
+The personalisation signal considers the current shopper's browsing history. Adjust how far back the engine looks:
+
+- **Session only** — only the current browsing session influences results
+- **7 days** — the last week of activity (default)
+- **30 days** — a full month of history
+
+Deeper history provides stronger personalisation but may surface products from outdated interests.
+
+<Tip>
+Test relevance changes using the **Search → Preview** tool before publishing. Compare result order for your top 20 queries with the old and new weights side by side.
+</Tip>
+
+## Resetting to defaults
+
+If your tuning produces worse results, click **Reset to defaults** under **Search → Settings → Ranking**. This restores the original signal weights and field configuration without affecting your synonyms, merchandising rules, or other settings.

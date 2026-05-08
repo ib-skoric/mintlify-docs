@@ -1,0 +1,49 @@
+---
+title: "Natural language search"
+sidebarTitle: "Natural language"
+description: "Conversational queries with semantic understanding."
+icon: "message-square-text"
+---
+
+Natural language search lets shoppers type queries the way they think — "red dress under 50 dollars for a summer wedding" — and get relevant results. Luminos AI parses the query into structured intent: product type, colour, price constraint, and occasion.
+
+## How it works
+
+When a shopper enters a natural language query, Luminos AI's NLP pipeline processes it in three stages:
+
+1. **Intent classification** — determines whether the query is a product search, a question, or a navigation request
+2. **Entity extraction** — identifies product attributes, price constraints, brand names, and contextual modifiers
+3. **Query rewriting** — transforms the natural language input into a structured search query with the appropriate filters applied
+
+For example, "comfortable black shoes for standing all day under 100" becomes a search for shoes with filters: colour=black, price≤100, and a relevance boost for products tagged with comfort-related attributes.
+
+## Enabling natural language search
+
+Go to **Search → Settings → Natural language** and toggle it on. Natural language processing runs as a pre-processing step before the standard search ranking pipeline, so it works alongside all your existing [synonyms](/search/synonyms-redirects), [merchandising rules](/search/search-merchandising), and [facets](/search/faceted-filtering).
+
+## Supported query patterns
+
+Luminos AI understands a wide range of conversational patterns:
+
+- **Attribute filtering** — "blue wool sweater" → colour=blue, material=wool
+- **Price constraints** — "under 50", "between 20 and 40", "around 30"
+- **Size and fit** — "large men's jacket" → gender=men, size=L
+- **Occasion** — "dress for a wedding" → occasion=formal (inferred)
+- **Comparative** — "similar to [product name]" → triggers similar-item search
+- **Negation** — "shoes not heels" → excludes heel-type footwear
+
+## Accuracy and fallbacks
+
+Natural language parsing is not perfect. When the engine is not confident in its interpretation, it falls back to standard keyword search. You can monitor parsing confidence scores under **Search → Analytics → NLP accuracy**.
+
+<Tip>
+Review misinterpreted queries weekly in the analytics dashboard. Adding [synonyms](/search/synonyms-redirects) for commonly misunderstood terms improves accuracy over time.
+</Tip>
+
+## Combining with visual search
+
+Shoppers can upload an image through [visual search](/search/visual-search) and add a text modifier. For example, upload a photo of a dress and type "in blue" to find visually similar dresses in a different colour. The visual and text signals are merged in the ranking pipeline.
+
+## Language support
+
+Natural language search supports English, French, German, Spanish, Italian, Portuguese, Dutch, and Japanese. The engine detects the query language automatically and applies language-specific parsing rules.
