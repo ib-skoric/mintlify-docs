@@ -1,0 +1,53 @@
+---
+title: "Troubleshoot Smart Search"
+sidebarTitle: "Troubleshooting"
+description: "Fix zero-result queries, ranking issues, and indexing delays."
+---
+
+This guide covers common Smart Search issues and how to resolve them.
+
+<AccordionGroup>
+
+<Accordion title="Searches return zero results for valid queries">
+**Check synonyms.** The shopper may be using a term your catalog does not contain. Search for the query in **Search → Preview** to see what the engine returns. If nothing matches, add a [synonym](/search/synonyms-redirects) mapping the query to a term in your catalog.
+
+**Check the product index.** Go to **Search → Settings → Index status**. If the index is stale or incomplete, trigger a re-index. Common causes include catalog sync failures or recent bulk product deletions.
+
+**Check language settings.** If your catalog is in one language but shoppers search in another, results will be empty. Consider enabling [natural language search](/search/natural-language-search) or adding cross-language synonyms.
+</Accordion>
+
+<Accordion title="Results are poorly ranked">
+**Review signal weights.** Go to **Search → Settings → Ranking** and check whether signal weights have been customised. An overly high popularity weight can cause well-known products to dominate results for niche queries.
+
+**Check merchandising rules.** Active [boost and bury rules](/search/boost-bury-rules) may be overriding organic relevance. Review rules under **Search → Rules → Active**.
+
+**Test in the preview tool.** Use **Search → Preview** to see relevance scores for each result. The explanation panel shows which signals contributed to each product's ranking.
+</Accordion>
+
+<Accordion title="The search index is outdated">
+**Check catalog sync.** If your [store connection](/getting-started/connect-your-store) is not syncing, new products will not appear in search. Verify the sync status under **Settings → Integrations → Sync status**.
+
+**Trigger a manual re-index.** Go to **Search → Settings → Re-index now**. The re-index takes 2–10 minutes. During re-indexing, the old index continues serving results so there is no downtime.
+
+**Check for import errors.** If your [product catalog import](/getting-started/import-product-catalog) had validation errors, some products may have been skipped. Review errors under **Data → Product catalog → Import history**.
+</Accordion>
+
+<Accordion title="Autocomplete is not showing suggestions">
+**Check minimum character setting.** By default, autocomplete requires 2 characters before showing suggestions. If your shoppers expect instant results, reduce this to 1 under **Search → Autocomplete → Settings**.
+
+**Verify the widget is installed.** If you are using the manual installation method, confirm the search widget script is loading on your storefront.
+
+**Check traffic volume.** Autocomplete query suggestions are generated from historical search data. New stores with very few searches may not have enough data for query completion suggestions. Product matches and trending queries should still work.
+</Accordion>
+
+<Accordion title="Visual search returns irrelevant results">
+**Check image quality.** Images that are blurry, very small, or contain multiple objects produce poor embeddings. Ensure uploaded images meet the requirements (200×200 minimum, clear subject).
+
+**Adjust the similarity threshold.** If results are too loosely matched, increase the threshold under **Search → Visual Search → Settings**. A threshold of 0.6–0.7 provides a good balance between coverage and precision.
+
+**Re-compute embeddings.** If you recently updated product images, the old embeddings may still be cached. Go to **Search → Visual Search → Re-compute** to regenerate embeddings.
+</Accordion>
+
+</AccordionGroup>
+
+If your issue is not covered here, contact [Luminos AI support](/account/contact-support) with your workspace ID and screenshots of the problem.

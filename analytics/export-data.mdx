@@ -1,0 +1,62 @@
+---
+title: "Export data"
+sidebarTitle: "Export"
+description: "Download CSV, schedule email delivery, or push to a warehouse."
+---
+
+Luminos AI supports multiple ways to export analytics data for use in external tools, BI platforms, and data warehouses.
+
+## Manual CSV export
+
+Every report, dashboard widget, and analytics table includes a download button. Click it to export the current view as a CSV file. The export respects any filters and date ranges you have applied.
+
+Exports are limited to 100,000 rows per download. For larger datasets, use the API export or warehouse sync.
+
+## API export
+
+Use the [REST API](/api/rest-api-overview) to programmatically extract analytics data. The `/v1/analytics/export` endpoint accepts query parameters for:
+
+- **Dataset** — recommendations, search, chatbot, pricing, inventory, or events
+- **Date range** — start and end dates
+- **Dimensions** — grouping fields
+- **Measures** — metrics to include
+- **Filters** — conditions to narrow the data
+- **Format** — JSON or CSV
+
+```bash
+curl -X GET "https://api.luminos.ai/v1/analytics/export" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"dataset": "recommendations", "start_date": "2025-01-01", "end_date": "2025-01-31", "measures": ["impressions", "clicks", "revenue"]}'
+```
+
+API exports support up to 1,000,000 rows per request.
+
+## Data warehouse sync
+
+For continuous data access, connect Luminos AI to your data warehouse:
+
+- **Snowflake** — configure under **Analytics → Export → Warehouse → Snowflake**
+- **BigQuery** — configure under **Analytics → Export → Warehouse → BigQuery**
+- **Redshift** — configure under **Analytics → Export → Warehouse → Redshift**
+
+Warehouse syncs run on a schedule (hourly, daily, or custom cron expression) and incrementally push new data since the last sync.
+
+## What data is available
+
+| Dataset | Description | Granularity |
+|---------|-------------|-------------|
+| Events | Raw behavioural events (page views, clicks, purchases) | Event-level |
+| Recommendations | Impression, click, and attribution data per placement | Event-level |
+| Search | Query, result, click, and conversion data | Query-level |
+| Chatbot | Conversation transcripts, topics, and outcomes | Conversation-level |
+| Pricing | Price change log with rule attribution | Change-level |
+| Inventory | Forecast vs. actual demand, stock levels | Daily per SKU |
+| Segments | Segment membership snapshots | Daily |
+
+<Warning>
+Event-level exports may contain personally identifiable information (visitor IDs, email hashes). Ensure your data warehouse access controls comply with your [GDPR](/account/gdpr-compliance) and [data retention](/account/data-retention) policies.
+</Warning>
+
+## Scheduled email exports
+
+For team members who do not need warehouse access, [schedule reports](/analytics/scheduled-reports) that deliver CSV attachments via email on a recurring basis.

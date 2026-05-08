@@ -1,0 +1,60 @@
+---
+title: "RFM analysis"
+sidebarTitle: "RFM analysis"
+description: "Recency, frequency, and monetary scoring for customer value."
+---
+
+RFM analysis scores every customer on three dimensions — recency, frequency, and monetary value — to identify your most valuable customers and those at risk of churning. Luminos AI computes RFM scores automatically from your order history.
+
+## The three dimensions
+
+### Recency (R)
+
+How recently the customer made a purchase. Recent buyers are more engaged and more likely to buy again. Score ranges from 1 (least recent) to 5 (most recent).
+
+### Frequency (F)
+
+How often the customer purchases. Frequent buyers have established a habit and are less likely to churn. Score ranges from 1 (fewest orders) to 5 (most orders).
+
+### Monetary (M)
+
+How much the customer spends in total. High spenders contribute more to revenue even if they buy less frequently. Score ranges from 1 (lowest spend) to 5 (highest spend).
+
+## RFM scoring
+
+Luminos AI divides your customer base into quintiles (5 equal groups) for each dimension. The resulting RFM score is a three-digit number from 111 to 555:
+
+- **555** — Champions: bought recently, buy often, spend the most
+- **511** — New customers: bought very recently but only once
+- **155** — At-risk high-value: used to buy frequently and spend a lot but have not purchased recently
+- **111** — Lost: have not bought recently, bought rarely, and spent little
+
+## Pre-built RFM segments
+
+Luminos AI automatically creates segments for common RFM groupings:
+
+| Segment | RFM scores | Description |
+|---------|------------|-------------|
+| Champions | 555, 554, 545 | Best customers — reward and engage |
+| Loyal | 435, 534, 443 | Regular buyers with moderate spend |
+| Promising | 513, 512, 412 | Recent buyers who could become loyal with nurturing |
+| At-risk | 254, 255, 154 | Previously valuable customers showing signs of churn |
+| Hibernating | 211, 212, 111 | Low engagement across all dimensions |
+
+You can customise these groupings or create additional ones under **Segmentation → RFM → Segments**.
+
+## Using RFM in your strategy
+
+- **Champions** — offer exclusive previews, loyalty rewards, and ask for reviews
+- **Loyal** — upsell and cross-sell to increase monetary score
+- **Promising** — nurture with onboarding emails and first-purchase follow-ups
+- **At-risk** — send re-engagement campaigns with personalised offers
+- **Hibernating** — consider win-back discounts or accept natural attrition
+
+<Tip>
+Combine RFM segments with [behavioural triggers](/segmentation/behavioural-triggers) to automate your engagement strategy. For example, trigger a win-back email when a Champion's recency score drops below 3.
+</Tip>
+
+## Configuration
+
+RFM scores update daily by default. Change the update frequency under **Segmentation → RFM → Settings**. You can also adjust the lookback period — the default is 12 months of order history.

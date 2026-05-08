@@ -1,0 +1,49 @@
+---
+title: "Forecasting models"
+sidebarTitle: "Models"
+description: "Statistical and ML models Luminos AI uses to predict demand."
+---
+
+Luminos AI uses an ensemble of forecasting models to predict demand. Each model has different strengths, and the ensemble selects the best-performing approach for each product based on historical accuracy.
+
+## Available models
+
+### Exponential smoothing (ETS)
+
+A statistical model that captures level, trend, and seasonality from historical sales data. ETS works well for products with stable, predictable demand patterns and is fast to compute.
+
+### ARIMA
+
+Auto-regressive integrated moving average models that capture complex temporal dependencies. ARIMA adapts to shifting demand patterns better than ETS but requires more historical data — at least 90 days of sales.
+
+### Gradient-boosted trees (GBT)
+
+A machine learning model that incorporates non-time-series features like marketing spend, traffic volume, pricing changes, and competitor activity. GBT excels at capturing the impact of external events on demand.
+
+### Deep learning (DeepAR)
+
+A neural network architecture designed for probabilistic forecasting. DeepAR learns patterns across your entire catalog simultaneously, so insights from high-volume products improve forecasts for slower-moving items. It requires at least 180 days of data to train effectively.
+
+## Model selection
+
+Luminos AI runs all available models in parallel and evaluates their accuracy over the most recent 30-day validation window. For each product, the model with the lowest MAPE (mean absolute percentage error) is selected for production forecasts.
+
+You can view which model was selected for any product under **Inventory → Forecasts → Product detail → Model info**.
+
+## Manual overrides
+
+If you know that a specific model works better for a category of products — for example, ETS for consumables with stable demand — you can pin a model under **Inventory → Settings → Model overrides**. Pinned models bypass automatic selection.
+
+<Tip>
+Let the ensemble run for at least 60 days before overriding model selection. The automatic approach needs enough validation cycles to reliably pick the best model.
+</Tip>
+
+## Forecast horizon
+
+Forecasts are generated for three horizons:
+
+- **7 days** — short-term planning for daily replenishment
+- **30 days** — mid-term planning for regular purchase orders
+- **90 days** — long-term planning for seasonal buying and budget allocation
+
+All three horizons update daily with the latest data.

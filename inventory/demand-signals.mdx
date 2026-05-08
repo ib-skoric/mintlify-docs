@@ -1,0 +1,52 @@
+---
+title: "Demand signals"
+sidebarTitle: "Demand signals"
+description: "Data sources that feed forecasts: sales, traffic, marketing, trends."
+---
+
+Forecasting accuracy depends on the quality and breadth of input signals. Luminos AI ingests data from multiple sources to capture both internal demand patterns and external factors that influence purchasing behaviour.
+
+## Internal signals
+
+These come from your store and Luminos AI platform data:
+
+- **Sales history** — the primary signal. Daily unit sales per SKU, including returns and cancellations.
+- **Traffic** — page views and product impressions from the [tracking pixel](/getting-started/install-tracking-pixel). A spike in traffic often precedes a sales spike by 1–3 days.
+- **Cart additions** — add-to-cart events that did not convert to purchases. High cart-to-sales ratios can indicate pent-up demand or pricing sensitivity.
+- **Search volume** — queries for specific products or categories from [Smart Search](/search). Rising search volume is an early demand indicator.
+- **Recommendation clicks** — products gaining traction through AI [recommendations](/recommendations) show emerging demand before it reaches search or direct navigation.
+
+## External signals
+
+Connect external data sources under **Inventory → Signals → External**:
+
+- **Marketing calendar** — upload planned promotions, email campaigns, and ad spend schedules. The forecasting model adjusts predictions for products included in upcoming campaigns.
+- **Weather data** — Luminos AI can ingest local weather forecasts to adjust demand for weather-sensitive categories (outdoor furniture, cold-weather apparel, seasonal food).
+- **Google Trends** — connect your Google Trends API key to capture search interest trends for your product categories at the regional level.
+
+## Signal configuration
+
+Each signal has a weight that determines its influence on the forecast. Go to **Inventory → Settings → Signal weights** to adjust:
+
+| Signal | Default weight | Notes |
+|--------|---------------|-------|
+| Sales history | 1.0 | Always the strongest signal |
+| Traffic | 0.3 | Useful as a leading indicator |
+| Cart additions | 0.2 | Less reliable for long purchase cycles |
+| Search volume | 0.2 | Good for trending categories |
+| Marketing calendar | 0.4 | High impact during campaign windows |
+| Weather | 0.1 | Only relevant for weather-sensitive categories |
+
+<Tip>
+Enable the marketing calendar signal before running any large promotion. Without it, the demand spike will look like an anomaly and the model may over-correct in subsequent forecasts.
+</Tip>
+
+## Data requirements
+
+For accurate forecasts, Luminos AI needs:
+
+- **Minimum 30 days** of sales history per SKU for basic forecasting
+- **90 days** for seasonal pattern detection
+- **180 days** for deep learning models
+
+Products with less than 30 days of history receive forecasts based on similar products in the same category.

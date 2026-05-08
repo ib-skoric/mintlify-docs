@@ -1,0 +1,51 @@
+---
+title: "Multilingual support"
+sidebarTitle: "Multilingual"
+description: "Detect language and respond in the shopper's preferred language."
+---
+
+The Luminos AI chatbot detects the language of incoming messages and responds in the same language. This lets you serve international customers without separate chatbot configurations for each market.
+
+## Supported languages
+
+The chatbot supports 25 languages for conversation:
+
+English, French, German, Spanish, Italian, Portuguese, Dutch, Swedish, Danish, Norwegian, Finnish, Polish, Czech, Romanian, Hungarian, Greek, Turkish, Arabic, Japanese, Korean, Simplified Chinese, Traditional Chinese, Thai, Vietnamese, and Indonesian.
+
+## Language detection
+
+The chatbot detects the shopper's language from their first message. Detection is automatic — you do not need to ask the shopper which language they prefer.
+
+If detection confidence is low (e.g. very short messages or mixed-language input), the chatbot defaults to the storefront's primary language and switches when it detects a clearer signal.
+
+## Knowledge base translation
+
+For the chatbot to answer accurately in each language, it needs knowledge base content in that language. You have two options:
+
+### Automatic translation
+
+Enable automatic translation under **Chatbot → Settings → Languages → Auto-translate**. Luminos AI translates your English knowledge base content into supported languages on the fly. This provides broad coverage but may not capture brand-specific terminology perfectly.
+
+### Manual translations
+
+Upload translated versions of your knowledge base content for each language. Go to **Chatbot → Knowledge → [Content type] → Translations**. Manual translations take priority over automatic translations when available.
+
+<Tip>
+Use automatic translation for broad coverage and manually translate your top 20 FAQ answers and key policy documents. This gives you the best balance of coverage and accuracy.
+</Tip>
+
+## Per-language configuration
+
+Customise the chatbot experience per language under **Chatbot → Settings → Languages**:
+
+- **Greeting message** — set a different welcome message for each language
+- **Escalation message** — customise the handoff message in each language
+- **Fallback message** — what the chatbot says when it does not know the answer
+
+## Regional routing
+
+If your support team has language-specific agents, configure [escalation](/chatbot/escalation-to-human) routing by language. French conversations escalate to the French-speaking team, German to the German team, and so on.
+
+## Monitoring
+
+Track language distribution in [Chatbot analytics](/chatbot/chatbot-analytics) → **Languages**. The report shows conversation volume, resolution rate, and CSAT by language. Low resolution rates in specific languages usually indicate gaps in the translated knowledge base.

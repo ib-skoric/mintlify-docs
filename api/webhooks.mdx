@@ -1,0 +1,87 @@
+---
+title: "Webhooks"
+sidebarTitle: "Webhooks"
+description: "Subscribe to events, verify signatures, and handle retries."
+---
+
+Webhooks push real-time event notifications from Luminos AI to your server. Instead of polling the API for changes, your application receives an HTTP POST request whenever a subscribed event occurs.
+
+## Available events
+
+| Event | Description |
+|-------|-------------|
+| `recommendation.clicked` | A shopper clicked a recommended product |
+| `search.performed` | A search query was executed |
+| `order.created` | A new order was placed |
+| `order.updated` | An order status changed |
+| `product.updated` | A product in your catalog was modified |
+| `price.changed` | A dynamic pricing rule changed a product's price |
+| `segment.membership_changed` | A customer entered or exited a segment |
+| `chatbot.conversation_ended` | A chatbot conversation was completed |
+| `chatbot.escalated` | A chatbot conversation was escalated to a human |
+| `inventory.low_stock` | A product's stock dropped below the alert threshold |
+
+## Creating a webhook
+
+1. Go to **Settings → API → Webhooks → Create**
+2. Enter your endpoint URL (must be HTTPS)
+3. Select the events you want to subscribe to
+4. Optionally filter events (e.g. only `price.changed` for products in the "electronics" category)
+5. Save — Luminos AI sends a test ping to verify your endpoint responds with a 200 status
+
+## Payload format
+
+```json
+{
+  "id": "evt_abc123",
+  "type": "price.changed",
+  "created_at": "2025-03-15T14:22:00Z",
+  "workspace_id": "ws_xyz789",
+  "data": {
+    "product_id": "prod_456",
+    "previous_price": 49.99,
+    "new_price": 44.99,
+    "rule_id": "rule_789",
+    "currency": "GBP"
+  }
+}
+```
+
+## Signature verification
+
+Every webhook request includes a signature in the `X-Luminos-Signature` header. Verify it to confirm the request came from Luminos AI and was not tampered with.
+
+The signature is an HMAC-SHA256 hash of the request body, using your webhook signing secret as the key:
+
+```python
+import hmac
+import hashlib
+
+def verify_signature(payload, signature, secret):
+    expected = hmac.new(secret.encode(), payload.encode(), hashlib.sha256).hexdigest()
+    return hmac.compare_digest(expected, signature)
+```
+
+Find your signing secret under **Settings → API → Webhooks → [Webhook] → Signing secret**.
+
+<Warning>
+Always verify webhook signatures before processing the payload. Without verification, a malicious actor could send fake events to your endpoint.
+</Warning>
+
+## Retry policy
+
+If your endpoint returns a non-2xx status code or times out (30-second timeout), Luminos AI retries with exponential backoff:
+
+- 1st retry: 1 minute after the original attempt
+- 2nd retry: 5 minutes
+- 3rd retry: 30 minutes
+- 4th retry: 2 hours
+- 5th retry: 12 hours
+
+After 5 failed retries, the event is marked as failed. Failed events are visible in the webhook log under **Settings → API → Webhooks → [Webhook] → Delivery log**.
+
+## Best practices
+
+- Respond with a 200 status immediately and process the event asynchronously. Long processing during the request can cause timeouts.
+- Use idempotency — the same event may be delivered more than once. Use the `id` field to deduplicate.
+- Monitor the delivery log for failures and fix endpoint issues promptly.

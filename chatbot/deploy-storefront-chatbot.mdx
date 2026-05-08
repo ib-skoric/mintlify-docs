@@ -1,0 +1,69 @@
+---
+title: "Deploy the chatbot"
+sidebarTitle: "Deploy"
+description: "Add the chatbot widget to your storefront with a code snippet."
+---
+
+Deploying the Luminos AI chatbot takes a few minutes. The widget loads asynchronously, so it does not affect your page load performance.
+
+<Steps>
+
+<Step title="Enable the chatbot">
+Go to **Chatbot → Settings → Enable**. This activates the chatbot backend and starts indexing your product catalog for conversational product discovery.
+</Step>
+
+<Step title="Install the widget">
+Copy the widget snippet from **Chatbot → Settings → Install**:
+
+```html
+<script>
+  (function(l,u,m){var c=u.createElement('script');c.async=1;
+  c.src='https://cdn.luminos.ai/chatbot.js';c.dataset.workspace=m;
+  u.body.appendChild(c)})(window,document,'YOUR_WORKSPACE_ID');
+</script>
+```
+
+Paste it before the closing `</body>` tag on your storefront. If you already have the [tracking pixel](/getting-started/install-tracking-pixel) installed, the chatbot widget loads alongside it.
+</Step>
+
+<Step title="Configure placement">
+By default, the chatbot appears as a floating button in the bottom-right corner. You can change the position under **Chatbot → Settings → Widget position**:
+
+- **Bottom-right** (default)
+- **Bottom-left**
+- **Custom** — specify exact coordinates or attach to a specific element
+</Step>
+
+<Step title="Set the greeting">
+Configure the welcome message shoppers see when they open the chat:
+
+- **Default greeting** — "Hi! How can I help you today?"
+- **Page-aware greeting** — the chatbot adapts its greeting based on the page type (e.g. "Looking for help with this product?" on product pages)
+- **Custom greeting** — write your own message
+
+Configure greetings under **Chatbot → Settings → Greeting**.
+</Step>
+
+<Step title="Test the deployment">
+Visit your storefront and click the chatbot icon. Try asking about a product, checking an order status, and asking a general question. Verify responses in the **Chatbot → Conversations** log.
+</Step>
+
+</Steps>
+
+## Page targeting
+
+By default, the chatbot appears on every page. To limit it to specific pages:
+
+1. Go to **Chatbot → Settings → Page targeting**
+2. Add URL patterns where the chatbot should appear (e.g. `/products/*`, `/support/*`)
+3. Or add exclusion patterns where it should not appear (e.g. `/checkout/*` to avoid distracting during purchase)
+
+<Tip>
+Deploy the chatbot on product pages and support pages first. These are the highest-value locations where shoppers have the most questions.
+</Tip>
+
+## Next steps
+
+- [Train on your knowledge base](/chatbot/train-on-knowledge-base) to improve answer quality
+- [Customise appearance](/chatbot/chatbot-appearance) to match your brand
+- [Set up escalation](/chatbot/escalation-to-human) for questions the chatbot cannot answer

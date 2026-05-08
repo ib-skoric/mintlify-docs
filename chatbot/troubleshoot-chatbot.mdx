@@ -1,0 +1,55 @@
+---
+title: "Troubleshoot the chatbot"
+sidebarTitle: "Troubleshooting"
+description: "Widget loading, incorrect answers, and integration failures."
+---
+
+This guide covers common chatbot issues and how to resolve them.
+
+<AccordionGroup>
+
+<Accordion title="The chatbot widget is not appearing on my storefront">
+**Check the widget snippet.** Verify that the chatbot script is present in your page source, before the closing `</body>` tag. If it is missing, revisit the [deployment guide](/chatbot/deploy-storefront-chatbot).
+
+**Check page targeting rules.** Go to **Chatbot → Settings → Page targeting**. If you configured URL patterns, make sure the current page matches an included pattern and is not excluded.
+
+**Look for JavaScript errors.** Open your browser's developer console (F12 → Console) and check for errors related to `chatbot.js`. Common issues include Content Security Policy (CSP) headers blocking the script.
+
+**Test in incognito.** Ad blockers and privacy extensions can block the chatbot widget. Test in an incognito window with extensions disabled.
+</Accordion>
+
+<Accordion title="The chatbot gives incorrect or irrelevant answers">
+**Check knowledge base coverage.** Use the **Chatbot → Test** panel to ask the question and see which knowledge source the chatbot uses. If the source is wrong or missing, add or update the relevant [knowledge base content](/chatbot/train-on-knowledge-base).
+
+**Review confidence scores.** If the chatbot's confidence is below 60%, the answer is likely unreliable. Lower the escalation threshold under **Chatbot → Escalation → Rules** so low-confidence answers trigger a handoff instead of a bad response.
+
+**Check for outdated content.** If your product catalog or policies changed recently, the chatbot may be using stale indexed content. Trigger a re-index under **Chatbot → Knowledge → Re-index now**.
+</Accordion>
+
+<Accordion title="Order status lookups are failing">
+**Verify store connection.** The chatbot needs access to order data from your [store connection](/getting-started/connect-your-store). Check that order sync is active under **Settings → Integrations → Sync status**.
+
+**Check customer identification.** If the chatbot cannot identify the shopper, it cannot look up orders. Verify that the tracking pixel passes a customer ID for logged-in users, or that the email lookup flow is working.
+
+**Test with a known order.** In the **Chatbot → Test** panel, try looking up a specific order number that you know exists. If this works, the issue is with customer identification rather than order data access.
+</Accordion>
+
+<Accordion title="Escalation to human agents is not working">
+**Check destination configuration.** Go to **Chatbot → Escalation → Destinations** and verify the connection to your live chat or ticketing platform. Re-authenticate if the integration shows an error.
+
+**Verify agent availability.** If you have availability-aware escalation enabled, check whether your support team's business hours are configured correctly under **Chatbot → Escalation → Availability**.
+
+**Test the webhook.** If using a webhook destination, verify the endpoint URL and check for delivery failures in the webhook log.
+</Accordion>
+
+<Accordion title="The chatbot responds in the wrong language">
+**Check language detection settings.** Very short messages (1–2 words) may not contain enough signal for accurate language detection. The chatbot falls back to the storefront's primary language in these cases.
+
+**Verify translated content.** If the chatbot detects the correct language but gives poor answers, the [translated knowledge base](/chatbot/multilingual-chatbot) may have gaps. Check coverage for the affected language.
+
+**Set a default language.** If most of your shoppers speak one language, set it as the default under **Chatbot → Settings → Languages → Default**. This reduces misdetection for short messages.
+</Accordion>
+
+</AccordionGroup>
+
+If your issue is not covered here, contact [Luminos AI support](/account/contact-support) with your workspace ID and a screenshot of the problem.

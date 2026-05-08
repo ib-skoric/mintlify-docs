@@ -1,0 +1,60 @@
+---
+title: "Cohort analysis"
+sidebarTitle: "Cohorts"
+description: "Compare customer groups over time for retention and LTV."
+---
+
+Cohort analysis groups customers by a shared characteristic — typically the date of their first purchase — and tracks their behaviour over subsequent time periods. This reveals retention patterns, lifetime value trends, and the long-term impact of acquisition strategies.
+
+## Cohort types
+
+### Acquisition cohorts
+
+Group customers by the week or month of their first purchase. Track how each cohort behaves in weeks 1, 2, 3, etc. after acquisition. This is the most common cohort type and the default view.
+
+### Behavioural cohorts
+
+Group customers by a specific action rather than acquisition date. Examples:
+
+- Customers who first purchased through a recommendation
+- Customers acquired during a Black Friday sale
+- Customers whose first product was in a specific category
+
+## Creating a cohort analysis
+
+1. Go to **Analytics → Cohorts → Create**
+2. Select the cohort type (acquisition or behavioural)
+3. For acquisition cohorts, choose the time granularity (weekly or monthly)
+4. For behavioural cohorts, define the qualifying event
+5. Select the metric to track over time:
+   - **Retention rate** — percentage of the cohort that makes another purchase in each period
+   - **Revenue per customer** — average revenue generated per cohort member in each period
+   - **Orders per customer** — average number of orders in each period
+   - **Cumulative LTV** — running total of revenue per customer
+6. View the cohort table
+
+## Reading the cohort table
+
+The cohort table is a matrix where:
+
+- **Rows** represent cohorts (e.g. customers acquired in January, February, March)
+- **Columns** represent time periods after the cohort event (Month 0, Month 1, Month 2, etc.)
+- **Cells** contain the metric value, often colour-coded from red (low) to green (high)
+
+### What to look for
+
+- **Diagonal patterns** — if all cohorts show a similar decay curve, your retention is stable
+- **Improving cohorts** — if newer cohorts retain better than older ones, your product or onboarding is improving
+- **Degrading cohorts** — if newer cohorts retain worse, investigate what changed in acquisition or experience
+
+## Segmented cohorts
+
+Filter cohorts by [customer segment](/segmentation/create-audience-segments) to compare retention across audiences. This answers questions like "Do customers acquired through recommendations retain better than customers acquired through search?"
+
+<Tip>
+Compare cohorts from promotional periods (Black Friday, holiday sales) against non-promotional cohorts. Promotional customers often have lower retention — understanding the gap helps you set realistic LTV expectations.
+</Tip>
+
+## Export
+
+Export the cohort table as CSV for further analysis in spreadsheets or BI tools. Go to **Analytics → Cohorts → Export**.

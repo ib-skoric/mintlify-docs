@@ -1,0 +1,63 @@
+---
+title: "Escalation to human agents"
+sidebarTitle: "Escalation"
+description: "Configure when and how the chatbot hands off to support."
+---
+
+Not every conversation can be resolved by AI. Luminos AI provides configurable escalation paths so that shoppers reach a human agent when they need one, with full context from the chatbot conversation.
+
+## Escalation triggers
+
+Configure when the chatbot should escalate under **Chatbot → Escalation → Rules**:
+
+### Automatic triggers
+
+- **Low confidence** — the chatbot's answer confidence is below a threshold (default 40%). The chatbot says something like "I'm not sure about this — let me connect you with someone who can help."
+- **Sentiment detection** — the shopper's messages indicate frustration or anger. Luminos AI's sentiment model detects negative language patterns.
+- **Repeated questions** — the shopper asks the same question multiple times, indicating the chatbot is not providing a satisfactory answer.
+- **Topic-based** — certain topics always escalate (e.g. billing disputes, complaints, legal questions).
+
+### Manual trigger
+
+The chatbot always offers a "Talk to a person" option. Shoppers can request a human at any point in the conversation.
+
+## Escalation destinations
+
+Choose where escalated conversations go:
+
+- **Live chat** — transfer to your live chat platform (Intercom, Zendesk, Freshdesk, or custom via webhook)
+- **Email** — create a support ticket with the conversation transcript
+- **Phone** — display a phone number for the shopper to call
+- **Callback** — collect the shopper's phone number and queue a callback from your team
+
+Configure destinations under **Chatbot → Escalation → Destinations**.
+
+## Context handoff
+
+When escalating, Luminos AI sends the full conversation transcript and extracted context to the human agent:
+
+- Conversation history (all messages)
+- Shopper profile (if known) — name, email, order history
+- Current page URL and products being viewed
+- Chatbot's internal notes — what it tried, what failed, what the shopper is asking about
+
+This context eliminates the need for the shopper to repeat themselves.
+
+## Availability-aware escalation
+
+If your support team is offline, configure fallback behaviour:
+
+- **Queue** — hold the escalation and notify the shopper of expected wait time
+- **Email** — create a ticket instead of a live handoff
+- **Scheduled callback** — offer the shopper a callback slot during business hours
+- **Continue with chatbot** — explain that humans are unavailable and continue the AI conversation
+
+Set business hours under **Chatbot → Escalation → Availability**.
+
+<Tip>
+Review escalated conversations weekly to identify topics the chatbot should handle better. Each unnecessary escalation is an opportunity to improve the chatbot's training data.
+</Tip>
+
+## Monitoring
+
+Track escalation metrics in [Chatbot analytics](/chatbot/chatbot-analytics) → **Escalations**: escalation rate, reasons, resolution time after handoff, and [CSAT scores](/chatbot/csat-collection) for escalated vs. non-escalated conversations.

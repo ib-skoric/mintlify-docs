@@ -1,0 +1,42 @@
+---
+title: "Connect your ecommerce store"
+sidebarTitle: "Connect store"
+description: "Link Shopify, WooCommerce, BigCommerce, or Magento to Luminos AI."
+---
+
+Connecting your store lets Luminos AI sync your product catalog, order history, and customer data. The connection is read-only by default — Luminos AI never modifies your store data unless you explicitly enable write-back features like dynamic pricing.
+
+<Steps>
+
+<Step title="Choose your platform">
+Go to **Settings → Integrations → Ecommerce** and select your platform. Each connector has its own authentication flow:
+
+- **Shopify** — Install the Luminos AI app from the Shopify App Store, then authorise access
+- **WooCommerce** — Enter your store URL, generate REST API keys in WooCommerce, and paste them into Luminos AI
+- **BigCommerce** — Create an API account in your BigCommerce control panel with read access to products, orders, and customers
+- **Magento** — Generate an integration token in **System → Integrations** and enter it in Luminos AI
+</Step>
+
+<Step title="Configure sync settings">
+Choose which data to sync:
+
+- **Products** — catalog, variants, images, and categories (required)
+- **Orders** — historical and ongoing order data for recommendation training
+- **Customers** — email, name, and purchase history for segmentation
+
+Set the sync frequency. Real-time webhooks are available for Shopify and BigCommerce. WooCommerce and Magento use polling intervals of 5, 15, or 60 minutes.
+</Step>
+
+<Step title="Verify the connection">
+After authorisation, Luminos AI runs an initial sync. Monitor progress in **Settings → Integrations → Sync Status**. A green checkmark confirms that products, orders, and customers are flowing correctly.
+</Step>
+
+</Steps>
+
+<Tip>
+Start with a staging or development store if you want to test the integration before connecting your production environment.
+</Tip>
+
+## Troubleshooting
+
+If the sync stalls or shows errors, check that your API keys have the correct permissions and that your store's firewall allows outbound connections to `api.luminos.ai`. See [Troubleshoot recommendations](/recommendations/troubleshoot-recommendations) for data-related issues that affect AI features downstream.

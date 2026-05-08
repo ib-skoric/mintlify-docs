@@ -1,0 +1,43 @@
+---
+title: "Seasonal and event adjustments"
+sidebarTitle: "Seasonal"
+description: "Account for holidays, promotions, and seasonal demand shifts."
+---
+
+Seasonal events create demand patterns that differ significantly from normal trends. Black Friday, holiday shopping seasons, and back-to-school periods can multiply demand by 3–10× for affected product categories. Luminos AI adjusts forecasts for these events automatically and lets you add custom events for your business.
+
+## Automatic seasonal detection
+
+The forecasting engine analyses your historical sales data to identify recurring seasonal patterns. After one full year of data, Luminos AI automatically detects:
+
+- **Annual seasonality** — patterns that repeat on the same dates each year (Christmas, summer holidays)
+- **Day-of-week patterns** — products that consistently sell more on weekends or weekdays
+- **Month-end patterns** — increased purchasing around payday cycles
+
+These patterns are built into the baseline forecast without any manual configuration.
+
+## Custom events
+
+For events that are not on fixed calendar dates or are specific to your business, create custom events under **Inventory → Events → Create**:
+
+1. **Name** — a descriptive label (e.g. "Spring Sale 2025")
+2. **Date range** — start and end dates for the event
+3. **Affected categories** — which product categories will see abnormal demand
+4. **Expected lift** — estimated demand multiplier (e.g. 2.5× means 150% more demand than normal)
+5. **Ramp profile** — how demand builds up: sudden (e.g. flash sale) or gradual (e.g. seasonal shift)
+
+## Using last year's data
+
+If you ran the same event last year, Luminos AI can use historical data instead of manual lift estimates. Go to **Inventory → Events → Create** and select **Use historical baseline**. Choose the comparable date range from last year, and the model calculates the lift automatically, adjusting for overall growth trends.
+
+<Tip>
+Create custom events for planned marketing campaigns at least 2 weeks before they launch. This gives the forecasting engine time to adjust reorder suggestions.
+</Tip>
+
+## Post-event correction
+
+After a promotional event ends, demand often drops below normal levels as customers have pulled forward purchases. Luminos AI applies a post-event dampening factor to avoid overstocking in the recovery period. The dampening duration and intensity are calculated from historical post-event patterns, or you can set them manually.
+
+## Monitoring
+
+Track seasonal forecast accuracy under [Inventory analytics](/inventory/inventory-analytics) → **Seasonal performance**. Compare predicted demand against actual demand for each event to improve lift estimates for next year.

@@ -1,0 +1,42 @@
+---
+title: "API and developer tools"
+sidebarTitle: "Overview"
+description: "REST, GraphQL, webhooks, and SDKs for custom integrations."
+---
+
+Luminos AI's developer tools let you integrate AI-powered ecommerce features into your existing stack. Whether you need to fetch recommendations for a custom widget, submit events from your backend, or receive real-time notifications of pricing changes, the API has you covered.
+
+## Available interfaces
+
+- **REST API** — standard HTTP endpoints for all Luminos AI features. Best for server-side integrations and one-off requests.
+- **GraphQL API** — a flexible query language for fetching exactly the data you need. Best for frontend applications and complex data retrieval.
+- **Webhooks** — push notifications for real-time events. Best for keeping external systems in sync.
+- **Client SDKs** — JavaScript, Python, and Ruby libraries that wrap the REST API with type safety and convenience methods.
+
+## Getting started
+
+1. [Authenticate](/api/authentication) — generate an API key or configure OAuth
+2. Read the [REST API overview](/api/rest-api-overview) or [GraphQL API](/api/graphql-api) documentation
+3. Understand [rate limits](/api/rate-limits) before building your integration
+4. Set up [webhooks](/api/webhooks) for event-driven architectures
+5. Install an [SDK](/api/sdks) for your language of choice
+
+## Base URL
+
+All API requests go to:
+
+```
+https://api.luminos.ai/v1/
+```
+
+The GraphQL endpoint is:
+
+```
+https://api.luminos.ai/graphql
+```
+
+## Versioning
+
+The API uses URL-based versioning. The current version is `v1`. Breaking changes are introduced in new versions only. Non-breaking additions (new fields, new endpoints) are added to the current version.
+
+Track changes in the [API changelog](/api/api-changelog).

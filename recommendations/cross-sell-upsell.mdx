@@ -1,0 +1,47 @@
+---
+title: "Cross-sell and upsell strategies"
+sidebarTitle: "Cross-sell & upsell"
+description: "Complementary and upgrade suggestions to increase average order value."
+---
+
+Cross-selling and upselling are two distinct strategies that work together to increase average order value (AOV). Luminos AI supports both through dedicated models and placement configurations.
+
+## Cross-sell vs. upsell
+
+**Cross-sell** suggests complementary products that pair with what the shopper is viewing or has added to their cart. Examples: a phone case for a phone, running socks for running shoes, or a matching necklace for a dress.
+
+**Upsell** suggests a higher-value alternative to the product the shopper is currently considering. Examples: a larger size, a premium version, or a bundle that includes accessories at a discount.
+
+## Configuring cross-sell
+
+1. Go to **Recommendations → Models** and enable the **Cross-sell** model
+2. The model learns product affinities from co-purchase data — items frequently bought together score higher
+3. Create a placement on the cart page or product detail page with the cross-sell model selected
+4. Set the product count to 4–6 for cart pages and 2–4 for inline suggestions on product pages
+
+### Manual pairings
+
+For products where the algorithm needs help — new launches, accessories with obvious pairings — you can create manual cross-sell rules under **Recommendations → Rules**. Pin the accessory product when the parent product is in view.
+
+## Configuring upsell
+
+1. Enable the **Upsell** model under **Recommendations → Models**
+2. The model identifies products in the same category with a higher price point and strong review signals
+3. Place upsell widgets on product detail pages, positioned near the add-to-cart button
+4. Optionally set a price ceiling — for example, suggest products no more than 50% above the current item's price
+
+## Measuring impact
+
+Track cross-sell and upsell performance separately in [Recommendation analytics](/recommendations/recommendation-analytics):
+
+- **Cross-sell attach rate** — percentage of orders that include a cross-sold product
+- **Upsell upgrade rate** — percentage of shoppers who switch to a higher-priced alternative
+- **Incremental AOV** — additional revenue per order attributed to cross-sell and upsell widgets
+
+<Tip>
+Position cross-sell suggestions on the cart page and upsell suggestions on the product detail page. This aligns with shopper intent — discovery on PDP, completion on cart.
+</Tip>
+
+## Avoiding over-promotion
+
+Set frequency caps so that returning visitors do not see the same cross-sell or upsell suggestion on every visit. A cap of 3 impressions per product per visitor per week balances visibility with fatigue.

@@ -1,0 +1,57 @@
+---
+title: "Conversation flows"
+sidebarTitle: "Flows"
+description: "Design guided paths for product discovery and gift advice."
+---
+
+Conversation flows are structured dialogue paths that guide shoppers through multi-step interactions. Use them for scenarios that are too complex for a single-turn question and answer — product discovery, gift recommendations, sizing advice, and troubleshooting.
+
+## How flows work
+
+A flow is a series of steps, each with a message from the chatbot and expected shopper responses. Based on the shopper's response, the flow branches to the next appropriate step.
+
+**Example: Gift finder flow**
+
+1. "Who is the gift for?" → Options: Partner, Parent, Friend, Child
+2. "What is your budget?" → Options: Under £25, £25–£50, £50–£100, Over £100
+3. "Any interests or hobbies?" → Free text input
+4. Chatbot returns personalised product recommendations based on the collected preferences
+
+## Creating a flow
+
+1. Go to **Chatbot → Flows → Create**
+2. Name the flow and set a trigger phrase (e.g. "help me find a gift" or "I need sizing help")
+3. Add steps using the visual flow builder:
+   - **Message step** — the chatbot sends a message
+   - **Option step** — the chatbot presents multiple-choice options
+   - **Input step** — the chatbot collects free text from the shopper
+   - **API step** — the chatbot calls a Luminos AI API (e.g. fetch recommendations based on collected preferences)
+   - **Handoff step** — the chatbot transfers to a human agent
+4. Connect steps with branches based on shopper responses
+5. Test the flow in the preview panel
+6. Publish
+
+## Trigger phrases
+
+Flows activate when the shopper's message matches a trigger phrase. You can set multiple triggers per flow. Luminos AI uses fuzzy matching, so "find a gift" and "help me pick a present" can both trigger the same flow.
+
+## Variables
+
+Collect information during the flow and use it in later steps. For example, store the shopper's budget in a `budget` variable and pass it to a recommendation API call. Variables are available throughout the flow and in the conversation context.
+
+## Flow analytics
+
+Track flow performance under [Chatbot analytics](/chatbot/chatbot-analytics) → **Flows**:
+
+- **Completion rate** — percentage of shoppers who finish the flow
+- **Drop-off points** — which step shoppers leave the flow
+- **Conversion rate** — percentage of completed flows that lead to a purchase
+- **Average duration** — time from flow start to completion
+
+<Tip>
+Keep flows under 5 steps. Longer flows have significantly higher drop-off rates. If a topic needs more depth, split it into separate flows or combine with free-form chat.
+</Tip>
+
+## Pre-built templates
+
+Luminos AI includes templates for common ecommerce flows: Gift Finder, Size Guide, Product Comparison, and Returns Initiation. Access them under **Chatbot → Flows → Templates**.

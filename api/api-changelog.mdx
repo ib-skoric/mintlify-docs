@@ -1,0 +1,64 @@
+---
+title: "API changelog"
+sidebarTitle: "Changelog"
+description: "Breaking changes, new endpoints, and deprecations."
+---
+
+This changelog tracks changes to the Luminos AI API. Breaking changes are introduced in new API versions only. Non-breaking additions (new fields, new endpoints, optional parameters) are added to the current version.
+
+## 2025-04-01
+
+### New endpoints
+
+- `GET /v1/segments/{id}/analytics` — fetch analytics metrics for a specific segment without navigating to the full analytics dashboard
+- `POST /v1/chatbot/conversations/{id}/feedback` — submit CSAT feedback programmatically for chatbot conversations
+
+### New fields
+
+- `recommendations.get` response now includes `model_id` for each recommended product, indicating which algorithm generated the suggestion
+- `search.query` response now includes `query_intent` with the parsed natural language understanding result
+
+## 2025-03-01
+
+### New endpoints
+
+- `GET /v1/inventory/forecasts/{product_id}` — retrieve demand forecasts for a specific product
+- `POST /v1/pricing/simulate` — simulate a pricing rule change without applying it
+
+### New webhook events
+
+- `inventory.forecast_updated` — fires when a product's demand forecast is recalculated
+- `chatbot.flow_completed` — fires when a shopper completes a conversation flow
+
+## 2025-02-01
+
+### New endpoints
+
+- `GET /v1/analytics/cohorts` — query cohort analysis data via the API
+- `GET /v1/analytics/funnels` — query funnel analysis data via the API
+
+### Improvements
+
+- Increased maximum `per_page` from 50 to 100 for all list endpoints
+- Added `cursor` pagination support for the `products` endpoint alongside the existing `page`-based pagination
+
+### Deprecations
+
+- The `X-Api-Key` header for authentication is deprecated. Use `Authorization: Bearer` instead. `X-Api-Key` will be removed on 2025-08-01.
+
+## 2025-01-15
+
+### Initial release
+
+- REST API v1 with endpoints for recommendations, search, events, products, segments, and analytics
+- GraphQL API
+- Webhook support for all major event types
+- JavaScript, Python, and Ruby SDKs
+
+## Versioning policy
+
+- **Non-breaking changes** (new endpoints, new optional fields, new webhook events) are added to the current version without notice
+- **Breaking changes** (removed fields, renamed endpoints, changed response structures) are introduced in a new version with at least 6 months of deprecation notice
+- **Deprecation timeline** — deprecated features are announced in this changelog and work for at least 6 months before removal
+
+Subscribe to API change notifications under **Settings → API → Notifications** to receive an email when this changelog is updated.

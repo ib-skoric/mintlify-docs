@@ -1,0 +1,51 @@
+---
+title: "Inventory analytics"
+sidebarTitle: "Analytics"
+description: "Track stockout rates, days of supply, and carrying costs."
+---
+
+The inventory analytics dashboard measures how well your stock management aligns with actual demand. Use it to identify products at risk of stockout, reduce overstock, and optimise your purchasing strategy.
+
+## Key metrics
+
+### Stockout rate
+
+The percentage of products with zero available inventory. Industry benchmarks range from 5–10%, but best-in-class retailers target below 3%. Track this metric weekly to catch rising trends early.
+
+### Days of supply
+
+The number of days your current stock will last at the current rate of demand. A healthy range is 15–45 days depending on your supplier lead times. Products under 7 days need immediate attention.
+
+### Carrying cost
+
+The total cost of holding inventory — storage, insurance, depreciation, and opportunity cost of tied-up capital. Luminos AI estimates this as a percentage of inventory value (default 25% annually, adjustable in settings).
+
+### Sell-through rate
+
+The percentage of received stock that sells within a given period. High sell-through rates indicate healthy demand alignment. Low sell-through suggests overstock or declining demand.
+
+### Dead stock
+
+Products with zero sales in the last 90 days. Dead stock ties up warehouse space and capital. Review these products for markdowns, bundles, or removal from your catalog.
+
+## Dashboard views
+
+Navigate to **Analytics → Inventory**. The dashboard offers several views:
+
+- **Overview** — aggregate metrics across your entire catalog
+- **By category** — stockout rates and days of supply broken down by product category
+- **By location** — metrics per [warehouse or fulfilment centre](/inventory/multi-location-inventory)
+- **At-risk products** — products with fewer than 7 days of supply
+- **Overstock products** — products with more than 90 days of supply
+
+## Forecast accuracy overlay
+
+Enable the forecast accuracy overlay to compare predicted demand against actual demand on the same chart. This helps you understand whether inventory issues stem from forecast errors or supply chain delays.
+
+## Exports and scheduled reports
+
+Export any view as CSV using the download button. For regular monitoring, create a [scheduled report](/analytics/scheduled-reports) that delivers inventory health metrics to your inbox or Slack channel.
+
+<Info>
+Carrying cost is estimated based on your configured annual holding cost percentage and current inventory valuation. Update the percentage under **Inventory → Settings → Carrying cost** to match your actual warehousing and capital costs.
+</Info>

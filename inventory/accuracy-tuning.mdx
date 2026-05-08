@@ -1,0 +1,68 @@
+---
+title: "Forecast accuracy tuning"
+sidebarTitle: "Accuracy tuning"
+description: "Measure and improve accuracy using MAPE, bias correction, and feedback."
+---
+
+Accurate forecasts are the foundation of effective inventory management. Luminos AI tracks forecast accuracy continuously and provides tools to identify and correct sources of error.
+
+## Accuracy metrics
+
+### MAPE (Mean Absolute Percentage Error)
+
+The primary accuracy metric. MAPE measures the average percentage difference between predicted and actual demand. Lower is better.
+
+| MAPE range | Rating |
+|------------|--------|
+| Under 15% | Excellent |
+| 15–25% | Good |
+| 25–40% | Needs improvement |
+| Over 40% | Poor — investigate data quality |
+
+### Bias
+
+Bias measures whether forecasts consistently over-predict or under-predict demand. A positive bias means the model predicts more than actual demand (overstock risk). A negative bias means it predicts less (stockout risk).
+
+### Weighted MAPE
+
+Standard MAPE gives equal weight to every product. Weighted MAPE weights products by revenue contribution, so accuracy on your best sellers matters more than accuracy on slow movers.
+
+## Viewing accuracy reports
+
+Go to **Inventory → Analytics → Forecast accuracy**. The dashboard shows:
+
+- Overall MAPE across your catalog
+- MAPE by product category
+- MAPE trend over time (is accuracy improving or degrading?)
+- Top products with the highest forecast error
+- Bias distribution across the catalog
+
+## Improving accuracy
+
+### Fix data quality issues
+
+The most common cause of poor accuracy is bad input data. Check:
+
+- **Missing sales data** — orders not syncing from your store
+- **Duplicate events** — double-counted sales inflating history
+- **Uncategorised products** — products without categories cannot benefit from cross-product learning
+
+### Add demand signals
+
+Enable additional [demand signals](/inventory/demand-signals) like marketing calendars and traffic data. External signals help the model anticipate demand changes rather than reacting to them.
+
+### Create seasonal events
+
+If accuracy drops around holidays or promotions, add [seasonal events](/inventory/seasonal-adjustments) so the model knows to expect abnormal demand.
+
+### Adjust safety stock
+
+If forecast bias is consistently negative (under-prediction), increase the safety stock buffer under **Inventory → Settings → Safety stock**. This adds a buffer to reorder points to compensate for systematic under-prediction.
+
+<Tip>
+Focus accuracy improvement efforts on your top 50 products by revenue. Improving forecasts for high-value SKUs has the biggest impact on stockout prevention and working capital.
+</Tip>
+
+## Feedback loop
+
+When you override a forecast or adjust a reorder quantity manually, Luminos AI records the adjustment as feedback. Over time, the model learns from these corrections and adjusts its predictions accordingly.

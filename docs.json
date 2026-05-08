@@ -1,8 +1,8 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Help Center",
-  "description": "Documentation and guides for this template—workspace setup, product how-tos, and support.",
+  "name": "Luminos AI Help Center",
+  "description": "Documentation and guides for Luminos AI — the AI-powered ecommerce platform.",
   "colors": {
     "primary": "#166E3F",
     "light": "#26BD6C",
@@ -23,184 +23,188 @@
     "products": [
       {
         "product": "Help Center",
-        "description": "Setup guides, product how-tos, automation tips, and policies.",
+        "description": "Setup guides, AI product features, developer tools, and account management.",
         "icon": "life-buoy",
         "groups": [
-      {
-        "group": "Getting started & account",
-        "icon": "rocket",
-        "expanded": true,
-        "root": "getting-started/index",
-        "pages": [
-          "getting-started/quickstart",
-          "getting-started/create-account",
-          "getting-started/sign-in-security",
           {
-            "group": "Workspace",
+            "group": "Getting started",
+            "icon": "rocket",
+            "expanded": true,
+            "root": "getting-started/index",
+            "pages": [
+              "getting-started/quickstart",
+              "getting-started/connect-your-store",
+              "getting-started/install-tracking-pixel",
+              "getting-started/import-product-catalog",
+              "getting-started/platform-overview",
+              "getting-started/onboarding-checklist"
+            ]
+          },
+          {
+            "group": "AI Recommendations",
+            "icon": "sparkles",
+            "expanded": true,
+            "root": "recommendations/index",
+            "pages": [
+              "recommendations/setup-recommendation-engine",
+              "recommendations/collaborative-filtering",
+              "recommendations/content-based-algorithms",
+              "recommendations/ab-testing-models",
+              "recommendations/personalisation-rules",
+              "recommendations/product-carousels",
+              "recommendations/email-recommendations",
+              "recommendations/cross-sell-upsell",
+              "recommendations/exclude-products",
+              "recommendations/recommendation-analytics",
+              "recommendations/troubleshoot-recommendations"
+            ]
+          },
+          {
+            "group": "Smart Search",
+            "icon": "search",
+            "expanded": true,
+            "root": "search/index",
+            "pages": [
+              "search/configure-smart-search",
+              "search/synonyms-redirects",
+              "search/search-merchandising",
+              "search/faceted-filtering",
+              "search/autocomplete-suggestions",
+              "search/search-analytics",
+              "search/boost-bury-rules",
+              "search/visual-search",
+              "search/natural-language-search",
+              "search/search-relevance-tuning",
+              "search/troubleshoot-search"
+            ]
+          },
+          {
+            "group": "Inventory Forecasting",
+            "icon": "package",
+            "root": "inventory/index",
+            "pages": [
+              "inventory/forecasting-models",
+              "inventory/demand-signals",
+              "inventory/low-stock-alerts",
+              "inventory/reorder-automation",
+              "inventory/warehouse-integrations",
+              "inventory/seasonal-adjustments",
+              "inventory/accuracy-tuning",
+              "inventory/multi-location-inventory",
+              "inventory/inventory-analytics",
+              "inventory/troubleshoot-forecasting"
+            ]
+          },
+          {
+            "group": "Dynamic Pricing",
+            "icon": "tag",
+            "root": "pricing/index",
+            "pages": [
+              "pricing/dynamic-pricing-rules",
+              "pricing/competitor-tracking",
+              "pricing/margin-protection",
+              "pricing/price-elasticity",
+              "pricing/promotional-pricing",
+              "pricing/geographic-pricing",
+              "pricing/pricing-schedules",
+              "pricing/map-compliance",
+              "pricing/pricing-analytics",
+              "pricing/troubleshoot-pricing"
+            ]
+          },
+          {
+            "group": "Customer Segmentation",
             "icon": "users",
-            "root": "getting-started/workspace/index",
+            "root": "segmentation/index",
             "pages": [
-              "getting-started/workspace/invite-teammates",
-              "getting-started/workspace/roles-permissions",
-              "getting-started/workspace/organization-settings"
+              "segmentation/create-audience-segments",
+              "segmentation/behavioural-triggers",
+              "segmentation/rfm-analysis",
+              "segmentation/lifecycle-stages",
+              "segmentation/predictive-scoring",
+              "segmentation/segment-sync-destinations",
+              "segmentation/lookalike-audiences",
+              "segmentation/real-time-segmentation",
+              "segmentation/segmentation-analytics",
+              "segmentation/troubleshoot-segmentation"
             ]
           },
           {
-            "group": "Billing & plans",
-            "icon": "credit-card",
-            "root": "getting-started/billing/index",
+            "group": "Storefront Chatbot",
+            "icon": "message-circle",
+            "root": "chatbot/index",
             "pages": [
-              "getting-started/billing/compare-plans",
-              "getting-started/billing/upgrade-downgrade",
-              "getting-started/billing/invoices-receipts"
+              "chatbot/deploy-storefront-chatbot",
+              "chatbot/train-on-knowledge-base",
+              "chatbot/conversation-flows",
+              "chatbot/escalation-to-human",
+              "chatbot/order-status-automation",
+              "chatbot/returns-exchanges-bot",
+              "chatbot/multilingual-chatbot",
+              "chatbot/chatbot-appearance",
+              "chatbot/csat-collection",
+              "chatbot/chatbot-analytics",
+              "chatbot/troubleshoot-chatbot"
             ]
           },
           {
-            "group": "Integrations",
-            "icon": "plug",
-            "root": "getting-started/integrations/index",
+            "group": "Analytics & Reporting",
+            "icon": "bar-chart-3",
+            "root": "analytics/index",
             "pages": [
-              "getting-started/integrations/connect-slack",
-              "getting-started/integrations/connect-crm",
+              "analytics/dashboards-overview",
+              "analytics/custom-reports",
+              "analytics/revenue-attribution",
+              "analytics/funnel-analysis",
+              "analytics/cohort-analysis",
+              "analytics/export-data",
+              "analytics/scheduled-reports",
+              "analytics/real-time-metrics",
+              "analytics/analytics-glossary",
+              "analytics/troubleshoot-analytics"
+            ]
+          },
+          {
+            "group": "API & Developers",
+            "icon": "code",
+            "root": "api/index",
+            "pages": [
+              "api/authentication",
+              "api/rest-api-overview",
+              "api/rate-limits",
+              "api/webhooks",
               {
-                "group": "Developer integrations",
-                "icon": "code-xml",
-                "root": "getting-started/integrations/developer/index",
+                "group": "SDKs",
+                "icon": "blocks",
+                "root": "api/sdks/index",
                 "pages": [
-                  "getting-started/integrations/developer/oauth-apps",
-                  "getting-started/integrations/developer/webhooks",
-                  "getting-started/integrations/developer/api-keys"
+                  "api/sdks/javascript-sdk",
+                  "api/sdks/python-sdk",
+                  "api/sdks/ruby-sdk"
                 ]
               },
-              {
-                "group": "Partner connectors",
-                "icon": "link-2",
-                "root": "getting-started/integrations/partners/index",
-                "pages": [
-                  "getting-started/integrations/partners/salesforce",
-                  "getting-started/integrations/partners/hubspot",
-                  "getting-started/integrations/partners/custom-connector-template"
-                ]
-              }
+              "api/graphql-api",
+              "api/error-handling",
+              "api/api-changelog"
+            ]
+          },
+          {
+            "group": "Account & Admin",
+            "icon": "settings",
+            "root": "account/index",
+            "pages": [
+              "account/sso-setup",
+              "account/team-management",
+              "account/roles-permissions",
+              "account/audit-logs",
+              "account/usage-limits",
+              "account/billing-plans",
+              "account/data-retention",
+              "account/gdpr-compliance",
+              "account/security-practices",
+              "account/contact-support"
             ]
           }
-        ]
-      },
-      {
-        "group": "Product guides",
-        "icon": "book-open",
-        "expanded": true,
-        "root": "product/index",
-        "pages": [
-          "product/interface-overview",
-          "product/keyboard-shortcuts",
-          "product/search-navigation",
-          {
-            "group": "Projects",
-            "icon": "folder-kanban",
-            "root": "product/projects/index",
-            "pages": [
-              "product/projects/create-project",
-              "product/projects/archive-restore"
-            ]
-          },
-          {
-            "group": "Editor & content",
-            "icon": "pen-line",
-            "root": "product/editor/index",
-            "pages": [
-              "product/editor/drafts-publishing",
-              "product/editor/comments-mentions",
-              "product/editor/version-history"
-            ]
-          },
-          {
-            "group": "Automation",
-            "icon": "zap",
-            "root": "product/automation/index",
-            "pages": [
-              "product/automation/rules-triggers",
-              {
-                "group": "Workflow builder",
-                "icon": "workflow",
-                "root": "product/automation/workflows/index",
-                "pages": [
-                  "product/automation/workflows/build-first-workflow",
-                  "product/automation/workflows/conditions-branches",
-                  "product/automation/workflows/error-handling"
-                ]
-              },
-              {
-                "group": "Advanced patterns",
-                "icon": "layers",
-                "root": "product/automation/advanced/index",
-                "pages": [
-                  "product/automation/advanced/rate-limits",
-                  "product/automation/advanced/idempotency",
-                  "product/automation/advanced/retry-policies"
-                ]
-              },
-              "product/automation/scheduled-tasks"
-            ]
-          }
-        ]
-      },
-      {
-        "group": "Support & policies",
-        "icon": "life-buoy",
-        "expanded": true,
-        "root": "support/index",
-        "pages": [
-          "support/contact-support",
-          "support/status-incidents",
-          {
-            "group": "Troubleshooting",
-            "icon": "wrench",
-            "root": "support/troubleshooting/index",
-            "pages": [
-              "support/troubleshooting/login-issues",
-              "support/troubleshooting/performance-issues"
-            ]
-          },
-          {
-            "group": "Account & data",
-            "icon": "database",
-            "root": "support/account-data/index",
-            "pages": [
-              "support/account-data/export-data",
-              "support/account-data/delete-account"
-            ]
-          },
-          {
-            "group": "Legal & compliance",
-            "icon": "scale",
-            "root": "support/legal/index",
-            "pages": [
-              "support/legal/terms-of-service",
-              {
-                "group": "Privacy & GDPR",
-                "icon": "shield-check",
-                "root": "support/legal/privacy/index",
-                "pages": [
-                  "support/legal/privacy/privacy-policy",
-                  "support/legal/privacy/dpa",
-                  "support/legal/privacy/subprocessors"
-                ]
-              },
-              {
-                "group": "Regional specifics",
-                "icon": "globe",
-                "root": "support/legal/regions/index",
-                "pages": [
-                  "support/legal/regions/eu-residency",
-                  "support/legal/regions/us-residency",
-                  "support/legal/regions/apac"
-                ]
-              }
-            ]
-          }
-        ]
-      }
         ]
       },
       {
@@ -231,13 +235,13 @@
     "links": [
       {
         "label": "Get support",
-        "href": "/support/contact-support"
+        "href": "/account/contact-support"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "href": "https://app.luminos.ai"
     }
   }
 }

@@ -1,0 +1,49 @@
+---
+title: "SDKs"
+sidebarTitle: "SDKs overview"
+description: "Client libraries for JavaScript, Python, and Ruby."
+---
+
+Luminos AI provides official SDKs for the three most common languages in ecommerce development. Each SDK wraps the REST API with type-safe methods, handles authentication, and implements best practices like retry logic and rate limit handling.
+
+## Available SDKs
+
+| Language | Package | Install |
+|----------|---------|---------|
+| JavaScript | `@luminos-ai/sdk` | `npm install @luminos-ai/sdk` |
+| Python | `luminos-ai` | `pip install luminos-ai` |
+| Ruby | `luminos-ai` | `gem install luminos-ai` |
+
+## Common patterns
+
+All SDKs follow the same patterns:
+
+### Initialisation
+
+Create a client with your API key:
+
+```javascript
+import { LuminosAI } from '@luminos-ai/sdk';
+const client = new LuminosAI({ apiKey: 'lum_sk_abc123' });
+```
+
+### Error handling
+
+SDKs raise typed exceptions for API errors. Catch them to handle specific scenarios:
+
+- `AuthenticationError` — invalid or expired API key
+- `RateLimitError` — rate limit exceeded (includes `retryAfter`)
+- `NotFoundError` — requested resource does not exist
+- `ValidationError` — request parameters are invalid
+
+### Automatic retries
+
+SDKs automatically retry failed requests with exponential backoff for transient errors (5xx status codes and network timeouts). Configure the maximum retry count when initialising the client.
+
+## Choosing an SDK
+
+- **JavaScript** — use for browser-based integrations, Node.js backends, and serverless functions. See the [JavaScript SDK guide](/api/sdks/javascript-sdk).
+- **Python** — use for data pipelines, machine learning workflows, and Django/Flask backends. See the [Python SDK guide](/api/sdks/python-sdk).
+- **Ruby** — use for Rails applications and backend integrations. See the [Ruby SDK guide](/api/sdks/ruby-sdk).
+
+If your stack uses a different language, use the [REST API](/api/rest-api-overview) directly — it works with any HTTP client.

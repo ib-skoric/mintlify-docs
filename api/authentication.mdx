@@ -1,0 +1,69 @@
+---
+title: "Authentication"
+sidebarTitle: "Authentication"
+description: "API keys, OAuth, and token scopes for secure access."
+---
+
+All API requests to Luminos AI must be authenticated. You can choose between API keys for server-to-server communication and OAuth for user-context integrations.
+
+## API keys
+
+API keys are the simplest authentication method. Use them for backend integrations where a single service account accesses Luminos AI on behalf of your application.
+
+### Creating an API key
+
+1. Go to **Settings → API → Keys → Create**
+2. Name the key (e.g. "Production backend" or "Analytics pipeline")
+3. Select the scopes (permissions) the key should have
+4. Copy the key — it is shown only once
+
+### Using an API key
+
+Include the key in the `Authorization` header:
+
+```bash
+curl -X GET "https://api.luminos.ai/v1/recommendations" \
+  -H "Authorization: Bearer lum_sk_abc123def456"
+```
+
+<Warning>
+Store API keys securely. Never commit them to version control, embed them in client-side code, or share them in plaintext. Use environment variables or a secrets manager.
+</Warning>
+
+## OAuth 2.0
+
+Use OAuth when your integration acts on behalf of a specific user — for example, a dashboard that shows different data depending on who is logged in.
+
+### OAuth flow
+
+Luminos AI supports the Authorization Code flow:
+
+1. Redirect the user to `https://auth.luminos.ai/authorize` with your `client_id`, `redirect_uri`, and requested `scope`
+2. The user logs in and approves the request
+3. Luminos AI redirects back to your `redirect_uri` with an authorization code
+4. Exchange the code for an access token at `https://auth.luminos.ai/token`
+5. Use the access token in the `Authorization: Bearer` header
+
+Access tokens expire after 1 hour. Use the refresh token to obtain a new access token without requiring the user to log in again.
+
+## Scopes
+
+Scopes control what an API key or OAuth token can access:
+
+| Scope | Description |
+|-------|-------------|
+| `recommendations:read` | Fetch recommendation results |
+| `recommendations:write` | Create and modify placements and rules |
+| `search:read` | Execute search queries |
+| `search:write` | Manage synonyms, merchandising, and settings |
+| `analytics:read` | Access analytics and reports |
+| `events:write` | Send behavioural events |
+| `catalog:read` | Read product catalog data |
+| `catalog:write` | Modify product catalog data |
+| `admin` | Full access to all settings |
+
+Apply the principle of least privilege — grant only the scopes your integration needs.
+
+## Key rotation
+
+Rotate API keys regularly. Create a new key, update your integration, verify it works, then delete the old key under **Settings → API → Keys**.

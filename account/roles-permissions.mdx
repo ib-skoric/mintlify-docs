@@ -1,0 +1,55 @@
+---
+title: "Roles and permissions"
+sidebarTitle: "Roles & permissions"
+description: "Built-in roles or custom permission sets for access control."
+---
+
+Roles control what each team member can see and do in Luminos AI. Assign a role when inviting a member, and change it at any time under **Settings → Team → Members**.
+
+## Built-in roles
+
+| Role | Description |
+|------|-------------|
+| **Owner** | Full access to everything, including billing, SSO, and workspace deletion. Every workspace has exactly one Owner. |
+| **Admin** | Full access except billing and workspace deletion. Can manage team members, roles, and integrations. |
+| **Editor** | Can create and modify recommendations, search rules, pricing rules, segments, chatbot flows, and reports. Cannot manage team members or integrations. |
+| **Analyst** | Read-only access to all analytics, reports, and dashboards. Can create and export custom reports but cannot modify AI features or settings. |
+| **Viewer** | Read-only access to dashboards and published reports. Cannot create reports or access raw data. |
+
+## Permission matrix
+
+| Capability | Owner | Admin | Editor | Analyst | Viewer |
+|-----------|-------|-------|--------|---------|--------|
+| View dashboards | Yes | Yes | Yes | Yes | Yes |
+| Create custom reports | Yes | Yes | Yes | Yes | No |
+| Export data | Yes | Yes | Yes | Yes | No |
+| Configure AI features | Yes | Yes | Yes | No | No |
+| Manage integrations | Yes | Yes | No | No | No |
+| Manage team members | Yes | Yes | No | No | No |
+| Manage billing | Yes | No | No | No | No |
+| Delete workspace | Yes | No | No | No | No |
+
+## Custom roles
+
+On the Enterprise plan, you can create custom roles with granular permissions:
+
+1. Go to **Settings → Team → Roles → Create**
+2. Name the role (e.g. "Merchandiser", "Data Engineer")
+3. Toggle individual permissions on or off
+4. Save and assign to team members
+
+Custom roles let you enforce the principle of least privilege — for example, a Merchandiser who can modify search merchandising rules but not pricing rules.
+
+## Module-scoped access
+
+Enterprise plans also support module-scoped access, limiting a role to specific modules. For example, a "Search Manager" custom role might have full Editor access to the Search module but only Viewer access to Recommendations and Pricing.
+
+Configure module scope when creating a custom role.
+
+<Tip>
+Start with built-in roles. Only create custom roles when the built-in options are clearly too broad or too narrow for a specific team member's responsibilities.
+</Tip>
+
+## Transferring ownership
+
+To transfer the Owner role to another Admin, go to **Settings → Team → Members**, select the target member, and click **Transfer ownership**. The current Owner becomes an Admin after the transfer.

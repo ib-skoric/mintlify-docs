@@ -1,0 +1,57 @@
+---
+title: "Competitor price tracking"
+sidebarTitle: "Competitor tracking"
+description: "Monitor competitor prices and automate responses to market changes."
+---
+
+Competitor price tracking monitors the prices of matching products across competitor websites and marketplaces. Luminos AI uses this data to inform dynamic pricing rules and alert you to significant market changes.
+
+## How it works
+
+Luminos AI's price crawling network checks competitor prices at regular intervals. Products are matched between your catalog and competitor listings using:
+
+- **GTIN/EAN/UPC** — barcode matching for identical products
+- **Brand + model** — name-based matching with fuzzy logic
+- **Manual mapping** — you can explicitly map your products to competitor URLs
+
+## Adding competitors
+
+1. Go to **Pricing → Competitors → Add**
+2. Enter the competitor name and website URL
+3. Choose the matching method (automatic GTIN, brand+model, or manual)
+4. Set the crawl frequency (daily, twice daily, or hourly for high-priority competitors)
+5. Luminos AI begins crawling and matching products within 24 hours
+
+## Competitor dashboard
+
+The competitor dashboard shows:
+
+- **Price comparison matrix** — your price vs. each competitor for matched products
+- **Price position** — what percentage of products you are cheapest, mid-range, or most expensive
+- **Price gap distribution** — histogram of the difference between your prices and the market average
+- **Trend lines** — how competitor pricing has changed over the last 30/60/90 days
+
+## Automated responses
+
+Create [pricing rules](/pricing/dynamic-pricing-rules) that react to competitor price changes:
+
+- **Match** — set your price equal to the competitor's price
+- **Undercut** — set your price below the competitor by a fixed amount or percentage
+- **Beat or ignore** — only respond if the competitor is cheaper; ignore if you are already cheaper
+- **Alert only** — send a notification without changing your price
+
+All automated responses respect your [margin protection](/pricing/margin-protection) guardrails.
+
+<Warning>
+Avoid setting multiple competitors as undercut targets for the same product. This can create a race-to-the-bottom loop where each price reduction triggers another.
+</Warning>
+
+## Marketplace tracking
+
+Luminos AI can also track prices on marketplaces like Amazon, eBay, and Google Shopping. Marketplace tracking uses public product listing data and does not require marketplace seller credentials.
+
+## Data freshness
+
+Competitor prices are timestamped with the crawl time. The age of the data is displayed on every comparison. For fast-moving categories, increase the crawl frequency or set alerts for products where competitor prices change more than 10% between crawls.
+
+Track competitor data freshness and match rates under [Pricing analytics](/pricing/pricing-analytics).

@@ -1,0 +1,54 @@
+---
+title: "Boost and bury rules"
+sidebarTitle: "Boost & bury"
+description: "Promote high-margin products and suppress low-performers."
+---
+
+Boost and bury rules adjust the ranking score of products in search results based on business criteria rather than relevance alone. They let you align search behaviour with commercial goals without overriding the organic ranking entirely.
+
+## When to use boost and bury
+
+- **Boost high-margin products** so they appear near the top of results for broad queries
+- **Boost new arrivals** to give recently added products visibility before they accumulate behavioural signals
+- **Bury low-stock items** so shoppers focus on products you can actually fulfil
+- **Bury low-rated products** to improve the overall quality of results
+
+## How scoring works
+
+Every product in a search result set has a base relevance score calculated from text matching, popularity, and personalisation signals. Boost and bury rules apply a multiplier to that score:
+
+- **Boost** — multiplier greater than 1.0 (e.g. 2.0× doubles the score)
+- **Bury** — multiplier less than 1.0 (e.g. 0.3× reduces the score to 30% of its original value)
+
+A product with a high base relevance and a bury rule may still appear above a product with low base relevance and a boost rule. This is by design — the rules shift rankings but do not override relevance entirely.
+
+## Creating rules
+
+1. Go to **Search → Rules → Create**
+2. Choose **Boost** or **Bury**
+3. Define the product filter using attributes:
+   - Category, brand, or tag
+   - Price range (e.g. products over £100)
+   - Margin percentage (if you import cost data)
+   - Inventory level (e.g. fewer than 10 units)
+   - Custom attributes
+4. Set the multiplier (1.1× to 10× for boost, 0.1× to 0.9× for bury)
+5. Optionally scope to specific queries or query patterns
+6. Save and publish
+
+## Global vs. query-specific rules
+
+- **Global rules** apply to every search query. Use these for broad business logic like boosting high-margin products or burying out-of-season items.
+- **Query-specific rules** apply only when the shopper's query matches a pattern. Use these for targeted campaigns like boosting a new brand during a launch week.
+
+## Rule stacking
+
+Multiple rules can apply to the same product. When they do, their multipliers compound. A product with a 2.0× margin boost and a 0.5× low-stock bury ends up at 1.0× — effectively neutral.
+
+<Warning>
+Avoid stacking more than 3 rules on the same product set. Compounding multipliers become unpredictable and hard to debug.
+</Warning>
+
+## Measuring impact
+
+Compare conversion rates for boosted vs. non-boosted products in [Search analytics](/search/search-analytics). If boosted products have lower conversion despite higher impressions, the boost may be pushing irrelevant products too high.

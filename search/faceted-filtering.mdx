@@ -1,0 +1,49 @@
+---
+title: "Faceted filtering"
+sidebarTitle: "Faceted filtering"
+description: "Configure dynamic filters for price, brand, colour, and size."
+---
+
+Faceted filtering lets shoppers narrow search results by selecting attribute values — price range, brand, colour, size, rating, and any custom attribute in your catalog. Filters are generated dynamically based on the products in the current result set.
+
+## How facets work
+
+When a shopper searches for "running shoes", Smart Search returns the full result set and a list of facets derived from the matching products. If the results include Nike, Adidas, and New Balance products, the brand facet shows those three values with counts. Selecting a facet value re-runs the query with the filter applied.
+
+Facets only show values that have matching products in the current result set. This prevents dead-end combinations where selecting a filter returns zero results.
+
+## Configuring facets
+
+1. Go to **Search → Facets → Manage**
+2. You will see a list of all product attributes detected in your catalog
+3. Toggle each attribute on or off as a facet
+4. Drag to reorder — facets appear on the storefront in the order you set here
+5. Configure the display type for each facet:
+   - **List** — checkboxes with value counts (default)
+   - **Range slider** — for numeric attributes like price
+   - **Colour swatches** — for colour attributes
+   - **Size grid** — for size attributes
+
+## Price range facet
+
+The price facet uses a range slider by default. Configure the step size under **Search → Facets → Price**:
+
+- **Auto** — Luminos AI calculates optimal price buckets based on the distribution of your product prices
+- **Fixed** — set manual step sizes (e.g. £10 increments)
+- **Custom ranges** — define explicit buckets like "Under £25", "£25–£50", "£50–£100", "Over £100"
+
+## Custom attributes
+
+Any attribute in your product catalog can become a facet. If you have enriched your catalog with custom fields like "material", "season", or "occasion", they appear automatically in the facet list.
+
+<Tip>
+Keep the number of visible facets under 8. Too many filters overwhelm shoppers and slow down the search interface. Hide niche attributes behind a "More filters" toggle.
+</Tip>
+
+## Mobile behaviour
+
+On mobile devices, facets collapse into a slide-out panel triggered by a **Filters** button. The panel shows the same facets in the same order. Luminos AI handles the responsive behaviour automatically.
+
+## Monitoring
+
+Track which facets shoppers use most under [Search analytics](/search/search-analytics) → **Facet usage**. Low-usage facets may be candidates for removal or repositioning.

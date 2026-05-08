@@ -1,0 +1,76 @@
+---
+title: "Dynamic pricing rules"
+sidebarTitle: "Pricing rules"
+description: "Rules that adjust prices based on inventory, demand, and time."
+---
+
+Pricing rules are the core building blocks of Luminos AI's dynamic pricing engine. Each rule defines a condition and an action — when the condition is met, the price adjusts automatically.
+
+## Rule structure
+
+Every pricing rule has four components:
+
+1. **Scope** — which products the rule applies to (all, category, brand, tag, or specific product IDs)
+2. **Condition** — the trigger that activates the rule (inventory level, demand velocity, competitor price, time of day)
+3. **Action** — what happens when the condition is met (increase price, decrease price, match competitor, set to a specific value)
+4. **Guardrails** — limits on how far the price can move (floor price, ceiling price, maximum change per day)
+
+## Common rule patterns
+
+### Sell-through acceleration
+
+Lower the price when inventory is high relative to demand velocity:
+
+- **Condition:** Days of supply > 60 days
+- **Action:** Decrease price by 10%
+- **Guardrail:** Floor at cost + 15% margin
+
+### Scarcity premium
+
+Raise the price when inventory is low and demand is high:
+
+- **Condition:** Days of supply < 7 days AND demand velocity > 2× average
+- **Action:** Increase price by 15%
+- **Guardrail:** Ceiling at 130% of base price
+
+### Competitive response
+
+Match or undercut a competitor's price:
+
+- **Condition:** Competitor price is lower than your price by more than 5%
+- **Action:** Set price to competitor price - £1
+- **Guardrail:** Floor at cost + 20% margin
+
+## Creating a rule
+
+<Steps>
+
+<Step title="Define scope">
+Go to **Pricing → Rules → Create** and select the products this rule applies to. Use category or tag filters for broad rules, or select specific products for targeted adjustments.
+</Step>
+
+<Step title="Set the condition">
+Choose from condition types: inventory level, demand velocity, competitor price, time/date, or custom metric. Combine multiple conditions with AND/OR logic.
+</Step>
+
+<Step title="Configure the action">
+Select the price adjustment: percentage increase/decrease, fixed amount change, match competitor, or set to a specific value. Choose whether the adjustment applies to the base price or the current live price.
+</Step>
+
+<Step title="Add guardrails">
+Set [margin protection](/pricing/margin-protection) limits to prevent the rule from creating unprofitable prices. Set a maximum daily change to avoid jarring price swings.
+</Step>
+
+</Steps>
+
+## Rule priority
+
+When multiple rules apply to the same product, priority determines which one wins. Lower priority numbers evaluate first. If you want rules to stack (both apply), enable rule chaining in the rule settings.
+
+<Warning>
+Test new rules in **Preview mode** before publishing. Preview shows what prices would change without actually changing them.
+</Warning>
+
+## Monitoring
+
+Track how many products are affected by each rule and the revenue impact under [Pricing analytics](/pricing/pricing-analytics).

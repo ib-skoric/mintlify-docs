@@ -1,0 +1,55 @@
+---
+title: "Recommendation analytics"
+sidebarTitle: "Analytics"
+description: "Track CTR, conversion lift, and revenue attributed to recommendations."
+---
+
+The recommendation analytics dashboard shows how your AI-powered suggestions perform across placements, models, and time periods. Use it to identify high-performing strategies and spot opportunities for improvement.
+
+## Key metrics
+
+### Click-through rate (CTR)
+
+The percentage of recommendation impressions that result in a product click. A healthy CTR for on-site recommendations is 2–8% depending on placement and industry.
+
+### Conversion rate
+
+The percentage of recommendation clicks that lead to a purchase. This measures how relevant the clicked products were to the shopper's actual needs.
+
+### Revenue attributed
+
+Total revenue from orders that included at least one product clicked from a recommendation. Luminos AI uses a 7-day attribution window by default — if a shopper clicks a recommendation and purchases that product within 7 days, the revenue is attributed.
+
+### Revenue per impression (RPI)
+
+Revenue attributed divided by total impressions. This is the most useful metric for comparing placements of different sizes and traffic volumes.
+
+### Average order value lift
+
+The difference in AOV between orders that included a recommended product and those that did not. Positive lift indicates that recommendations are successfully encouraging additional or higher-value purchases.
+
+## Using the dashboard
+
+Navigate to **Analytics → Recommendations**. The top-level view shows aggregate metrics for all placements. Use the filters to drill down by:
+
+- **Placement** — compare homepage carousel vs. PDP widget vs. cart cross-sell
+- **Model** — see which algorithm performs best
+- **Device** — desktop vs. mobile performance
+- **Segment** — how recommendations perform for different customer groups
+- **Date range** — track trends over time
+
+## Reports
+
+Create a saved report under **Analytics → Custom reports** to track recommendation performance on a recurring basis. You can [schedule delivery](/analytics/scheduled-reports) via email or Slack.
+
+<Info>
+Attribution counts each product only once per order, even if the shopper saw it in multiple placements. This avoids double-counting revenue.
+</Info>
+
+## Diagnosing performance issues
+
+- **Low CTR** — check that placements are above the fold and that the model is returning relevant products
+- **High CTR but low conversion** — the model is generating interest but the recommended products may not match purchase intent; try a different model
+- **Declining revenue attributed** — review [exclusion rules](/recommendations/exclude-products) and catalog freshness
+
+See [Troubleshoot recommendations](/recommendations/troubleshoot-recommendations) for more diagnostic steps.

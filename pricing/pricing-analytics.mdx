@@ -1,0 +1,65 @@
+---
+title: "Pricing analytics"
+sidebarTitle: "Analytics"
+description: "Revenue impact, margin trends, and competitive position."
+---
+
+The pricing analytics dashboard measures the impact of your pricing strategy on revenue, margins, and competitive positioning. Use it to evaluate whether dynamic pricing rules are delivering the expected business outcomes.
+
+## Key metrics
+
+### Revenue impact
+
+Total revenue attributed to dynamic pricing changes compared to what revenue would have been at static prices. Luminos AI calculates this counterfactual using the base price and actual demand elasticity.
+
+### Margin trend
+
+Average margin percentage over time. A healthy dynamic pricing strategy should maintain or improve margins, not erode them. If margin trends downward, review your [guardrails](/pricing/margin-protection).
+
+### Price change frequency
+
+How often prices change across your catalog. Very high frequency (multiple changes per day per product) can erode customer trust. Very low frequency suggests your rules are too conservative.
+
+### Competitive position
+
+What percentage of your products are priced below, at, or above the market average based on [competitor tracking](/pricing/competitor-tracking) data.
+
+### Guardrail activation rate
+
+How often pricing rules hit a floor, ceiling, or daily change cap. A high rate suggests tension between your pricing strategy and your guardrails.
+
+## Dashboard views
+
+Navigate to **Analytics → Pricing**:
+
+- **Overview** — aggregate metrics and trends
+- **By rule** — performance of each pricing rule (revenue impact, products affected, guardrail hits)
+- **By category** — pricing metrics broken down by product category
+- **By competitor** — how your pricing compares to each tracked competitor
+- **Promotions** — performance of [promotional pricing](/pricing/promotional-pricing) campaigns
+
+## Price change log
+
+Every price change is recorded in the audit log under **Pricing → History**. Each entry shows:
+
+- Product ID and name
+- Previous price and new price
+- The rule or schedule that triggered the change
+- Whether any guardrail was applied
+- Timestamp
+
+Use the log to investigate unexpected prices or to provide audit trails for compliance reviews.
+
+## Reports
+
+Create saved reports for regular monitoring. Common pricing reports include:
+
+- Weekly margin summary by category
+- Monthly competitive position report
+- Promotion post-mortem (revenue lift vs. margin impact)
+
+Deliver reports via [scheduled reports](/analytics/scheduled-reports).
+
+<Tip>
+Review the guardrail activation report weekly. Products that consistently hit guardrails may need rule adjustments — the guardrail is working but the underlying pricing strategy might be out of alignment with your margins.
+</Tip>

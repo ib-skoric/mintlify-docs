@@ -1,0 +1,48 @@
+---
+title: "Content-based algorithms"
+sidebarTitle: "Content-based"
+description: "Recommend products based on attribute similarity."
+---
+
+Content-based algorithms recommend products that share attributes with items a shopper has already viewed or purchased. Unlike collaborative filtering, they do not require data from other shoppers — making them especially useful for new stores and niche catalogs.
+
+## How it works
+
+Luminos AI builds a feature vector for every product in your catalog using:
+
+- **Category and subcategory** — the product's position in your taxonomy
+- **Brand** — manufacturer or designer
+- **Price range** — bucketed into bands relative to the category median
+- **Attributes** — colour, material, size, style tags, and any custom metadata you provide
+- **Description embedding** — a semantic vector generated from the product title and description using a transformer model
+
+When a shopper views a product, the engine finds the nearest neighbours in this feature space and ranks them by similarity score.
+
+## Similarity metrics
+
+Luminos AI supports two similarity metrics:
+
+- **Cosine similarity** (default) — measures the angle between two product vectors. Works well for high-dimensional attribute spaces.
+- **Euclidean distance** — measures the straight-line distance. Better when price proximity matters more than attribute alignment.
+
+Switch between them under **Recommendations → Models → Content-based → Similarity metric**.
+
+## Enriching your catalog
+
+The quality of content-based recommendations depends directly on the richness of your product data. To get the best results:
+
+- Add descriptive tags beyond basic categories — "boho", "minimalist", "outdoor" help the model distinguish styles
+- Include material and composition data for fashion and home goods
+- Use consistent naming conventions so the model can group related attributes
+
+Review your catalog completeness under **Data → Product catalog → Health**. Products with fewer than three attributes are flagged as under-enriched.
+
+<Tip>
+Content-based algorithms are the best choice for "similar items" widgets on product detail pages, where the shopper's current interest is clear.
+</Tip>
+
+## Combining with collaborative filtering
+
+You can run both models simultaneously. Create a hybrid placement under **Recommendations → Placements** and set the blend ratio — for example, 60% collaborative and 40% content-based. The engine merges the ranked lists and deduplicates before serving.
+
+See [Collaborative filtering](/recommendations/collaborative-filtering) for details on the other half of the hybrid approach.

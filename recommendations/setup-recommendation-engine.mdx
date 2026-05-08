@@ -1,0 +1,52 @@
+---
+title: "Set up the recommendation engine"
+sidebarTitle: "Setup"
+description: "Configure the engine, choose models, and connect your product feed."
+---
+
+The recommendation engine needs three things before it can serve suggestions: a connected product catalog, at least one model, and a placement on your storefront. This guide walks you through each step.
+
+<Note>
+Complete the [getting started](/getting-started) guides first — you need a connected store and an active tracking pixel before recommendations can work.
+</Note>
+
+<Steps>
+
+<Step title="Verify your product feed">
+Go to **Recommendations → Setup → Product feed** and confirm that your catalog is syncing. You should see a count of active products and the last sync timestamp. If products are missing, check your [store connection](/getting-started/connect-your-store) and [catalog import](/getting-started/import-product-catalog) settings.
+</Step>
+
+<Step title="Choose a model">
+Luminos AI offers several recommendation models:
+
+- **Quick Start** — a pre-trained collaborative filtering model that works with minimal data. Best for new stores.
+- **Deep Personalisation** — combines collaborative filtering, content-based matching, and session context. Requires at least 30 days of behavioural data.
+- **Trending** — ranks products by recent popularity velocity rather than personalisation. Useful for homepages and category pages.
+- **Similar Items** — finds visually and categorically similar products. Best for product detail pages.
+
+Select a model under **Recommendations → Models** and click **Enable**.
+</Step>
+
+<Step title="Create a placement">
+A placement defines where recommendations appear on your storefront. Go to **Recommendations → Placements → Create** and configure:
+
+- **Name** — a label for internal reference (e.g. "PDP carousel")
+- **Page type** — homepage, product detail, cart, checkout, or custom
+- **Widget style** — carousel, grid, or list
+- **Number of products** — how many items to show (4–20)
+- **Model** — which recommendation model powers this placement
+
+Save and publish the placement. The Luminos AI pixel renders the widget automatically on the target page.
+</Step>
+
+<Step title="Preview and test">
+Open your storefront in a private browser and navigate to the page where you placed the widget. Verify that products appear and that clicking a recommendation logs an event in **Analytics → Real-time**.
+</Step>
+
+</Steps>
+
+## Next steps
+
+- [A/B test recommendation models](/recommendations/ab-testing-models) to compare performance
+- [Personalisation rules](/recommendations/personalisation-rules) to fine-tune what appears
+- [Recommendation analytics](/recommendations/recommendation-analytics) to measure impact

@@ -1,0 +1,54 @@
+---
+title: "Geographic pricing"
+sidebarTitle: "Geographic"
+description: "Vary prices by region, currency, or market."
+---
+
+Geographic pricing lets you set different prices for the same product based on the shopper's location. This accounts for differences in purchasing power, shipping costs, local competition, and currency exchange rates.
+
+## How it works
+
+Luminos AI determines the shopper's location using:
+
+1. **Storefront locale** — if your store has region-specific URLs (e.g. `/en-gb/`, `/de/`), the locale determines the pricing region
+2. **IP geolocation** — for stores without locale URLs, the shopper's IP address determines the region
+3. **Account address** — for logged-in shoppers, the billing or shipping address takes precedence
+
+## Setting up regions
+
+1. Go to **Pricing → Geographic → Regions**
+2. Create a region for each market (e.g. "United Kingdom", "European Union", "United States", "Australia")
+3. Assign countries to each region
+4. Set the base currency for the region
+5. Optionally set a price multiplier for the region (e.g. 1.1× for regions with higher costs)
+
+## Pricing strategies
+
+### Currency conversion
+
+Apply the current exchange rate plus a buffer. Luminos AI updates exchange rates daily from a financial data provider. Set the buffer under each region's settings to cover currency fluctuation risk.
+
+### Market-level pricing
+
+Set independent prices per region. This is common when local competition, taxes, and purchasing power differ significantly. Manage per-region prices in your product catalog or via CSV import.
+
+### Rounding rules
+
+After currency conversion, prices often result in unclean numbers (£43.27). Configure rounding rules per region:
+
+- **Round to nearest .99** — £43.27 → £42.99
+- **Round to nearest .95** — £43.27 → £42.95
+- **Round to nearest integer** — £43.27 → £43.00
+- **No rounding** — show the exact converted price
+
+## Tax display
+
+Configure whether prices include or exclude tax per region. In the EU, prices typically include VAT. In the US, prices are shown before sales tax. Set this under **Pricing → Geographic → Tax display**.
+
+<Tip>
+Test your geographic pricing by using a VPN to browse from different countries. Verify that prices, currencies, and tax display all behave correctly.
+</Tip>
+
+## Compliance
+
+Geographic pricing must comply with local regulations. Some jurisdictions prohibit price discrimination based on location. Review [MAP and regulatory compliance](/pricing/map-compliance) and consult your legal team before enabling geographic pricing.

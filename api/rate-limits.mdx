@@ -1,0 +1,83 @@
+---
+title: "Rate limits"
+sidebarTitle: "Rate limits"
+description: "Request quotas, burst allowances, and strategies to stay within limits."
+---
+
+Luminos AI enforces rate limits to ensure fair usage and platform stability. Limits are applied per API key and vary by plan and endpoint type.
+
+## Rate limit tiers
+
+| Plan | Requests per second | Requests per day | Burst allowance |
+|------|--------------------|--------------------|-----------------|
+| Starter | 10 | 50,000 | 20 |
+| Growth | 50 | 500,000 | 100 |
+| Enterprise | 200 | Unlimited | 500 |
+
+The burst allowance lets you temporarily exceed the per-second limit for short spikes. Sustained traffic above the per-second limit is throttled.
+
+## Rate limit headers
+
+Every API response includes rate limit information in the headers:
+
+```
+X-RateLimit-Limit: 50
+X-RateLimit-Remaining: 42
+X-RateLimit-Reset: 1672531200
+```
+
+- `X-RateLimit-Limit` — your per-second limit
+- `X-RateLimit-Remaining` — requests remaining in the current window
+- `X-RateLimit-Reset` — Unix timestamp when the limit resets
+
+## Exceeding the limit
+
+When you exceed the rate limit, the API returns a `429 Too Many Requests` response:
+
+```json
+{
+  "error": {
+    "code": "rate_limit_exceeded",
+    "message": "Rate limit exceeded. Retry after 1 second.",
+    "retry_after": 1
+  }
+}
+```
+
+The `retry_after` field tells you how many seconds to wait before retrying.
+
+## Strategies to stay within limits
+
+### Implement exponential backoff
+
+When you receive a 429 response, wait the `retry_after` duration, then retry. If the retry also fails, double the wait time, up to a maximum of 60 seconds.
+
+### Cache responses
+
+Recommendation and search results for the same parameters can be cached for 5–15 minutes without losing relevance. This dramatically reduces API calls for high-traffic pages.
+
+### Use webhooks instead of polling
+
+Instead of polling for changes, subscribe to [webhooks](/api/webhooks) for real-time notifications. This eliminates periodic API calls entirely.
+
+### Batch events
+
+The `/events` endpoint accepts batches of up to 100 events per request. Batch your behavioural events instead of sending one per request.
+
+```json
+{
+  "events": [
+    {"type": "pageview", "visitor_id": "v1", "url": "/products/123"},
+    {"type": "add_to_cart", "visitor_id": "v1", "product_id": "prod_456"},
+    {"type": "pageview", "visitor_id": "v2", "url": "/"}
+  ]
+}
+```
+
+<Tip>
+Monitor your rate limit usage under **Settings → API → Usage**. If you consistently use more than 80% of your limit, consider upgrading your plan or optimising your integration.
+</Tip>
+
+## Requesting a limit increase
+
+Enterprise customers can request custom rate limits by contacting [support](/account/contact-support). Include your use case, expected request volume, and peak traffic patterns.

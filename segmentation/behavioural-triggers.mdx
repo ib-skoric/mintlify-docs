@@ -1,0 +1,61 @@
+---
+title: "Behavioural triggers"
+sidebarTitle: "Triggers"
+description: "Automated actions when shoppers enter or exit a segment."
+---
+
+Behavioural triggers fire automated actions when a customer enters or exits a segment. Use them to send timely messages, adjust recommendations, or sync data to external systems based on real-time behaviour changes.
+
+## How triggers work
+
+Triggers evaluate continuously against the [real-time segmentation](/segmentation/real-time-segmentation) engine. When a customer's behaviour causes them to match (or stop matching) a segment's criteria, the trigger fires.
+
+**Example:** A customer adds an item to their cart but does not purchase within 2 hours. They enter the "Cart Abandoners" segment, which triggers an email with the abandoned cart contents and a [personalised recommendation](/recommendations/email-recommendations).
+
+## Creating a trigger
+
+1. Go to **Segmentation → Triggers → Create**
+2. Select the segment that activates the trigger
+3. Choose the trigger event:
+   - **Enters segment** — fires when a customer newly matches the segment criteria
+   - **Exits segment** — fires when a customer no longer matches
+   - **Remains in segment** — fires after a customer has been in the segment for a specified duration
+4. Choose the action (see below)
+5. Set a cooldown period to prevent the trigger from firing repeatedly for the same customer
+6. Save and activate
+
+## Action types
+
+### Send webhook
+
+Post a JSON payload to an external URL. Use this to trigger actions in your email platform, CRM, or custom systems. The payload includes the customer ID, segment name, and configurable custom fields.
+
+### Update recommendation profile
+
+Adjust the customer's recommendation profile — for example, boost a specific category or suppress products they have already viewed. This takes effect immediately on the next recommendation request.
+
+### Tag customer
+
+Add or remove a tag on the customer profile. Tags can be used as filters in other segments or synced to external systems.
+
+### Notify team
+
+Send a notification to a Slack channel or email address. Useful for high-value triggers like VIP customer churn risk.
+
+## Common trigger patterns
+
+| Segment | Event | Action | Cooldown |
+|---------|-------|--------|----------|
+| Cart abandoners (2h) | Enters | Webhook → email platform | 24 hours |
+| High-value at-risk | Enters | Notify team via Slack | 7 days |
+| First-time buyer | Enters | Tag as "new_customer" | Once |
+| Repeat buyer (3+ orders) | Enters | Update recommendations → boost loyalty offers | Once |
+| Inactive 60 days | Remains (7 days) | Webhook → win-back email series | 30 days |
+
+<Warning>
+Set cooldown periods to avoid sending multiple messages for the same behaviour. A customer who adds and removes cart items repeatedly should not receive an abandonment email every time.
+</Warning>
+
+## Monitoring
+
+Track trigger activity under **Segmentation → Triggers → Activity log**. Each entry shows the customer, segment, event type, action taken, and timestamp. Monitor for unexpected volumes that might indicate a segment misconfiguration.

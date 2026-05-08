@@ -1,0 +1,65 @@
+---
+title: "Lifecycle stages"
+sidebarTitle: "Lifecycle"
+description: "Map customers to prospect, first-time buyer, loyal, and at-risk."
+---
+
+Lifecycle stages provide a simplified view of where each customer sits in their relationship with your brand. Unlike [RFM analysis](/segmentation/rfm-analysis) which uses three numerical dimensions, lifecycle stages assign a single, human-readable label that everyone on your team can understand.
+
+## Default stages
+
+Luminos AI defines six lifecycle stages based on purchase behaviour and engagement signals:
+
+### Prospect
+
+A visitor who has browsed your site but has not yet made a purchase. Prospects are identified by the [tracking pixel](/getting-started/install-tracking-pixel) and matched to profiles when they provide an email or create an account.
+
+### First-time buyer
+
+A customer who has placed exactly one order. The transition from prospect to first-time buyer is the most critical conversion in the customer lifecycle.
+
+### Active
+
+A customer who has placed 2 or more orders within the last 90 days. Active customers are in a healthy purchasing rhythm.
+
+### Loyal
+
+A customer who has placed 5 or more orders and has a recency score of 4 or higher. Loyal customers are your most predictable revenue source.
+
+### At-risk
+
+A customer who was previously Active or Loyal but has not purchased in the last 60–90 days (configurable). At-risk customers need re-engagement before they churn.
+
+### Lapsed
+
+A customer who has not purchased in over 180 days. Lapsed customers require significant incentive to return.
+
+## Customising stages
+
+Modify the default stage definitions under **Segmentation → Lifecycle → Settings**:
+
+- Adjust the order count and recency thresholds for each stage
+- Add custom stages (e.g. "VIP" for customers who spend above a certain threshold)
+- Rename stages to match your team's terminology
+
+## Lifecycle dashboard
+
+The **Segmentation → Lifecycle → Dashboard** shows:
+
+- **Stage distribution** — how many customers are in each stage (pie chart and absolute numbers)
+- **Migration flow** — how customers move between stages over time (Sankey diagram)
+- **Stage conversion rates** — what percentage of prospects become first-time buyers, first-time buyers become active, etc.
+- **Revenue by stage** — how much revenue each stage contributes
+
+## Using lifecycle stages
+
+Lifecycle stages integrate with other Luminos AI features:
+
+- **Recommendations** — show different recommendation models to prospects (trending) vs. loyal customers (personalised)
+- **Pricing** — offer first-time buyer discounts or loyalty pricing
+- **Chatbot** — customise chatbot greetings based on lifecycle stage
+- **Triggers** — fire [behavioural triggers](/segmentation/behavioural-triggers) when customers move between stages
+
+<Tip>
+Focus your retention investment on the "At-risk" stage. Preventing a loyal customer from lapsing is far more cost-effective than acquiring a new prospect.
+</Tip>

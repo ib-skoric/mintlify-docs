@@ -1,0 +1,119 @@
+---
+title: "Python SDK"
+sidebarTitle: "Python"
+description: "Server-side and data pipeline integration with the Python SDK."
+---
+
+The Luminos AI Python SDK is designed for server-side applications, data pipelines, and analytics workflows. It supports Python 3.8 and above.
+
+## Installation
+
+```bash
+pip install luminos-ai
+```
+
+## Initialisation
+
+```python
+from luminos_ai import LuminosAI
+
+client = LuminosAI(
+    api_key="lum_sk_abc123",
+    workspace="ws_abc123",
+)
+```
+
+## Fetching recommendations
+
+```python
+recommendations = client.recommendations.get(
+    visitor_id="visitor_123",
+    placement="homepage-carousel",
+    limit=12,
+)
+
+for product in recommendations.products:
+    print(f"{product.title} - £{product.price}")
+```
+
+## Executing a search
+
+```python
+results = client.search.query(
+    query="wireless headphones",
+    filters={"brand": "Sony", "max_price": 200},
+    page=1,
+    per_page=24,
+)
+
+print(f"Found {results.total} products")
+for product in results.products:
+    print(f"  {product.title} (relevance: {product.score})")
+```
+
+## Submitting events
+
+```python
+client.events.track(
+    type="purchase",
+    visitor_id="visitor_123",
+    order_id="order_789",
+    products=[
+        {"id": "prod_456", "quantity": 2, "price": 29.99},
+    ],
+    revenue=59.98,
+)
+```
+
+Batch events for efficiency:
+
+```python
+client.events.track_batch([
+    {"type": "pageview", "visitor_id": "v1", "url": "/products/123"},
+    {"type": "product_view", "visitor_id": "v1", "product_id": "prod_123"},
+])
+```
+
+## Exporting analytics data
+
+```python
+export = client.analytics.export(
+    dataset="recommendations",
+    start_date="2025-01-01",
+    end_date="2025-01-31",
+    measures=["impressions", "clicks", "revenue"],
+)
+
+for row in export.rows:
+    print(row)
+```
+
+## Error handling
+
+```python
+from luminos_ai.exceptions import RateLimitError, AuthenticationError
+
+try:
+    recs = client.recommendations.get(visitor_id="v1")
+except RateLimitError as e:
+    print(f"Rate limited. Retry after {e.retry_after} seconds.")
+except AuthenticationError:
+    print("Invalid API key.")
+```
+
+## Async support
+
+The SDK includes an async client for use with asyncio:
+
+```python
+from luminos_ai import AsyncLuminosAI
+
+client = AsyncLuminosAI(api_key="lum_sk_abc123", workspace="ws_abc123")
+recommendations = await client.recommendations.get(visitor_id="v1")
+```
+
+## Next steps
+
+- [REST API overview](/api/rest-api-overview) for the full endpoint reference
+- [Rate limits](/api/rate-limits) to understand usage quotas
+- [Webhooks](/api/webhooks) for event-driven integrations

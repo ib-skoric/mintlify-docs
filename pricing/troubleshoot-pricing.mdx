@@ -1,0 +1,55 @@
+---
+title: "Troubleshoot dynamic pricing"
+sidebarTitle: "Troubleshooting"
+description: "Pricing sync delays, rule conflicts, and unexpected changes."
+---
+
+This guide covers common dynamic pricing issues and how to resolve them.
+
+<AccordionGroup>
+
+<Accordion title="Prices are not updating on my storefront">
+**Check the pricing sync.** Go to **Pricing → Settings → Sync status**. If the last sync timestamp is stale, the price updates may not be reaching your ecommerce platform.
+
+**Verify store connection permissions.** Dynamic pricing requires write access to your store's product prices. Check that your [store connection](/getting-started/connect-your-store) has the necessary permissions enabled.
+
+**Look for caching.** Your storefront or CDN may cache product pages. Clear the cache or wait for the TTL to expire. Luminos AI pushes price changes immediately, but your storefront needs to reflect them.
+
+**Check for rule conflicts.** If two rules set conflicting prices for the same product, the higher-priority rule wins. Review rule priorities under **Pricing → Rules → Active**.
+</Accordion>
+
+<Accordion title="A product's price changed unexpectedly">
+**Check the price change log.** Go to **Pricing → History** and search for the product. The log shows exactly which rule triggered the change and what guardrails were applied.
+
+**Review stacking rules.** If [rule chaining](/pricing/dynamic-pricing-rules) is enabled, multiple rules may have compounded their effects. Disable chaining for the affected products to isolate the issue.
+
+**Check for scheduled changes.** A [pricing schedule](/pricing/pricing-schedules) may have activated a new base price that then cascaded through dynamic pricing rules.
+</Accordion>
+
+<Accordion title="Margin protection is not working">
+**Verify cost data.** Cost-plus floor prices require accurate cost data in your product catalog. If cost is zero or missing, the floor calculation produces no meaningful limit. Check under **Data → Product catalog → Health**.
+
+**Check guardrail priority.** If a promotion overrides the floor, the [promotional pricing](/pricing/promotional-pricing) configuration may have "ignore floors" enabled. Disable this setting.
+
+**Review the guardrail hierarchy.** Floor → ceiling → daily cap. If the ceiling is lower than the floor (misconfiguration), the system defaults to the floor. Check for inconsistencies under **Pricing → Settings → Guardrails**.
+</Accordion>
+
+<Accordion title="Competitor prices are stale or missing">
+**Check crawl status.** Go to **Pricing → Competitors → Status** and verify the last crawl timestamp. If crawls are failing, the competitor website may have changed its structure or blocked the crawler.
+
+**Review match rates.** If products are not matched to competitor listings, the competitor data will not appear. Check **Pricing → Competitors → Match rates** and add manual mappings for important products.
+
+**Verify crawl frequency.** Daily crawls may miss intraday price changes. Increase frequency to hourly for high-priority competitors.
+</Accordion>
+
+<Accordion title="Geographic pricing shows the wrong currency">
+**Check region configuration.** Verify that countries are assigned to the correct regions under **Pricing → Geographic → Regions**. A country in the wrong region will receive the wrong currency and price multiplier.
+
+**Test with different locations.** Use a VPN or the **Pricing → Geographic → Preview** tool to simulate a shopper from each region and verify that the correct currency and price appear.
+
+**Review exchange rate updates.** Exchange rates update daily. If your prices seem off by a few percent, check whether the exchange rate is stale under **Pricing → Geographic → Exchange rates**.
+</Accordion>
+
+</AccordionGroup>
+
+If your issue is not covered here, contact [Luminos AI support](/account/contact-support) with your workspace ID and the product IDs affected.

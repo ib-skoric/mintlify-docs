@@ -1,0 +1,69 @@
+---
+title: "Audit logs"
+sidebarTitle: "Audit logs"
+description: "Chronological record of configuration changes and admin actions."
+---
+
+Audit logs record every significant action taken in your Luminos AI workspace — who did what, when, and what changed. Use them for security reviews, compliance audits, and troubleshooting unexpected configuration changes.
+
+## What is logged
+
+### Team actions
+
+- Member invited, role changed, deactivated, or removed
+- SSO configuration changed
+- API key created or deleted
+
+### AI feature changes
+
+- Recommendation model enabled, disabled, or reconfigured
+- Search synonyms, merchandising rules, or relevance settings changed
+- Pricing rules created, modified, or deleted
+- Chatbot flows published or unpublished
+- Segments created, modified, or archived
+
+### Integration changes
+
+- Store connected or disconnected
+- Webhook created, modified, or deleted
+- Warehouse sync configured
+
+### Data operations
+
+- Product catalog imported
+- Data exported
+- Data retention settings changed
+- GDPR data subject request processed
+
+## Viewing audit logs
+
+Go to **Settings → Security → Audit logs**. The log shows entries in reverse chronological order with:
+
+- **Timestamp** — when the action occurred
+- **Actor** — who performed the action (name and email)
+- **Action** — what was done (e.g. "pricing_rule.created", "team_member.invited")
+- **Target** — what was affected (e.g. a specific pricing rule, a team member email)
+- **Details** — a JSON diff showing what changed (before and after values)
+
+## Filtering
+
+Filter audit logs by:
+
+- **Date range** — narrow to a specific time period
+- **Actor** — see all actions by a specific team member
+- **Action type** — filter by category (team, features, integrations, data)
+- **Target** — search for actions on a specific resource
+
+## Retention
+
+Audit logs are retained for 12 months on all plans. Enterprise plans can request extended retention up to 7 years for compliance requirements.
+
+## Export
+
+Export audit logs as CSV or JSON for integration with your SIEM (Security Information and Event Management) system. Go to **Settings → Security → Audit logs → Export**.
+
+For continuous export, configure audit log streaming via [webhooks](/api/webhooks) — subscribe to the `audit.event` event type.
+
+<Info>
+Audit logs are immutable. They cannot be modified or deleted, even by the workspace Owner. This ensures the integrity of the audit trail.
+</Info>

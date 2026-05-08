@@ -1,0 +1,53 @@
+---
+title: "Configure Smart Search"
+sidebarTitle: "Setup"
+description: "Enable search, choose ranking signals, and customise result layouts."
+---
+
+Smart Search connects to your product catalog and replaces your storefront's native search with Luminos AI's ranking engine. This guide walks you through the initial configuration.
+
+<Note>
+You need a [connected store](/getting-started/connect-your-store) with an active product catalog before enabling Smart Search.
+</Note>
+
+<Steps>
+
+<Step title="Enable Smart Search">
+Go to **Search → Settings → Enable**. Smart Search indexes your product catalog automatically. The initial index build takes 2–10 minutes depending on catalog size.
+</Step>
+
+<Step title="Install the search widget">
+Choose your installation method:
+
+- **Automatic** — if you already have the [tracking pixel](/getting-started/install-tracking-pixel) installed, the search widget activates on your existing search input field automatically
+- **Manual** — add the Luminos AI search component to your storefront using the widget code from **Search → Settings → Widget**
+- **API** — use the [REST API](/api/rest-api-overview) to fetch search results and render them in your own template
+</Step>
+
+<Step title="Configure ranking signals">
+Under **Search → Settings → Ranking**, choose which signals influence result order:
+
+- **Text relevance** — how closely the product matches the query text (always enabled)
+- **Popularity** — products with more views and purchases rank higher
+- **Conversion rate** — products that convert well for similar queries rank higher
+- **Freshness** — recently added products get a temporary boost
+- **Personalisation** — returning visitors see results influenced by their history
+
+Enable or disable each signal and adjust its relative weight using the slider.
+</Step>
+
+<Step title="Set result layout">
+Choose how results display: grid (default), list, or compact. Configure the number of results per page (12, 24, or 48) and which product fields to show (image, title, price, rating, availability).
+</Step>
+
+</Steps>
+
+## Testing
+
+Use the **Search → Preview** tool to test queries against your live index without affecting your storefront. Enter a query, see the ranked results, and understand why each product ranked where it did using the relevance explanation panel.
+
+## Next steps
+
+- [Synonyms and redirects](/search/synonyms-redirects) to handle alternate terms
+- [Search merchandising](/search/search-merchandising) to promote specific products
+- [Faceted filtering](/search/faceted-filtering) to add dynamic filters

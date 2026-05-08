@@ -1,0 +1,59 @@
+---
+title: "Real-time metrics"
+sidebarTitle: "Real-time"
+description: "Live traffic, conversion, and AI performance during peak events."
+---
+
+The real-time metrics dashboard shows what is happening on your storefront right now. Use it during product launches, flash sales, and high-traffic events to monitor performance and catch issues as they happen.
+
+## Real-time dashboard
+
+Navigate to **Analytics → Real-time**. The dashboard updates every 5 seconds with:
+
+### Active visitors
+
+The number of shoppers currently browsing your storefront. A sparkline shows the last 30 minutes of visitor count.
+
+### Events per second
+
+The rate of behavioural events flowing into Luminos AI — page views, product views, add-to-cart, and purchases. Use this to verify that the [tracking pixel](/getting-started/install-tracking-pixel) is functioning during peak traffic.
+
+### Live conversions
+
+Purchase events as they happen, with product name, order value, and the AI feature that influenced the purchase (if any).
+
+### Module health
+
+Status indicators for each AI module:
+
+- **Recommendations** — response latency (green: <100ms, yellow: 100–500ms, red: >500ms)
+- **Search** — query latency and error rate
+- **Chatbot** — active conversations and resolution rate
+- **Pricing** — last price sync timestamp
+
+## Event stream
+
+The event stream shows individual events as they arrive:
+
+- **Type** — page view, product view, add to cart, purchase, search, recommendation click
+- **Visitor** — anonymous ID or customer name (if logged in)
+- **Page** — the URL where the event occurred
+- **Product** — the product involved (if applicable)
+- **Timestamp** — event time
+
+Filter the stream by event type, product category, or segment to focus on what matters.
+
+## Alerts
+
+Configure real-time alerts under **Analytics → Real-time → Alerts**:
+
+- **Traffic drop** — alert if visitor count drops more than 50% in 5 minutes (may indicate a site outage)
+- **Event gap** — alert if no events are received for 2 minutes (tracking pixel may be broken)
+- **Error spike** — alert if recommendation or search error rates exceed 5%
+- **Conversion anomaly** — alert if conversion rate drops below a threshold
+
+Alerts are delivered via email, Slack, or the Luminos AI notification centre.
+
+<Tip>
+Keep the real-time dashboard open during Black Friday, product launches, and marketing campaign go-lives. Real-time visibility lets you catch and resolve issues in minutes rather than discovering them in the next day's reports.
+</Tip>

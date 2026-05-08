@@ -1,0 +1,55 @@
+---
+title: "Troubleshoot recommendations"
+sidebarTitle: "Troubleshooting"
+description: "Resolve missing recommendations, stale results, or low relevance."
+---
+
+This guide covers the most common issues with the recommendation engine and how to resolve them.
+
+<AccordionGroup>
+
+<Accordion title="Recommendations are not appearing on my storefront">
+**Check the pixel installation.** Open your browser's developer tools and look for network requests to `cdn.luminos.ai`. If the pixel is not loading, revisit the [tracking pixel installation](/getting-started/install-tracking-pixel) guide.
+
+**Verify the placement is published.** Go to **Recommendations → Placements** and confirm the placement status is **Live**, not **Draft**.
+
+**Check for ad blockers.** Some browser extensions block third-party scripts. Test in an incognito window with extensions disabled.
+
+**Confirm product feed health.** If your catalog sync is broken, the engine has no products to recommend. Check **Data → Product catalog → Sync status**.
+</Accordion>
+
+<Accordion title="Recommendations look random or irrelevant">
+**Allow time for training.** New stores need at least 7 days of behavioural data before personalisation becomes effective. During this period, the engine falls back to popularity-based suggestions.
+
+**Check the model type.** The Trending model does not personalise — it shows the same popular products to everyone. Switch to Deep Personalisation or Collaborative Filtering for tailored results.
+
+**Review exclusion rules.** Overly aggressive [exclusion rules](/recommendations/exclude-products) can shrink the candidate pool so much that the engine has few relevant options left.
+
+**Verify event tracking.** If purchase events are not reaching Luminos AI, the model cannot learn from conversions. Check the event stream under **Analytics → Real-time → Events**.
+</Accordion>
+
+<Accordion title="The same products keep appearing">
+**Check for pinned products.** [Personalisation rules](/recommendations/personalisation-rules) with pin actions override model ranking. Review active rules under **Recommendations → Rules**.
+
+**Increase product count.** If a placement shows only 4 products and your catalog has limited diversity in the matching category, the engine has few options. Try increasing the count or broadening the eligible categories.
+
+**Enable freshness decay.** Under **Recommendations → Models → Advanced**, enable freshness decay to give newer products a ranking boost over older ones.
+</Accordion>
+
+<Accordion title="Recommendations are slow to load">
+**Check your network.** Recommendation responses are typically under 50ms. Slow rendering is more often caused by large product images than API latency. Use appropriately sized thumbnails.
+
+**Reduce product count.** Each additional product in a placement adds image load time. Balance comprehensiveness with page performance.
+
+**Verify CDN caching.** The Luminos AI CDN caches widget assets. If you recently changed a placement's styling, allow up to 5 minutes for the cache to update.
+</Accordion>
+
+<Accordion title="Revenue attribution seems too high or too low">
+**Check the attribution window.** The default 7-day window counts purchases up to a week after a recommendation click. Shorten to 1 day under **Analytics → Settings → Attribution** if your purchase cycle is shorter.
+
+**Verify purchase event tracking.** Missing purchase events cause under-attribution. Duplicate purchase events (e.g. from both server-side and client-side tracking) cause over-attribution. Audit your event sources under **Data → Events → Sources**.
+</Accordion>
+
+</AccordionGroup>
+
+If your issue is not covered here, contact [Luminos AI support](/account/contact-support) with your workspace ID and a description of the problem.

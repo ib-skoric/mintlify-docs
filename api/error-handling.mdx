@@ -1,0 +1,107 @@
+---
+title: "Error handling"
+sidebarTitle: "Error handling"
+description: "Error codes, retries, and edge cases in API integrations."
+---
+
+The Luminos AI API uses standard HTTP status codes and returns structured error responses. This guide covers all error codes and best practices for handling them in your integration.
+
+## Error response format
+
+```json
+{
+  "error": {
+    "code": "invalid_parameter",
+    "message": "The 'limit' parameter must be between 1 and 100.",
+    "param": "limit",
+    "request_id": "req_abc123"
+  }
+}
+```
+
+- `code` — a machine-readable error code (use this for programmatic handling)
+- `message` — a human-readable description (useful for debugging, but do not parse)
+- `param` — the specific parameter that caused the error (when applicable)
+- `request_id` — a unique identifier for the request (include in support tickets)
+
+## HTTP status codes
+
+### 400 Bad Request
+
+The request is malformed or has invalid parameters.
+
+| Error code | Description |
+|------------|-------------|
+| `invalid_parameter` | A parameter value is outside the allowed range or type |
+| `missing_parameter` | A required parameter is missing |
+| `invalid_json` | The request body is not valid JSON |
+
+### 401 Unauthorized
+
+Authentication failed.
+
+| Error code | Description |
+|------------|-------------|
+| `invalid_api_key` | The API key is not recognised |
+| `expired_token` | The OAuth access token has expired |
+| `missing_auth` | No authentication credentials provided |
+
+### 403 Forbidden
+
+The authenticated key does not have permission for this action.
+
+| Error code | Description |
+|------------|-------------|
+| `insufficient_scope` | The API key lacks the required scope |
+| `workspace_mismatch` | The key belongs to a different workspace |
+
+### 404 Not Found
+
+The requested resource does not exist.
+
+| Error code | Description |
+|------------|-------------|
+| `not_found` | The resource ID does not match any existing record |
+
+### 429 Too Many Requests
+
+[Rate limit](/api/rate-limits) exceeded.
+
+| Error code | Description |
+|------------|-------------|
+| `rate_limit_exceeded` | Too many requests. `retry_after` field indicates wait time |
+
+### 500 Internal Server Error
+
+An unexpected error occurred on the Luminos AI side.
+
+| Error code | Description |
+|------------|-------------|
+| `internal_error` | An unhandled error occurred. Retry the request. |
+
+## Retry strategy
+
+Implement retries for transient errors (429 and 5xx):
+
+1. On a 429, wait the `retry_after` duration
+2. On a 5xx, wait 1 second and retry
+3. Use exponential backoff: double the wait time on each consecutive failure
+4. Set a maximum of 5 retries
+5. On 4xx errors (except 429), do not retry — fix the request
+
+<Warning>
+Only retry idempotent requests (GET, PUT, DELETE). Retrying POST requests without idempotency keys can create duplicate resources.
+</Warning>
+
+## Idempotency keys
+
+For POST requests, include an `Idempotency-Key` header to ensure the request is processed at most once, even if retried:
+
+```bash
+curl -X POST "https://api.luminos.ai/v1/events" \
+  -H "Authorization: Bearer lum_sk_abc123" \
+  -H "Idempotency-Key: unique_key_123" \
+  -d '{"type": "purchase", ...}'
+```
+
+Luminos AI stores the response for each idempotency key for 24 hours. Repeated requests with the same key return the original response without re-processing.

@@ -1,0 +1,81 @@
+---
+title: "Analytics glossary"
+sidebarTitle: "Glossary"
+description: "Definitions of metrics, dimensions, and attribution models."
+---
+
+This glossary defines the key terms, metrics, and concepts used across Luminos AI analytics.
+
+## Metrics
+
+### Add-to-cart rate
+
+The percentage of product views that result in the product being added to the shopping cart.
+
+### Average order value (AOV)
+
+Total revenue divided by the number of orders. A higher AOV indicates that shoppers are purchasing more or higher-priced items per transaction.
+
+### Click-through rate (CTR)
+
+The percentage of impressions (recommendation views, search results, or chatbot suggestions) that result in a click. Calculated as clicks divided by impressions.
+
+### Conversion rate
+
+The percentage of sessions (or a specific audience) that complete a purchase. Can be calculated at the session level, search level, recommendation level, or chatbot level depending on context.
+
+### Customer lifetime value (LTV)
+
+The total revenue attributed to a customer over their entire relationship with your store. Luminos AI calculates observed LTV (based on actual purchases) and predicted LTV (using the [predictive scoring](/segmentation/predictive-scoring) model).
+
+### MAPE (Mean Absolute Percentage Error)
+
+A forecast accuracy metric used in [inventory analytics](/inventory/inventory-analytics). The average percentage difference between predicted and actual demand. Lower values indicate more accurate forecasts.
+
+### Resolution rate
+
+The percentage of chatbot conversations that are resolved without [escalation to a human agent](/chatbot/escalation-to-human).
+
+### Revenue per impression (RPI)
+
+Revenue attributed to a feature divided by the total number of impressions. Used to compare the revenue efficiency of different recommendation placements.
+
+### Stockout rate
+
+The percentage of products with zero available inventory. Tracked in [inventory analytics](/inventory/inventory-analytics).
+
+### Zero-result rate
+
+The percentage of search queries that return no products. Tracked in [search analytics](/search/search-analytics).
+
+## Dimensions
+
+### Cohort
+
+A group of customers who share a common characteristic, typically the date of first purchase. Used in [cohort analysis](/analytics/cohort-analysis).
+
+### Segment
+
+A dynamically defined group of customers based on behaviour, value, or demographics. See [customer segmentation](/segmentation).
+
+### Touchpoint
+
+An interaction between a shopper and an AI feature — a recommendation click, search result click, or chatbot message. Touchpoints are the basis of [revenue attribution](/analytics/revenue-attribution).
+
+## Attribution models
+
+### Last-touch
+
+Revenue is attributed entirely to the last AI touchpoint before purchase. The default model in Luminos AI.
+
+### Linear
+
+Revenue is split equally across all touchpoints in the shopper's journey.
+
+### Time decay
+
+Touchpoints closer to the purchase receive more credit than earlier touchpoints.
+
+### Position-based
+
+40% credit to the first touchpoint, 40% to the last, and 20% distributed among middle touchpoints.

@@ -1,0 +1,61 @@
+---
+title: "Troubleshoot analytics"
+sidebarTitle: "Troubleshooting"
+description: "Data discrepancies, delayed reports, and missing events."
+---
+
+This guide covers common analytics issues and how to resolve them.
+
+<AccordionGroup>
+
+<Accordion title="Revenue numbers in Luminos AI do not match my ecommerce platform">
+**Check the date range and timezone.** Luminos AI uses your workspace timezone for daily aggregation. If your ecommerce platform uses a different timezone, the same calendar date may cover different hours.
+
+**Verify attribution vs. total revenue.** Luminos AI's attributed revenue counts only orders influenced by AI features within the attribution window. It will always be lower than total revenue. Check the "unattributed" row in [Revenue attribution](/analytics/revenue-attribution) to see the gap.
+
+**Check for duplicate events.** If purchase events are sent from both client-side (pixel) and server-side (API), orders may be double-counted. Audit event sources under **Data → Events → Sources**.
+
+**Verify currency conversion.** If you sell in multiple currencies, check that the exchange rates used for aggregation match your ecommerce platform's rates.
+</Accordion>
+
+<Accordion title="Events are missing or delayed">
+**Check the tracking pixel.** Open your browser's developer tools on your storefront and verify that requests to `cdn.luminos.ai` are succeeding. A 403 or 404 status indicates a configuration issue.
+
+**Check for ad blockers.** If events are missing for some visitors but not others, ad blockers may be preventing the pixel from loading. Server-side event tracking via the [REST API](/api/rest-api-overview) is not affected by ad blockers.
+
+**Review real-time metrics.** Go to **Analytics → Real-time** and check the events-per-second counter. If it shows zero, no events are arriving at all — check the pixel installation.
+
+**Check event latency.** Events typically appear in analytics within 60 seconds. If events appear but are delayed by minutes, check the event stream under **Analytics → Real-time → Event stream** for processing lag.
+</Accordion>
+
+<Accordion title="A scheduled report did not arrive">
+**Check the schedule status.** Go to **Analytics → Scheduled → Active** and check the last run status. Common failure reasons include:
+
+- **Email delivery failure** — invalid or full recipient mailbox
+- **Slack webhook expired** — the webhook URL needs to be refreshed
+- **Report error** — the underlying data query failed (usually due to a timeout on very large reports)
+
+**Reduce report size.** Reports that query large date ranges with many dimensions can time out. Try narrowing the date range or removing low-priority dimensions.
+
+**Verify the schedule is active.** Paused schedules do not run. Check the toggle next to each schedule.
+</Accordion>
+
+<Accordion title="Custom report shows unexpected results">
+**Check filter logic.** AND vs. OR logic in filters dramatically changes results. An unintended OR can include far more data than expected.
+
+**Verify the measure definition.** Some measures are calculated differently depending on the data source. For example, "conversion rate" in the search dataset means search-to-purchase, while in the recommendation dataset it means click-to-purchase.
+
+**Test with known data.** Pick a specific product and date range where you know the expected numbers. Run the report for just that product and verify the output matches.
+</Accordion>
+
+<Accordion title="Data warehouse sync is failing">
+**Check credentials.** Verify that the warehouse connection credentials (Snowflake, BigQuery, or Redshift) are still valid under **Analytics → Export → Warehouse**.
+
+**Check table permissions.** The sync needs write access to the target schema or dataset. Verify that the service account has appropriate permissions.
+
+**Review sync logs.** Detailed error logs are available under **Analytics → Export → Warehouse → Sync history**. Common issues include schema mismatches when your warehouse table structure was modified.
+</Accordion>
+
+</AccordionGroup>
+
+If your issue is not covered here, contact [Luminos AI support](/account/contact-support) with your workspace ID and a description of the data discrepancy.

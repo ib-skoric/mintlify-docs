@@ -1,0 +1,45 @@
+---
+title: "Collaborative filtering"
+sidebarTitle: "Collaborative filtering"
+description: "How purchase and browse history from similar shoppers generates suggestions."
+---
+
+Collaborative filtering is the most widely used recommendation technique in ecommerce. It works on a simple premise: if two shoppers bought many of the same products, they are likely to be interested in each other's remaining purchases.
+
+## How Luminos AI implements it
+
+The engine builds a user-item interaction matrix from behavioural events — views, add-to-cart actions, and purchases. Each event type carries a different weight:
+
+| Event | Weight | Rationale |
+|-------|--------|-----------|
+| Product view | 1.0 | Weak signal — may be casual browsing |
+| Add to cart | 3.0 | Moderate signal — intent to buy |
+| Purchase | 5.0 | Strong signal — confirmed preference |
+| Return | -2.0 | Negative signal — product was unsuitable |
+
+The matrix is decomposed using an optimised alternating least squares (ALS) algorithm that updates incrementally as new events arrive. Full retraining runs every 24 hours; incremental updates happen every 15 minutes.
+
+## When to use collaborative filtering
+
+Collaborative filtering excels when your store has:
+
+- **Broad product catalogs** with thousands of SKUs where manual curation is impractical
+- **Repeat visitors** who generate enough behavioural signals for the model to find patterns
+- **Cross-category discovery** opportunities where shoppers might not find related products on their own
+
+It is less effective for:
+
+- **New stores** with fewer than 1,000 orders — consider the Quick Start model instead, which supplements sparse data with content-based signals
+- **Highly seasonal catalogs** where last month's patterns may not predict this month's demand
+
+<Tip>
+Combine collaborative filtering with [content-based algorithms](/recommendations/content-based-algorithms) using Luminos AI's hybrid model for the best of both approaches.
+</Tip>
+
+## Cold start handling
+
+New visitors without history receive fallback recommendations based on global popularity until enough behavioural signals accumulate — typically 3–5 page views. New products enter the collaborative matrix after receiving their first 10 interactions.
+
+## Configuration
+
+You do not need to tune collaborative filtering parameters manually. Luminos AI's auto-tuning adjusts the number of latent factors, regularisation strength, and learning rate based on your data volume. If you want manual control, go to **Recommendations → Models → Advanced** and override the defaults.

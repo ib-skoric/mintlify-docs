@@ -1,0 +1,61 @@
+---
+title: "Email recommendations"
+sidebarTitle: "Email"
+description: "Embed personalised picks in transactional and marketing emails."
+---
+
+Email recommendations insert personalised product suggestions into your email campaigns. Each recipient sees products tailored to their browsing and purchase history, generated at open time so recommendations are always fresh.
+
+## How it works
+
+Luminos AI provides dynamic image URLs that you embed in your email template. When a recipient opens the email, the image URL triggers a real-time recommendation request. The server generates a product card image on the fly, personalised for that specific recipient, and returns it as a standard image.
+
+This approach works with every email service provider because it requires only an `<img>` tag — no JavaScript or custom rendering.
+
+## Setup
+
+<Steps>
+
+<Step title="Enable email recommendations">
+Go to **Recommendations → Email → Enable**. Select the recommendation model you want to use for emails (Personalised or Trending are the most common choices).
+</Step>
+
+<Step title="Get your template URL">
+Copy the dynamic image URL template from the setup page. It looks like this:
+
+```
+https://email.luminos.ai/recommend/{workspace_id}?uid={recipient_id}&n={count}&slot={position}
+```
+
+- `{workspace_id}` — your Luminos AI workspace ID
+- `{recipient_id}` — the recipient's customer ID or email hash (your ESP provides this as a merge variable)
+- `{count}` — total number of products to show
+- `{position}` — which product in the set (1, 2, 3, etc.)
+</Step>
+
+<Step title="Add to your email template">
+Insert one `<img>` tag per product slot in your email template. For a row of four products:
+
+```html
+<img src="https://email.luminos.ai/recommend/ws_abc123?uid={{customer_id}}&n=4&slot=1" alt="Recommended product" width="150" />
+<img src="https://email.luminos.ai/recommend/ws_abc123?uid={{customer_id}}&n=4&slot=2" alt="Recommended product" width="150" />
+<img src="https://email.luminos.ai/recommend/ws_abc123?uid={{customer_id}}&n=4&slot=3" alt="Recommended product" width="150" />
+<img src="https://email.luminos.ai/recommend/ws_abc123?uid={{customer_id}}&n=4&slot=4" alt="Recommended product" width="150" />
+```
+
+Wrap each image in an `<a>` tag linking to the product page.
+</Step>
+
+</Steps>
+
+## Fallback behaviour
+
+If a recipient has no behavioural history, the engine falls back to trending products. If the product catalog is temporarily unavailable, a transparent 1×1 pixel is returned so the email layout is not broken.
+
+## Best practices
+
+- Place recommendations after the primary email content — they complement the message rather than replace it
+- Use 3–6 products per email; more than that creates visual clutter
+- Test email recommendations with [A/B experiments](/recommendations/ab-testing-models) to measure click-through rates
+
+Track email recommendation performance in [Recommendation analytics](/recommendations/recommendation-analytics) under the **Email** channel filter.

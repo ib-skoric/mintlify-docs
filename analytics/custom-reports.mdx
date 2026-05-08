@@ -1,0 +1,61 @@
+---
+title: "Custom reports"
+sidebarTitle: "Custom reports"
+description: "Build reports with drag-and-drop dimensions, measures, and filters."
+---
+
+Custom reports let you answer specific business questions that the default dashboards do not cover. Build reports by combining dimensions (what to group by), measures (what to calculate), and filters (what to include or exclude).
+
+## Creating a report
+
+1. Go to **Analytics → Reports → Create**
+2. Select a data source: Recommendations, Search, Chatbot, Pricing, Inventory, Segmentation, or Cross-module
+3. Add dimensions — the attributes you want to group by (e.g. product category, date, device type, segment)
+4. Add measures — the metrics you want to calculate (e.g. revenue, conversion rate, CTR, AOV)
+5. Add filters — limit the data to specific time ranges, products, segments, or channels
+6. Choose the visualisation: table, bar chart, line chart, pie chart, or scatter plot
+7. Run the report and save it for future use
+
+## Available dimensions
+
+| Category | Dimensions |
+|----------|-----------|
+| Time | Date, week, month, quarter, hour of day, day of week |
+| Product | Product name, category, brand, price range, tag |
+| Customer | Segment, lifecycle stage, RFM score, location |
+| Channel | Device type, traffic source, referrer, UTM parameters |
+| AI feature | Recommendation model, search query, chatbot topic, pricing rule |
+
+## Available measures
+
+| Category | Measures |
+|----------|---------|
+| Revenue | Total revenue, attributed revenue, AOV, revenue per visitor |
+| Conversion | Conversion rate, add-to-cart rate, CTR, search conversion |
+| Engagement | Sessions, page views, time on site, recommendation impressions |
+| Chatbot | Resolution rate, escalation rate, CSAT, response time |
+| Inventory | Stockout rate, days of supply, forecast accuracy |
+
+## Formulas
+
+Create calculated measures using formulas. Click **Add formula** in the measures panel and write expressions:
+
+- `revenue / sessions` — revenue per session
+- `(revenue_with_recs - revenue_without_recs) / revenue_without_recs * 100` — recommendation revenue lift percentage
+
+## Saving and organising
+
+Save reports to folders for organisation. Common folder structures include:
+
+- **Weekly reviews** — reports run every Monday
+- **Campaign analysis** — post-campaign performance reports
+- **Executive** — high-level summaries for leadership
+
+<Tip>
+Start with one of the built-in report templates under **Analytics → Reports → Templates**. It is faster to modify an existing template than to build a report from scratch.
+</Tip>
+
+## Next steps
+
+- [Schedule reports](/analytics/scheduled-reports) for automatic delivery
+- [Export data](/analytics/export-data) for analysis in external tools

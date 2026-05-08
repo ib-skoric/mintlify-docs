@@ -1,0 +1,58 @@
+---
+title: "MAP and regulatory compliance"
+sidebarTitle: "MAP compliance"
+description: "Enforce minimum advertised price and regional regulations."
+---
+
+Minimum Advertised Price (MAP) policies set the lowest price at which a manufacturer allows a product to be advertised. Violating MAP can result in losing authorised reseller status, supply restrictions, or legal action. Luminos AI helps you enforce MAP automatically across all pricing channels.
+
+## MAP enforcement
+
+### Setting MAP prices
+
+Import MAP prices alongside your product catalog. Add a `map_price` column to your [product catalog CSV](/getting-started/import-product-catalog) or configure MAP data from your supplier feed under **Pricing → MAP → Import**.
+
+### Automatic floor
+
+When MAP enforcement is enabled, Luminos AI treats the MAP price as an absolute floor for all pricing rules. No dynamic pricing rule, promotion, or competitor response can set the advertised price below MAP.
+
+Enable MAP enforcement under **Pricing → Settings → MAP enforcement**.
+
+### MAP vs. selling price
+
+In some jurisdictions, MAP only restricts the advertised (displayed) price, not the price at checkout. If your business model uses cart-level pricing (showing the final price only after adding to cart), configure this under **Pricing → MAP → Display rules**:
+
+- **Strict** — MAP floor applies to both displayed and checkout prices
+- **Advertised only** — MAP floor applies to displayed prices; checkout price can be lower (may show "See price in cart" on the product page)
+
+<Info>
+Consult your legal team before using "advertised only" mode. MAP policies vary by manufacturer and jurisdiction.
+</Info>
+
+## Regional regulations
+
+Beyond MAP, different regions have pricing regulations that Luminos AI helps you comply with:
+
+### EU Consumer Rights Directive
+
+In the EU, when you display a discounted price, you must show the lowest price from the prior 30 days as the reference price. Luminos AI tracks the 30-day price history automatically and generates compliant strikethrough prices.
+
+Enable this under **Pricing → Compliance → EU price history**.
+
+### US state pricing laws
+
+Some US states have laws about price gouging during emergencies, promotional pricing disclosures, and unit pricing requirements. Configure state-specific rules under **Pricing → Compliance → US states**.
+
+### UK pricing practices
+
+The UK's Chartered Trading Standards Institute (CTSI) guidance requires that a product must have been at the "was" price for a meaningful period before showing a discount. Luminos AI validates that reference prices meet this requirement.
+
+## Monitoring
+
+The compliance dashboard under **Pricing → Compliance → Status** flags:
+
+- Products where a pricing rule would violate MAP (the rule is blocked but logged)
+- Products where the displayed discount reference price does not meet EU 30-day requirements
+- Products approaching MAP floor due to dynamic pricing trends
+
+Review flagged products regularly to ensure compliance before regulators or manufacturers notice.

@@ -1,0 +1,77 @@
+---
+title: "GDPR and privacy compliance"
+sidebarTitle: "GDPR"
+description: "Data subject requests, consent management, and compliance."
+---
+
+Luminos AI provides tools to help you comply with the General Data Protection Regulation (GDPR) and other privacy regulations. This article covers data subject rights, consent management, and how Luminos AI processes personal data.
+
+## Data subject rights
+
+Under GDPR, individuals have the right to access, rectify, port, and delete their personal data. Luminos AI supports these requests through the data subject request (DSR) tool.
+
+### Right to access
+
+A customer requests a copy of all data you hold about them.
+
+1. Go to **Settings → Privacy → Data subject requests → Access**
+2. Enter the customer's email or customer ID
+3. Luminos AI generates a data export containing all behavioural events, purchase history, segment memberships, chatbot transcripts, and profile data
+4. Download the export and provide it to the customer within the required timeframe (30 days under GDPR)
+
+### Right to deletion
+
+A customer requests that you delete all their data.
+
+1. Go to **Settings → Privacy → Data subject requests → Delete**
+2. Enter the customer's email or customer ID
+3. Confirm the deletion
+4. Luminos AI permanently removes all data associated with the customer across all modules
+
+<Warning>
+Deletion is irreversible. Once processed, the customer's data cannot be recovered. This includes behavioural events, purchase history, segment memberships, and chatbot transcripts.
+</Warning>
+
+### Right to rectification
+
+To correct inaccurate customer data, update the customer's profile directly in your ecommerce platform. Changes sync to Luminos AI through your [store connection](/getting-started/connect-your-store).
+
+## Consent management
+
+Luminos AI's tracking pixel respects consent signals. Configure consent integration under **Settings → Privacy → Consent**:
+
+### Cookie consent platforms
+
+Integrate with your consent management platform (CMP) to ensure the tracking pixel only fires when the customer has given consent:
+
+- **OneTrust** — automatic integration via their consent API
+- **Cookiebot** — automatic integration
+- **Custom** — use the Luminos AI consent API to pass consent status programmatically
+
+### Consent categories
+
+Map Luminos AI's data collection to your consent categories:
+
+- **Analytics** — behavioural event tracking (page views, product views)
+- **Personalisation** — recommendation and search personalisation
+- **Marketing** — segment syncing to ad networks and email platforms
+
+Only enable data collection for categories the customer has consented to.
+
+## Data processing agreement
+
+Luminos AI acts as a data processor under GDPR. Download the Data Processing Agreement (DPA) under **Settings → Privacy → DPA**. The DPA covers:
+
+- Data processing purposes and scope
+- Security measures
+- Sub-processor list
+- Data breach notification procedures
+- Data subject request handling
+
+## Sub-processors
+
+View the current list of sub-processors under **Settings → Privacy → Sub-processors**. Luminos AI notifies you via email when a new sub-processor is added, giving you 30 days to object.
+
+<Info>
+Luminos AI stores data in the EU (Frankfurt) by default. Enterprise customers can choose US or APAC data residency. Contact [support](/account/contact-support) for data residency options.
+</Info>
